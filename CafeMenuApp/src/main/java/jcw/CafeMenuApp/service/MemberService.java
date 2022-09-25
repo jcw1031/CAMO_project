@@ -4,6 +4,8 @@ import jcw.CafeMenuApp.domain.Member;
 import jcw.CafeMenuApp.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
+
 //@Service
 public class MemberService {
     private MemberRepository memberRepository;
@@ -30,7 +32,7 @@ public class MemberService {
         validateDuplicateMember(member);
 
         memberRepository.save(member);
-        return member.getId();
+        return member.getMemberId();
     }
 
     /** 이메일 중복 금지
@@ -38,9 +40,18 @@ public class MemberService {
      * @param member
      */
     private void validateDuplicateMember(Member member) {
-        memberRepository.findByName(member.getName()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
+        memberRepository.findByEmail(member.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 사용 중인 이메일입니다.");
                 });
+    }
+
+    /** id를 통해 회원 조회
+     *
+     * @param memberId
+     * @return Optional
+     */
+    public Optional<Member> findOne(Long memberId){
+        return memberRepository.findById(memberId);
     }
 }
