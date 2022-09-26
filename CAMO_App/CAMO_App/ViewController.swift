@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  CAMO
+//  CAMO_App
 //
 //  Created by 지찬우 on 2022/09/26.
 //

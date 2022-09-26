@@ -1,13 +1,13 @@
 //
-//  CAMOUITestsLaunchTests.swift
-//  CAMOUITests
+//  CAMO_AppUITestsLaunchTests.swift
+//  CAMO_AppUITests
 //
 //  Created by 지찬우 on 2022/09/26.
 //
 
 import XCTest
 
-final class CAMOUITestsLaunchTests: XCTestCase {
+final class CAMO_AppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

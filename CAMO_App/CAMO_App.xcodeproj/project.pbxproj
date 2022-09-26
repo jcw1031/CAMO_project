@@ -7,66 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11CF0F7428E1D42A0020CD57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF0F7328E1D42A0020CD57 /* AppDelegate.swift */; };
-		11CF0F7628E1D42A0020CD57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF0F7528E1D42A0020CD57 /* SceneDelegate.swift */; };
-		11CF0F7828E1D42A0020CD57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF0F7728E1D42A0020CD57 /* ViewController.swift */; };
-		11CF0F7B28E1D42A0020CD57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CF0F7928E1D42A0020CD57 /* Main.storyboard */; };
-		11CF0F7D28E1D42B0020CD57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CF0F7C28E1D42B0020CD57 /* Assets.xcassets */; };
-		11CF0F8028E1D42B0020CD57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CF0F7E28E1D42B0020CD57 /* LaunchScreen.storyboard */; };
-		11CF0F8B28E1D42B0020CD57 /* CAMOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF0F8A28E1D42B0020CD57 /* CAMOTests.swift */; };
-		11CF0F9528E1D42B0020CD57 /* CAMOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF0F9428E1D42B0020CD57 /* CAMOUITests.swift */; };
-		11CF0F9728E1D42B0020CD57 /* CAMOUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF0F9628E1D42B0020CD57 /* CAMOUITestsLaunchTests.swift */; };
+		114D8C2928E1E2FA00AAC145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C2828E1E2FA00AAC145 /* AppDelegate.swift */; };
+		114D8C2B28E1E2FA00AAC145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C2A28E1E2FA00AAC145 /* SceneDelegate.swift */; };
+		114D8C2D28E1E2FA00AAC145 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C2C28E1E2FA00AAC145 /* ViewController.swift */; };
+		114D8C3028E1E2FA00AAC145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D8C2E28E1E2FA00AAC145 /* Main.storyboard */; };
+		114D8C3228E1E2FB00AAC145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114D8C3128E1E2FB00AAC145 /* Assets.xcassets */; };
+		114D8C3528E1E2FB00AAC145 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 114D8C3328E1E2FB00AAC145 /* LaunchScreen.storyboard */; };
+		114D8C4028E1E2FB00AAC145 /* CAMO_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C3F28E1E2FB00AAC145 /* CAMO_AppTests.swift */; };
+		114D8C4A28E1E2FB00AAC145 /* CAMO_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C4928E1E2FB00AAC145 /* CAMO_AppUITests.swift */; };
+		114D8C4C28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C4B28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		11CF0F8728E1D42B0020CD57 /* PBXContainerItemProxy */ = {
+		114D8C3C28E1E2FB00AAC145 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 11CF0F6828E1D42A0020CD57 /* Project object */;
+			containerPortal = 114D8C1D28E1E2FA00AAC145 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 11CF0F6F28E1D42A0020CD57;
-			remoteInfo = CAMO;
+			remoteGlobalIDString = 114D8C2428E1E2FA00AAC145;
+			remoteInfo = CAMO_App;
 		};
-		11CF0F9128E1D42B0020CD57 /* PBXContainerItemProxy */ = {
+		114D8C4628E1E2FB00AAC145 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 11CF0F6828E1D42A0020CD57 /* Project object */;
+			containerPortal = 114D8C1D28E1E2FA00AAC145 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 11CF0F6F28E1D42A0020CD57;
-			remoteInfo = CAMO;
+			remoteGlobalIDString = 114D8C2428E1E2FA00AAC145;
+			remoteInfo = CAMO_App;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11CF0F7028E1D42A0020CD57 /* CAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		11CF0F7328E1D42A0020CD57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		11CF0F7528E1D42A0020CD57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		11CF0F7728E1D42A0020CD57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		11CF0F7A28E1D42A0020CD57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11CF0F7C28E1D42B0020CD57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		11CF0F7F28E1D42B0020CD57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		11CF0F8128E1D42B0020CD57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11CF0F8628E1D42B0020CD57 /* CAMOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAMOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		11CF0F8A28E1D42B0020CD57 /* CAMOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMOTests.swift; sourceTree = "<group>"; };
-		11CF0F9028E1D42B0020CD57 /* CAMOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAMOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		11CF0F9428E1D42B0020CD57 /* CAMOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMOUITests.swift; sourceTree = "<group>"; };
-		11CF0F9628E1D42B0020CD57 /* CAMOUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMOUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		114D8C2528E1E2FA00AAC145 /* CAMO_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAMO_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		114D8C2828E1E2FA00AAC145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		114D8C2A28E1E2FA00AAC145 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		114D8C2C28E1E2FA00AAC145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		114D8C2F28E1E2FA00AAC145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		114D8C3128E1E2FB00AAC145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		114D8C3428E1E2FB00AAC145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		114D8C3628E1E2FB00AAC145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		114D8C3B28E1E2FB00AAC145 /* CAMO_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAMO_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		114D8C3F28E1E2FB00AAC145 /* CAMO_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMO_AppTests.swift; sourceTree = "<group>"; };
+		114D8C4528E1E2FB00AAC145 /* CAMO_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAMO_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		114D8C4928E1E2FB00AAC145 /* CAMO_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMO_AppUITests.swift; sourceTree = "<group>"; };
+		114D8C4B28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMO_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		11CF0F6D28E1D42A0020CD57 /* Frameworks */ = {
+		114D8C2228E1E2FA00AAC145 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		11CF0F8328E1D42B0020CD57 /* Frameworks */ = {
+		114D8C3828E1E2FB00AAC145 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		11CF0F8D28E1D42B0020CD57 /* Frameworks */ = {
+		114D8C4228E1E2FB00AAC145 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,137 +76,137 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		11CF0F6728E1D42A0020CD57 = {
+		114D8C1C28E1E2FA00AAC145 = {
 			isa = PBXGroup;
 			children = (
-				11CF0F7228E1D42A0020CD57 /* CAMO */,
-				11CF0F8928E1D42B0020CD57 /* CAMOTests */,
-				11CF0F9328E1D42B0020CD57 /* CAMOUITests */,
-				11CF0F7128E1D42A0020CD57 /* Products */,
+				114D8C2728E1E2FA00AAC145 /* CAMO_App */,
+				114D8C3E28E1E2FB00AAC145 /* CAMO_AppTests */,
+				114D8C4828E1E2FB00AAC145 /* CAMO_AppUITests */,
+				114D8C2628E1E2FA00AAC145 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		11CF0F7128E1D42A0020CD57 /* Products */ = {
+		114D8C2628E1E2FA00AAC145 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				11CF0F7028E1D42A0020CD57 /* CAMO.app */,
-				11CF0F8628E1D42B0020CD57 /* CAMOTests.xctest */,
-				11CF0F9028E1D42B0020CD57 /* CAMOUITests.xctest */,
+				114D8C2528E1E2FA00AAC145 /* CAMO_App.app */,
+				114D8C3B28E1E2FB00AAC145 /* CAMO_AppTests.xctest */,
+				114D8C4528E1E2FB00AAC145 /* CAMO_AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		11CF0F7228E1D42A0020CD57 /* CAMO */ = {
+		114D8C2728E1E2FA00AAC145 /* CAMO_App */ = {
 			isa = PBXGroup;
 			children = (
-				11CF0F7328E1D42A0020CD57 /* AppDelegate.swift */,
-				11CF0F7528E1D42A0020CD57 /* SceneDelegate.swift */,
-				11CF0F7728E1D42A0020CD57 /* ViewController.swift */,
-				11CF0F7928E1D42A0020CD57 /* Main.storyboard */,
-				11CF0F7C28E1D42B0020CD57 /* Assets.xcassets */,
-				11CF0F7E28E1D42B0020CD57 /* LaunchScreen.storyboard */,
-				11CF0F8128E1D42B0020CD57 /* Info.plist */,
+				114D8C2828E1E2FA00AAC145 /* AppDelegate.swift */,
+				114D8C2A28E1E2FA00AAC145 /* SceneDelegate.swift */,
+				114D8C2C28E1E2FA00AAC145 /* ViewController.swift */,
+				114D8C2E28E1E2FA00AAC145 /* Main.storyboard */,
+				114D8C3128E1E2FB00AAC145 /* Assets.xcassets */,
+				114D8C3328E1E2FB00AAC145 /* LaunchScreen.storyboard */,
+				114D8C3628E1E2FB00AAC145 /* Info.plist */,
 			);
-			path = CAMO;
+			path = CAMO_App;
 			sourceTree = "<group>";
 		};
-		11CF0F8928E1D42B0020CD57 /* CAMOTests */ = {
+		114D8C3E28E1E2FB00AAC145 /* CAMO_AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				11CF0F8A28E1D42B0020CD57 /* CAMOTests.swift */,
+				114D8C3F28E1E2FB00AAC145 /* CAMO_AppTests.swift */,
 			);
-			path = CAMOTests;
+			path = CAMO_AppTests;
 			sourceTree = "<group>";
 		};
-		11CF0F9328E1D42B0020CD57 /* CAMOUITests */ = {
+		114D8C4828E1E2FB00AAC145 /* CAMO_AppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				11CF0F9428E1D42B0020CD57 /* CAMOUITests.swift */,
-				11CF0F9628E1D42B0020CD57 /* CAMOUITestsLaunchTests.swift */,
+				114D8C4928E1E2FB00AAC145 /* CAMO_AppUITests.swift */,
+				114D8C4B28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift */,
 			);
-			path = CAMOUITests;
+			path = CAMO_AppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		11CF0F6F28E1D42A0020CD57 /* CAMO */ = {
+		114D8C2428E1E2FA00AAC145 /* CAMO_App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 11CF0F9A28E1D42B0020CD57 /* Build configuration list for PBXNativeTarget "CAMO" */;
+			buildConfigurationList = 114D8C4F28E1E2FB00AAC145 /* Build configuration list for PBXNativeTarget "CAMO_App" */;
 			buildPhases = (
-				11CF0F6C28E1D42A0020CD57 /* Sources */,
-				11CF0F6D28E1D42A0020CD57 /* Frameworks */,
-				11CF0F6E28E1D42A0020CD57 /* Resources */,
+				114D8C2128E1E2FA00AAC145 /* Sources */,
+				114D8C2228E1E2FA00AAC145 /* Frameworks */,
+				114D8C2328E1E2FA00AAC145 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CAMO;
-			productName = CAMO;
-			productReference = 11CF0F7028E1D42A0020CD57 /* CAMO.app */;
+			name = CAMO_App;
+			productName = CAMO_App;
+			productReference = 114D8C2528E1E2FA00AAC145 /* CAMO_App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		11CF0F8528E1D42B0020CD57 /* CAMOTests */ = {
+		114D8C3A28E1E2FB00AAC145 /* CAMO_AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 11CF0F9D28E1D42B0020CD57 /* Build configuration list for PBXNativeTarget "CAMOTests" */;
+			buildConfigurationList = 114D8C5228E1E2FB00AAC145 /* Build configuration list for PBXNativeTarget "CAMO_AppTests" */;
 			buildPhases = (
-				11CF0F8228E1D42B0020CD57 /* Sources */,
-				11CF0F8328E1D42B0020CD57 /* Frameworks */,
-				11CF0F8428E1D42B0020CD57 /* Resources */,
+				114D8C3728E1E2FB00AAC145 /* Sources */,
+				114D8C3828E1E2FB00AAC145 /* Frameworks */,
+				114D8C3928E1E2FB00AAC145 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				11CF0F8828E1D42B0020CD57 /* PBXTargetDependency */,
+				114D8C3D28E1E2FB00AAC145 /* PBXTargetDependency */,
 			);
-			name = CAMOTests;
-			productName = CAMOTests;
-			productReference = 11CF0F8628E1D42B0020CD57 /* CAMOTests.xctest */;
+			name = CAMO_AppTests;
+			productName = CAMO_AppTests;
+			productReference = 114D8C3B28E1E2FB00AAC145 /* CAMO_AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		11CF0F8F28E1D42B0020CD57 /* CAMOUITests */ = {
+		114D8C4428E1E2FB00AAC145 /* CAMO_AppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 11CF0FA028E1D42B0020CD57 /* Build configuration list for PBXNativeTarget "CAMOUITests" */;
+			buildConfigurationList = 114D8C5528E1E2FB00AAC145 /* Build configuration list for PBXNativeTarget "CAMO_AppUITests" */;
 			buildPhases = (
-				11CF0F8C28E1D42B0020CD57 /* Sources */,
-				11CF0F8D28E1D42B0020CD57 /* Frameworks */,
-				11CF0F8E28E1D42B0020CD57 /* Resources */,
+				114D8C4128E1E2FB00AAC145 /* Sources */,
+				114D8C4228E1E2FB00AAC145 /* Frameworks */,
+				114D8C4328E1E2FB00AAC145 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				11CF0F9228E1D42B0020CD57 /* PBXTargetDependency */,
+				114D8C4728E1E2FB00AAC145 /* PBXTargetDependency */,
 			);
-			name = CAMOUITests;
-			productName = CAMOUITests;
-			productReference = 11CF0F9028E1D42B0020CD57 /* CAMOUITests.xctest */;
+			name = CAMO_AppUITests;
+			productName = CAMO_AppUITests;
+			productReference = 114D8C4528E1E2FB00AAC145 /* CAMO_AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		11CF0F6828E1D42A0020CD57 /* Project object */ = {
+		114D8C1D28E1E2FA00AAC145 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					11CF0F6F28E1D42A0020CD57 = {
+					114D8C2428E1E2FA00AAC145 = {
 						CreatedOnToolsVersion = 14.0;
 					};
-					11CF0F8528E1D42B0020CD57 = {
+					114D8C3A28E1E2FB00AAC145 = {
 						CreatedOnToolsVersion = 14.0;
-						TestTargetID = 11CF0F6F28E1D42A0020CD57;
+						TestTargetID = 114D8C2428E1E2FA00AAC145;
 					};
-					11CF0F8F28E1D42B0020CD57 = {
+					114D8C4428E1E2FB00AAC145 = {
 						CreatedOnToolsVersion = 14.0;
-						TestTargetID = 11CF0F6F28E1D42A0020CD57;
+						TestTargetID = 114D8C2428E1E2FA00AAC145;
 					};
 				};
 			};
-			buildConfigurationList = 11CF0F6B28E1D42A0020CD57 /* Build configuration list for PBXProject "CAMO" */;
+			buildConfigurationList = 114D8C2028E1E2FA00AAC145 /* Build configuration list for PBXProject "CAMO_App" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,37 +214,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 11CF0F6728E1D42A0020CD57;
-			productRefGroup = 11CF0F7128E1D42A0020CD57 /* Products */;
+			mainGroup = 114D8C1C28E1E2FA00AAC145;
+			productRefGroup = 114D8C2628E1E2FA00AAC145 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				11CF0F6F28E1D42A0020CD57 /* CAMO */,
-				11CF0F8528E1D42B0020CD57 /* CAMOTests */,
-				11CF0F8F28E1D42B0020CD57 /* CAMOUITests */,
+				114D8C2428E1E2FA00AAC145 /* CAMO_App */,
+				114D8C3A28E1E2FB00AAC145 /* CAMO_AppTests */,
+				114D8C4428E1E2FB00AAC145 /* CAMO_AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		11CF0F6E28E1D42A0020CD57 /* Resources */ = {
+		114D8C2328E1E2FA00AAC145 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11CF0F8028E1D42B0020CD57 /* LaunchScreen.storyboard in Resources */,
-				11CF0F7D28E1D42B0020CD57 /* Assets.xcassets in Resources */,
-				11CF0F7B28E1D42A0020CD57 /* Main.storyboard in Resources */,
+				114D8C3528E1E2FB00AAC145 /* LaunchScreen.storyboard in Resources */,
+				114D8C3228E1E2FB00AAC145 /* Assets.xcassets in Resources */,
+				114D8C3028E1E2FA00AAC145 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		11CF0F8428E1D42B0020CD57 /* Resources */ = {
+		114D8C3928E1E2FB00AAC145 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		11CF0F8E28E1D42B0020CD57 /* Resources */ = {
+		114D8C4328E1E2FB00AAC145 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -254,61 +254,61 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		11CF0F6C28E1D42A0020CD57 /* Sources */ = {
+		114D8C2128E1E2FA00AAC145 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11CF0F7828E1D42A0020CD57 /* ViewController.swift in Sources */,
-				11CF0F7428E1D42A0020CD57 /* AppDelegate.swift in Sources */,
-				11CF0F7628E1D42A0020CD57 /* SceneDelegate.swift in Sources */,
+				114D8C2D28E1E2FA00AAC145 /* ViewController.swift in Sources */,
+				114D8C2928E1E2FA00AAC145 /* AppDelegate.swift in Sources */,
+				114D8C2B28E1E2FA00AAC145 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		11CF0F8228E1D42B0020CD57 /* Sources */ = {
+		114D8C3728E1E2FB00AAC145 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11CF0F8B28E1D42B0020CD57 /* CAMOTests.swift in Sources */,
+				114D8C4028E1E2FB00AAC145 /* CAMO_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		11CF0F8C28E1D42B0020CD57 /* Sources */ = {
+		114D8C4128E1E2FB00AAC145 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11CF0F9728E1D42B0020CD57 /* CAMOUITestsLaunchTests.swift in Sources */,
-				11CF0F9528E1D42B0020CD57 /* CAMOUITests.swift in Sources */,
+				114D8C4C28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift in Sources */,
+				114D8C4A28E1E2FB00AAC145 /* CAMO_AppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		11CF0F8828E1D42B0020CD57 /* PBXTargetDependency */ = {
+		114D8C3D28E1E2FB00AAC145 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 11CF0F6F28E1D42A0020CD57 /* CAMO */;
-			targetProxy = 11CF0F8728E1D42B0020CD57 /* PBXContainerItemProxy */;
+			target = 114D8C2428E1E2FA00AAC145 /* CAMO_App */;
+			targetProxy = 114D8C3C28E1E2FB00AAC145 /* PBXContainerItemProxy */;
 		};
-		11CF0F9228E1D42B0020CD57 /* PBXTargetDependency */ = {
+		114D8C4728E1E2FB00AAC145 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 11CF0F6F28E1D42A0020CD57 /* CAMO */;
-			targetProxy = 11CF0F9128E1D42B0020CD57 /* PBXContainerItemProxy */;
+			target = 114D8C2428E1E2FA00AAC145 /* CAMO_App */;
+			targetProxy = 114D8C4628E1E2FB00AAC145 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		11CF0F7928E1D42A0020CD57 /* Main.storyboard */ = {
+		114D8C2E28E1E2FA00AAC145 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				11CF0F7A28E1D42A0020CD57 /* Base */,
+				114D8C2F28E1E2FA00AAC145 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		11CF0F7E28E1D42B0020CD57 /* LaunchScreen.storyboard */ = {
+		114D8C3328E1E2FB00AAC145 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				11CF0F7F28E1D42B0020CD57 /* Base */,
+				114D8C3428E1E2FB00AAC145 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		11CF0F9828E1D42B0020CD57 /* Debug */ = {
+		114D8C4D28E1E2FB00AAC145 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,7 +376,7 @@
 			};
 			name = Debug;
 		};
-		11CF0F9928E1D42B0020CD57 /* Release */ = {
+		114D8C4E28E1E2FB00AAC145 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -430,15 +430,17 @@
 			};
 			name = Release;
 		};
-		11CF0F9B28E1D42B0020CD57 /* Debug */ = {
+		114D8C5028E1E2FB00AAC145 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GUTFR2WXPJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CAMO/Info.plist;
+				INFOPLIST_FILE = CAMO_App/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -449,7 +451,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Project.CAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = "Project.CAMO-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -457,15 +459,17 @@
 			};
 			name = Debug;
 		};
-		11CF0F9C28E1D42B0020CD57 /* Release */ = {
+		114D8C5128E1E2FB00AAC145 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GUTFR2WXPJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CAMO/Info.plist;
+				INFOPLIST_FILE = CAMO_App/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -476,7 +480,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Project.CAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = "Project.CAMO-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -484,7 +488,7 @@
 			};
 			name = Release;
 		};
-		11CF0F9E28E1D42B0020CD57 /* Debug */ = {
+		114D8C5328E1E2FB00AAC145 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -494,16 +498,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Project.CAMOTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "Project.CAMO-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMO.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CAMO";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMO_App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CAMO_App";
 			};
 			name = Debug;
 		};
-		11CF0F9F28E1D42B0020CD57 /* Release */ = {
+		114D8C5428E1E2FB00AAC145 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -513,16 +517,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Project.CAMOTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "Project.CAMO-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMO.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CAMO";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMO_App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CAMO_App";
 			};
 			name = Release;
 		};
-		11CF0FA128E1D42B0020CD57 /* Debug */ = {
+		114D8C5628E1E2FB00AAC145 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -530,16 +534,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Project.CAMOUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "Project.CAMO-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CAMO;
+				TEST_TARGET_NAME = CAMO_App;
 			};
 			name = Debug;
 		};
-		11CF0FA228E1D42B0020CD57 /* Release */ = {
+		114D8C5728E1E2FB00AAC145 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -547,55 +551,55 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Project.CAMOUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "Project.CAMO-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CAMO;
+				TEST_TARGET_NAME = CAMO_App;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		11CF0F6B28E1D42A0020CD57 /* Build configuration list for PBXProject "CAMO" */ = {
+		114D8C2028E1E2FA00AAC145 /* Build configuration list for PBXProject "CAMO_App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				11CF0F9828E1D42B0020CD57 /* Debug */,
-				11CF0F9928E1D42B0020CD57 /* Release */,
+				114D8C4D28E1E2FB00AAC145 /* Debug */,
+				114D8C4E28E1E2FB00AAC145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		11CF0F9A28E1D42B0020CD57 /* Build configuration list for PBXNativeTarget "CAMO" */ = {
+		114D8C4F28E1E2FB00AAC145 /* Build configuration list for PBXNativeTarget "CAMO_App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				11CF0F9B28E1D42B0020CD57 /* Debug */,
-				11CF0F9C28E1D42B0020CD57 /* Release */,
+				114D8C5028E1E2FB00AAC145 /* Debug */,
+				114D8C5128E1E2FB00AAC145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		11CF0F9D28E1D42B0020CD57 /* Build configuration list for PBXNativeTarget "CAMOTests" */ = {
+		114D8C5228E1E2FB00AAC145 /* Build configuration list for PBXNativeTarget "CAMO_AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				11CF0F9E28E1D42B0020CD57 /* Debug */,
-				11CF0F9F28E1D42B0020CD57 /* Release */,
+				114D8C5328E1E2FB00AAC145 /* Debug */,
+				114D8C5428E1E2FB00AAC145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		11CF0FA028E1D42B0020CD57 /* Build configuration list for PBXNativeTarget "CAMOUITests" */ = {
+		114D8C5528E1E2FB00AAC145 /* Build configuration list for PBXNativeTarget "CAMO_AppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				11CF0FA128E1D42B0020CD57 /* Debug */,
-				11CF0FA228E1D42B0020CD57 /* Release */,
+				114D8C5628E1E2FB00AAC145 /* Debug */,
+				114D8C5728E1E2FB00AAC145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 11CF0F6828E1D42A0020CD57 /* Project object */;
+	rootObject = 114D8C1D28E1E2FA00AAC145 /* Project object */;
 }

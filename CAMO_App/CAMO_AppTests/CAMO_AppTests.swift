@@ -1,14 +1,14 @@
 //
-//  CAMOTests.swift
-//  CAMOTests
+//  CAMO_AppTests.swift
+//  CAMO_AppTests
 //
 //  Created by 지찬우 on 2022/09/26.
 //
 
 import XCTest
-@testable import CAMO
+@testable import CAMO_App
 
-final class CAMOTests: XCTestCase {
+final class CAMO_AppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
