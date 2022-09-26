@@ -35,7 +35,7 @@ public class MemberService {
         return member.getMemberId();
     }
 
-    /** 이메일 중복 금지
+    /** 이메일 중복 방지
      *
      * @param member
      */

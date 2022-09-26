@@ -18,8 +18,8 @@ public class MemoryCafeRepository implements CafeRepository{
     }
 
     @Override
-    public Optional<Cafe> findById(Long id){
-        return Optional.ofNullable(cafeStore.get(id));
+    public Optional<Cafe> findById(Long cafeId){
+        return Optional.ofNullable(cafeStore.get(cafeId));
     }
 
     @Override
