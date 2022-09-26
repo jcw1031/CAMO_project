@@ -3,7 +3,8 @@ package jcw.CafeMenuApp.domain;
 public class CafeMenu {
     private Long menuId; //메뉴번호(PK)
     private Long cafeId; //카페번호(PK)(FK)
-    private String menuName;
+    private String menuName; //메뉴 이름
+    private int menuPrice; //메뉴 가격
     private boolean couponAvailability; //쿠폰 사용 가능 여부
 
     public Long getMenuId() {

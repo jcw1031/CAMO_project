@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class MemoryCafeRepository implements CafeRepository{
     static Map<Long, Cafe> cafeStore = new HashMap<>();
-    static Long sequence = 0L;
+    static Long sequence = 10000L;
 
     @Override
     public Cafe save(Cafe cafe) {
