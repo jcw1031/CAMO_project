@@ -6,18 +6,18 @@ import java.util.*;
 
 public class MemoryMemberRepository implements MemberRepository {
     private static Long sequence = 10000L; //고유 회원번호
-    private static Map<Long, Member> store = new HashMap<>(); //회원을 저장할 저장소
+    private static Map<Long, Member> memberStore = new HashMap<>(); //회원을 저장할 저장소
 
     @Override
     public Member save(Member member) {
         member.setMemberId(sequence++);
-        store.put(member.getMemberId(), member);
-        return store.get(member.getMemberId());
+        memberStore.put(member.getMemberId(), member);
+        return memberStore.get(member.getMemberId());
     }
 
     @Override
     public Optional<Member> findById(Long id) {
-        return Optional.ofNullable(store.get(id));
+        return Optional.ofNullable(memberStore.get(id));
     }
 
     /*@Override
@@ -29,17 +29,17 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findByEmail(String email){
-        return store.values().stream() //람다식 이용. 하나라도 찾으면 return. 끝까지 없으면 null return
+        return memberStore.values().stream() //람다식 이용. 하나라도 찾으면 return. 끝까지 없으면 null return
                 .filter(member -> member.getEmail().equals(email))
                 .findAny();
     }
 
     @Override
     public List<Member> findAll() {
-        return new ArrayList<>(store.values());
+        return new ArrayList<>(memberStore.values());
     }
 
     public void clearStore(){
-        store.clear();
+        memberStore.clear();
     }
 }
