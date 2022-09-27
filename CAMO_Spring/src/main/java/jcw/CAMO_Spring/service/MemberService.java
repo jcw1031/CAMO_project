@@ -71,4 +71,14 @@ public class MemberService {
     public List<Member> findAll(){
         return memberRepository.findAll();
     }
+
+    /**
+     * 회원 탈퇴
+     * @param member
+     * @return boolean
+     */
+    public boolean delete(Member member){
+        memberRepository.remove(member.getMemberId());
+        return true;
+    }
 }

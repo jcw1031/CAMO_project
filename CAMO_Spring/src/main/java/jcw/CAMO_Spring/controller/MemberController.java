@@ -20,8 +20,12 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    /**
+     * 메인 홈
+     * @return Member
+     */
     @GetMapping("/")
-    public Member test() {
+    public Member main() {
         Member member = new Member();
         member.setName("지찬우");
         member.setPassword("jcw1530");
@@ -48,20 +52,46 @@ public class MemberController {
         return member;
     }
 
+    /**
+     * 모든 회원 리스트
+     * @return
+     */
     @GetMapping("/member/all")
     public List<Member> getAllMember(){
         return memberService.findAll();
     }
 
+    /**
+     * email로 검색
+     * @param email
+     * @return
+     */
     @GetMapping("/member/searchByEmail/{email}")
     public Member getMember(@PathVariable("email") String email){
         Optional<Member> member = memberService.findOneByEamil(email);
         return member.get();
     }
 
+    /**
+     * id로 검색
+     * @param id
+     * @return
+     */
     @GetMapping("/member/searchById/{id}")
     public Member getMember(@PathVariable("id") Long id){
         Optional<Member> member = memberService.findOneById(id);
         return member.get();
+    }
+
+    /**
+     * 회원 탈퇴
+     * @param id
+     * @return boolean
+     */
+    @GetMapping("/member/delete/{id}")
+    public boolean delete(Long id){
+        Optional<Member> member = memberService.findOneById(id);
+        memberService.delete(member.get());
+        return true;
     }
 }

@@ -43,4 +43,10 @@ public class MemoryMemberRepository implements MemberRepository {
     public void clearStore(){
         memberStore.clear();
     }
+
+    @Override
+    public Boolean remove(Long id) {
+        memberStore.remove(id);
+        return null;
+    }
 }
