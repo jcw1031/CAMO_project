@@ -35,7 +35,7 @@ public class MemberServiceTest {
         //when
         Long saveId = memberService.join(member);
         //then
-        Member findMember = memberService.findOne(saveId).get();
+        Member findMember = memberService.findOneById(saveId).get();
         assertThat(member.getEmail()).isEqualTo(findMember.getEmail());
     }
 }

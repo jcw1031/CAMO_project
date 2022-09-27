@@ -15,6 +15,7 @@ public class MemoryMemberRepository implements MemberRepository {
         return memberStore.get(member.getMemberId());
     }
 
+
     @Override
     public Optional<Member> findById(Long memberId) {
         return Optional.ofNullable(memberStore.get(memberId));

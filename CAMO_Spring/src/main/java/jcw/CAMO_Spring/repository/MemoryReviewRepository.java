@@ -12,7 +12,7 @@ public class MemoryReviewRepository implements ReviewRepository {
     @Override
     public Review write(Review review) {
         review.setReviewId(sequence++);
-        
-        return null;
+        reviewMap.put(review.getReviewId(), review);
+        return review;
     }
 }

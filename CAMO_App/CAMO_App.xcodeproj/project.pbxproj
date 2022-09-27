@@ -17,6 +17,7 @@
 		114D8C4028E1E2FB00AAC145 /* CAMO_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C3F28E1E2FB00AAC145 /* CAMO_AppTests.swift */; };
 		114D8C4A28E1E2FB00AAC145 /* CAMO_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C4928E1E2FB00AAC145 /* CAMO_AppUITests.swift */; };
 		114D8C4C28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114D8C4B28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift */; };
+		11555C6828E2C8EF002CD852 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11555C6728E2C8EF002CD852 /* request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		114D8C4528E1E2FB00AAC145 /* CAMO_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAMO_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		114D8C4928E1E2FB00AAC145 /* CAMO_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMO_AppUITests.swift; sourceTree = "<group>"; };
 		114D8C4B28E1E2FB00AAC145 /* CAMO_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMO_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		11555C6728E2C8EF002CD852 /* request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				114D8C3128E1E2FB00AAC145 /* Assets.xcassets */,
 				114D8C3328E1E2FB00AAC145 /* LaunchScreen.storyboard */,
 				114D8C3628E1E2FB00AAC145 /* Info.plist */,
+				11555C6728E2C8EF002CD852 /* request.swift */,
 			);
 			path = CAMO_App;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				114D8C2D28E1E2FA00AAC145 /* ViewController.swift in Sources */,
+				11555C6828E2C8EF002CD852 /* request.swift in Sources */,
 				114D8C2928E1E2FA00AAC145 /* AppDelegate.swift in Sources */,
 				114D8C2B28E1E2FA00AAC145 /* SceneDelegate.swift in Sources */,
 			);

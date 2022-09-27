@@ -4,6 +4,9 @@ import jcw.CAMO_Spring.domain.Member;
 import jcw.CAMO_Spring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.swing.text.html.Option;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 //@Service
@@ -46,12 +49,26 @@ public class MemberService {
                 });
     }
 
-    /** id를 통해 회원 조회
+    /** email을 통해 회원 조회
      *
+     * @param memberEmail
+     * @return Optional
+     */
+    public Optional<Member> findOneByEamil(String memberEmail){
+        return memberRepository.findByEmail(memberEmail);
+//        return memberRepository.findById(memberId);
+    }
+
+    /**
+     * id를 통해 회원 조회
      * @param memberId
      * @return Optional
      */
-    public Optional<Member> findOne(Long memberId){
+    public Optional<Member> findOneById(Long memberId){
         return memberRepository.findById(memberId);
+    }
+
+    public List<Member> findAll(){
+        return memberRepository.findAll();
     }
 }
