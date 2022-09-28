@@ -1,4 +1,5 @@
-package jcw.CafeMenuApp.domain;
+/*
+package jcw.CAMO_Spring.domain;
 
 public class Employment {
     private Long cafeId; //카페번호(FK)
@@ -38,3 +39,4 @@ public class Employment {
         this.staffName = staffName;
     }
 }
+*/

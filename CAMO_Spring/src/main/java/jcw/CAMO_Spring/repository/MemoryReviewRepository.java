@@ -10,7 +10,7 @@ public class MemoryReviewRepository implements ReviewRepository {
     Map<Long, Review> reviewMap = new HashMap<>();
 
     @Override
-    public Review write(Review review) {
+    public Review save(Review review) {
         review.setReviewId(sequence++);
         reviewMap.put(review.getReviewId(), review);
         return review;

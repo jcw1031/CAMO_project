@@ -5,7 +5,6 @@ import jcw.CAMO_Spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -54,7 +53,7 @@ public class MemberController {
 
     /**
      * 모든 회원 리스트
-     * @return
+     * @return List
      */
     @GetMapping("/member/all")
     public List<Member> getAllMember(){
@@ -64,7 +63,7 @@ public class MemberController {
     /**
      * email로 검색
      * @param email
-     * @return
+     * @return Member
      */
     @GetMapping("/member/searchByEmail/{email}")
     public Member getMember(@PathVariable("email") String email){
@@ -75,7 +74,7 @@ public class MemberController {
     /**
      * id로 검색
      * @param id
-     * @return
+     * @return Member
      */
     @GetMapping("/member/searchById/{id}")
     public Member getMember(@PathVariable("id") Long id){
@@ -94,4 +93,6 @@ public class MemberController {
         memberService.delete(member.get());
         return true;
     }
+
+
 }

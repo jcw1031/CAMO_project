@@ -4,7 +4,5 @@ import jcw.CAMO_Spring.domain.Review;
 
 public interface ReviewRepository {
 
-    Review write(Review review);
-
-
+    Review save(Review review);
 }
