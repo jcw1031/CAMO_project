@@ -88,11 +88,9 @@ public class MemberController {
      * @return boolean
      */
     @GetMapping("/member/delete/{id}")
-    public boolean delete(Long id){
+    public boolean delete(@PathVariable("id") Long id){
         Optional<Member> member = memberService.findOneById(id);
         memberService.delete(member.get());
         return true;
     }
-
-
 }
