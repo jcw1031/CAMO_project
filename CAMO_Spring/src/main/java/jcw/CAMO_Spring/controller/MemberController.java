@@ -94,4 +94,13 @@ public class MemberController {
 
         return true;
     }
+
+    @GetMapping("/member/login/{email}&{password}")
+    public Member login(@PathVariable("email") String email, @PathVariable("password") String password){
+        Optional<Member> member = Optional.ofNullable(memberService.login(email, password));
+        member.ifPresent(m -> {
+            System.out.println("success");
+        });
+        return member.get();
+    }
 }
