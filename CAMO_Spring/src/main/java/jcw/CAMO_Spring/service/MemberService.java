@@ -43,10 +43,33 @@ public class MemberService {
      * @param member
      */
     private void validateDuplicateMember(Member member) {
-        memberRepository.findByEmail(member.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
+        memberRepository.findById(member.getMemberId()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 사용 중인 이메일입니다.");
                 });
+    }
+
+    public Member login(String email, String password){
+        Optional<Member> member = memberRepository.findByEmail(email);
+
+        if(!member.equals(null)){
+            System.out.println("로그인 성공");
+            return member.get();
+        }
+        else{
+            System.out.println("로그인 실패");
+        }
+        return null;
+
+        /*boolean success;
+        member.ifPresent(m -> {
+            if(password.equals(member.get().getPassword())){
+                System.out.println("로그인 성공");
+            }
+            else{
+                System.out.println("이메일 또는 비밀번호가 틀렸습니다.");
+            }
+        });*/
     }
 
     /** email을 통해 회원 조회
@@ -78,7 +101,7 @@ public class MemberService {
      * @return boolean
      */
     public boolean delete(Member member){
-        memberRepository.remove(member.getMemberId());
+        memberRepository.remove(member);
         return true;
     }
 

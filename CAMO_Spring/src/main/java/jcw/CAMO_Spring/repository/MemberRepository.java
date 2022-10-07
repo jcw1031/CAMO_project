@@ -16,6 +16,7 @@ public interface MemberRepository {
 
     List<Member> findAll(); //저장된 모든 회원 반환
 
+    Member Edit(Member member);
 
-    Boolean remove(Long id);
+    Boolean remove(Member member);
 }

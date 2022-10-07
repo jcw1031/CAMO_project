@@ -40,13 +40,19 @@ public class MemoryMemberRepository implements MemberRepository {
         return new ArrayList<>(memberStore.values());
     }
 
-    public void clearStore(){
-        memberStore.clear();
+    @Override
+    public Member Edit(Member member) {
+        memberStore.put(member.getMemberId(), member);
+        return memberStore.get(member.getMemberId());
     }
 
     @Override
-    public Boolean remove(Long id) {
-        memberStore.remove(id);
-        return null;
+    public Boolean remove(Member member) {
+        memberStore.remove(member.getMemberId());
+        return true;
+    }
+
+    public void clearStore(){
+        memberStore.clear();
     }
 }
