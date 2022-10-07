@@ -81,4 +81,6 @@ public class MemberService {
         memberRepository.remove(member.getMemberId());
         return true;
     }
+
+
 }
