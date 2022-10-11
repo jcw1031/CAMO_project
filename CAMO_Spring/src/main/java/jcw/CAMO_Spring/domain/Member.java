@@ -11,5 +11,5 @@ public class Member {
     private String name; //이름
     private String password; //비밀번호
     private String phoneNumber; //전화번호
-    private boolean right; //사장 권한
+    private int role; //사장 권한
 }

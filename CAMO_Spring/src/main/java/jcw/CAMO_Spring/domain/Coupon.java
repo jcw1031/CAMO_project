@@ -10,6 +10,6 @@ import java.awt.*;
 public class Coupon {
     private Long memberId; //회원번호(PK)(FK)
     private Long cafeId; //카페번호(PK)(FK)
-    private int numberOfCoupons; //쿠폰 개수
+    private int stampsNumber; //쿠폰 개수
     private String colorHexCode; //컬러코드(16진수)
 }
