@@ -13,7 +13,7 @@ import java.util.Optional;
 public class MemberService {
     private MemberRepository memberRepository;
 
-    //@Autowired
+//    @Autowired
     public MemberService(MemberRepository memberRepository) { //Dependency Injection
         this.memberRepository = memberRepository;
     }
