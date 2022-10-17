@@ -29,8 +29,7 @@ public class MemberController {
         return memberService.findAll();
     }
 
-//    @GetMapping("/user/search/id/{id}")
-//    public Member findById(@PathVariable("id")int id){
-//
-//    }
+    /*@GetMapping("/user/search/id/{id}")
+    public Member findById(@PathVariable("id")int id){ }*/
+
 }

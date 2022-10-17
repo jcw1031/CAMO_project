@@ -23,16 +23,4 @@ public class Member {
     private String name;
     private String phone;
     private int memberType;
-
-    public Member(String email, String password, String name, String phone, int memberType){
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.phone = phone;
-        this.memberType = memberType;
-    }
-
-    public Member() {
-
-    }
 }
