@@ -1,3 +1,4 @@
+/*
 package jcw.CAMO_Spring.repository;
 
 import jcw.CAMO_Spring.domain.Member;
@@ -19,4 +20,13 @@ public interface MemberRepository {
     Member Edit(Member member);
 
     Boolean remove(Member member);
+}
+*/
+
+package jcw.CAMO_Spring.repository;
+
+import jcw.CAMO_Spring.domain.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MemberRepository extends JpaRepository<Member, Integer> {
 }

@@ -5,6 +5,7 @@ import jcw.CAMO_Spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,11 +21,11 @@ public class MemberController {
     }
 
     /**
-     * 메인 홈
+     * 회원가입
      * @return Member
      */
-    @GetMapping("/")
-    public Member main() {
+    @GetMapping("/signup")
+    public Member join(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("name") String name) {
         Member member = new Member();
         member.setName("지찬우");
         member.setPassword("jcw1530");

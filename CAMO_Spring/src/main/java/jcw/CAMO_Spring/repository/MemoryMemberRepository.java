@@ -1,3 +1,4 @@
+/*
 package jcw.CAMO_Spring.repository;
 
 import jcw.CAMO_Spring.domain.Member;
@@ -20,12 +21,14 @@ public class MemoryMemberRepository implements MemberRepository {
         return Optional.ofNullable(memberStore.get(memberId));
     }
 
-    /*@Override
+    */
+/*@Override
     public Optional<Member> findByName(String name) {
         return store.values().stream() //람다식 이용. 하나라도 찾으면 return. 끝까지 없으면 null return
                 .filter(member -> member.getName().equals(name))
                 .findAny();
-    }*/
+    }*//*
+
 
     @Override
     public Optional<Member> findByEmail(String email){
@@ -54,4 +57,4 @@ public class MemoryMemberRepository implements MemberRepository {
     public void clearStore(){
         memberStore.clear();
     }
-}
+}*/

@@ -23,7 +23,7 @@ public class MemberService {
      * @param member
      * @return Long
      */
-    public Long join(Member member){
+    public int join(Member member){
         /*
         Optional<Member> result = memberRepository.findByName(member.getName());
         result.ifPresent(m -> {
@@ -101,7 +101,7 @@ public class MemberService {
      * @return boolean
      */
     public boolean delete(Member member){
-        memberRepository.remove(member);
+        memberRepository.delete(member);
         return true;
     }
 
