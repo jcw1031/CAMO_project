@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -29,7 +30,9 @@ public class MemberController {
         return memberService.findAll();
     }
 
-    /*@GetMapping("/user/search/id/{id}")
-    public Member findById(@PathVariable("id")int id){ }*/
+    @GetMapping("/user/search/id/{id}")
+    public Optional<Member> findById(@PathVariable("id") Long id){
+        return memberService.findById(id);
+    }
 
 }
