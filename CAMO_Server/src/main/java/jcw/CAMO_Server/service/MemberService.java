@@ -14,11 +14,10 @@ public class MemberService {
     @Autowired
     MemberRepository memberRepository;
 
-    public boolean join(Member member){
+    public Member join(Member member){
         validateDuplicateMember(member);
 
-        memberRepository.save(member);
-        return true;
+        return memberRepository.save(member);
     }
 
     private void validateDuplicateMember(Member member) {
@@ -32,7 +31,12 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member findById(int id){
-        Optional<Member> member = 
+    public Optional<Member> findById(long id){
+        Optional<Member> member = memberRepository.findById(id);
+        if (member.isPresent()) {
+            return member;
+        }
+        System.out.println("존재하지 않습니다.");
+        return null;
     }
 }

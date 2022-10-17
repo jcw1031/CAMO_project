@@ -2,14 +2,13 @@ package jcw.CAMO_Server.controller;
 
 import jcw.CAMO_Server.entity.Member;
 import jcw.CAMO_Server.service.MemberService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class MemberController {
 
@@ -17,11 +16,12 @@ public class MemberController {
     MemberService memberService;
 
     @PostMapping("/user/signup")
-    public void signUp(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("name") String name,
-                       @RequestParam("phone") String phone, @RequestParam("memberType") int memberType) {
-        Member member = new Member(email, password, name, phone, memberType);
-
-        memberService.join(member);
+    public Member signUp(@ModelAttribute Member member) {
+        log.info("member = {}", member);
+        Member joinMember = memberService.join(member);
+        log.info("member = {}", joinMember);
+        System.out.println(member == joinMember);
+        return joinMember;
     }
 
     @GetMapping("/user/search/all")
@@ -29,5 +29,8 @@ public class MemberController {
         return memberService.findAll();
     }
 
-    @GetM
+//    @GetMapping("/user/search/id/{id}")
+//    public Member findById(@PathVariable("id")int id){
+//
+//    }
 }
