@@ -40,4 +40,13 @@ public class MemberService {
         System.out.println("존재하지 않습니다.");
         return null;
     }
+
+    public Optional<Member> findByEmail(String email){
+        Optional<Member> member = memberRepository.findByEmail(email);
+        if (member.isPresent()) {
+            return member;
+        }
+        System.out.println("존재하지 않습니다.");
+        return null;
+    }
 }

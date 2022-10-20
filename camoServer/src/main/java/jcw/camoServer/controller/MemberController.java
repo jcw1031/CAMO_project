@@ -26,13 +26,17 @@ public class MemberController {
     }
 
     @GetMapping("/user/search/all")
-    public List<Member> userList(){
+    public List<Member> userList() {
         return memberService.findAll();
     }
 
     @GetMapping("/user/search/id/{id}")
-    public Optional<Member> findById(@PathVariable("id") Long id){
+    public Optional<Member> userSearchById(@PathVariable("id") Long id) {
         return memberService.findById(id);
     }
 
+    @GetMapping("/user/search/email/{email}")
+    public Optional<Member> userSearchByEmail(@PathVariable("email") String email) {
+        return memberService.findByEmail(email);
+    }
 }
