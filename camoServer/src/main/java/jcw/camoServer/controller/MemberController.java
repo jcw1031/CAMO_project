@@ -16,6 +16,9 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
+    /**
+     * 회원 가입
+     */
     @PostMapping("/user/signup")
     public Member signUp(@ModelAttribute Member member) {
         log.info("member = {}", member);
@@ -25,16 +28,25 @@ public class MemberController {
         return joinMember;
     }
 
+    /**
+     * 모든 회원 조회
+     */
     @GetMapping("/user/search/all")
     public List<Member> userList() {
         return memberService.findAll();
     }
 
+    /**
+     * id를 통한 회원 검색
+     */
     @GetMapping("/user/search/id/{id}")
     public Optional<Member> userSearchById(@PathVariable("id") Long id) {
         return memberService.findById(id);
     }
 
+    /**
+     * email을 통한 회원 검색
+     */
     @GetMapping("/user/search/email/{email}")
     public Optional<Member> userSearchByEmail(@PathVariable("email") String email) {
         return memberService.findByEmail(email);

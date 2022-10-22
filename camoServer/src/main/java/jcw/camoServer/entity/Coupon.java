@@ -15,9 +15,11 @@ import javax.persistence.Id;
 @ToString
 public class Coupon {
     @Id
-    private int couponId;
-    private int memberId;
-    private int cafeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long couponId;
+
+    private Long memberId;
+    private Long cafeId;
     private int stampsNumber;
     private String colorCode;
 }

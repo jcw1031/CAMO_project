@@ -17,10 +17,10 @@ import java.sql.Date;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reviewId;
+    private Long reviewId;
 
-    private int member_id;
-    private int cafe_id;
+    private Long member_id;
+    private Long cafe_id;
     private double startRating;
     private String reviewDescription;
     private Date date;

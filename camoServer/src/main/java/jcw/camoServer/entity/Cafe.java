@@ -14,9 +14,9 @@ import javax.persistence.Id;
 @ToString
 public class Cafe {
     @Id
-    private int cafeId;
+    private Long cafeId;
 
-    private int memberId;
+    private Long memberId;
     private String cafeName;
     private String cafeAddress;
     private String cafeCallNumber;
