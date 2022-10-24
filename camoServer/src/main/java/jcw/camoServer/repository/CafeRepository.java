@@ -4,9 +4,10 @@ import jcw.camoServer.entity.Cafe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface CafeRepository extends JpaRepository<Cafe, Long> {
-    public Optional<Cafe> findByCafeNameContains(String cafeName);
+    List<Cafe> findByCafeNameContainsIgnoreCase(String cafeName);
 }

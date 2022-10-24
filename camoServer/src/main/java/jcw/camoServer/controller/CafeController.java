@@ -5,12 +5,10 @@ import jcw.camoServer.service.CafeService;
 import jcw.camoServer.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -32,8 +30,25 @@ public class CafeController {
         System.out.println(cafe == register);
     }
 
-    @GetMapping("/cafe/list")
-    public List<Cafe> cafeList(){
+    @GetMapping("/cafe/search/all")
+    public List<Cafe> cafeList() {
         return cafeService.findAll();
+    }
+
+    @GetMapping("/cafe/search/id/{id}")
+    public Optional<Cafe> cafeSearchById(@PathVariable("id") long id) {
+        Optional<Cafe> cafe = cafeService.findById(id);
+        if (cafe.isPresent()) {
+            return cafe;
+        }
+        else{
+            System.out.println("검색 결과 없음");
+            return Optional.empty();
+        }
+    }
+
+    @GetMapping("/cafe/search/name/{name}")
+    public List<Cafe> cafeSearchByName(@PathVariable("name") String name) {
+        return cafeService.findByName(name);
     }
 }
