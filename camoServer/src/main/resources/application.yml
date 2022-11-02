@@ -4,3 +4,6 @@ spring:
     username: root
     password: Chan!1057
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port : 9999

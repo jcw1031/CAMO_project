@@ -28,7 +28,6 @@ public class MemberService {
     }
 
     public List<Member> findAll(){
-        System.out.println("asdf");
         return memberRepository.findAll();
     }
 
