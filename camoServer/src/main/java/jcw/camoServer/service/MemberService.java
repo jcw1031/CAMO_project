@@ -48,4 +48,8 @@ public class MemberService {
         System.out.println("존재하지 않습니다.");
         return null;
     }
+
+    public void delete(Member memeber) {
+        memberRepository.delete(memeber);
+    }
 }

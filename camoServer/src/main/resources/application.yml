@@ -5,5 +5,5 @@ spring:
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-server:
-  port : 9999
+#server:
+#  port : 9999
