@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
+@RequestMapping("/user")
 public class MemberController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class MemberController {
     /**
      * 회원 가입
      */
-    @PostMapping("/user/signup")
+    @PostMapping("/signup")
     public Member signUp(@ModelAttribute Member member) {
         log.info("member = {}", member);
         Member joinMember = memberService.join(member);
@@ -31,7 +32,7 @@ public class MemberController {
     /**
      * 모든 회원 조회
      */
-    @GetMapping("/user/search/all")
+    @GetMapping("/search/all")
     public List<Member> userList() {
         return memberService.findAll();
     }
@@ -39,7 +40,7 @@ public class MemberController {
     /**
      * id를 통한 회원 검색
      */
-    @GetMapping("/user/search/id/{id}")
+    @GetMapping("/id/{id}")
     public Optional<Member> userSearchById(@PathVariable("id") Long id) {
         return memberService.findById(id);
     }
@@ -47,8 +48,17 @@ public class MemberController {
     /**
      * email을 통한 회원 검색
      */
-    @GetMapping("/user/search/email/{email}")
+    @GetMapping("/email/{email}")
     public Optional<Member> userSearchByEmail(@PathVariable("email") String email) {
         return memberService.findByEmail(email);
+    }
+
+    /**
+     * 회원 탈퇴
+     */
+    @DeleteMapping("/id/{id}")
+    public void deleteMember(@PathVariable("id") Long id) {
+        Optional<Member> member = memberService.findById(id);
+        member.ifPresent(value -> memberService.delete(value));
     }
 }
