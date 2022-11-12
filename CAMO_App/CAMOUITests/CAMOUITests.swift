@@ -1,13 +1,13 @@
 //
-//  CAMO_AppUITests.swift
-//  CAMO_AppUITests
+//  CAMOUITests.swift
+//  CAMOUITests
 //
-//  Created by 지찬우 on 2022/09/26.
+//  Created by 장세희 on 2022/11/07.
 //
 
 import XCTest
 
-final class CAMO_AppUITests: XCTestCase {
+class CAMOUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,6 +27,7 @@ final class CAMO_AppUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
+        // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
