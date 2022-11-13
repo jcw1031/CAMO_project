@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
+@RequestMapping("/cafe")
 public class CafeController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class CafeController {
     /**
      * 카페 등록
      */
-    @PostMapping("/cafe/register")
+    @PostMapping("register")
     public void cafeRegister(@ModelAttribute Cafe cafe) {
         log.info("cafe = {}", cafe);
         Cafe register = cafeService.register(cafe);
@@ -30,12 +31,18 @@ public class CafeController {
         System.out.println(cafe == register);
     }
 
-    @GetMapping("/cafe/search/all")
+    /**
+     * 카페 리스트
+     */
+    @GetMapping("search/all")
     public List<Cafe> cafeList() {
         return cafeService.findAll();
     }
 
-    @GetMapping("/cafe/search/id/{id}")
+    /**
+     * id를 통한 카페 검색
+     */
+    @GetMapping("search/id/{id}")
     public Optional<Cafe> cafeSearchById(@PathVariable("id") long id) {
         Optional<Cafe> cafe = cafeService.findById(id);
         if (cafe.isPresent()) {
@@ -47,7 +54,10 @@ public class CafeController {
         }
     }
 
-    @GetMapping("/cafe/search/name/{name}")
+    /**
+     * 카페 이름으로 검색
+     */
+    @GetMapping("search/name/{name}")
     public List<Cafe> cafeSearchByName(@PathVariable("name") String name) {
         return cafeService.findByName(name);
     }
