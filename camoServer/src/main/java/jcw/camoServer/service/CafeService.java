@@ -51,6 +51,6 @@ public class CafeService {
      * name을 포함한 이름을 가진 카페 검색
      */
     public List<Cafe> findByName(String name){
-        return cafeRepository.findByCafeNameContainsIgnoreCase(name);
+        return cafeRepository.findByCafeNameContainingIgnoreCase(name);
     }
 }

@@ -7,3 +7,10 @@ spring:
 
 #server:
 #  port : 9999
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: create #자동으로 테이블 생성
+#    properties:
+#      hibernate:
+#        format_sql: true

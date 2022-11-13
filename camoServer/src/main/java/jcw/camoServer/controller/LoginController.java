@@ -18,10 +18,9 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @GetMapping("/login")
+    /*@GetMapping("/login")
     public String login(@ModelAttribute LoginDto loginDto) {
-
-    }
+    }*/
 
     @PostMapping("/login")
     public String login(@ModelAttribute @Validated LoginDto loginDto, BindingResult bindingResult, @RequestParam(defaultValue = "/") String redirectURL) {
