@@ -21,7 +21,7 @@ public class MemberController {
      * 회원 가입
      */
     @PostMapping("/signup")
-    public Member signUp(@ModelAttribute Member member) {
+    public Member signUp(@RequestBody Member member) {
         log.info("member = {}", member);
         Member joinMember = memberService.join(member);
         log.info("member = {}", joinMember);
