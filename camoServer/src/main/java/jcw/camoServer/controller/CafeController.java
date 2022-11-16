@@ -42,7 +42,7 @@ public class CafeController {
     /**
      * id를 통한 카페 검색
      */
-    @GetMapping("search/id/{id}")
+    @GetMapping("/id/{id}")
     public Optional<Cafe> cafeSearchById(@PathVariable("id") long id) {
         Optional<Cafe> cafe = cafeService.findById(id);
         if (cafe.isPresent()) {
@@ -57,7 +57,7 @@ public class CafeController {
     /**
      * 카페 이름으로 검색
      */
-    @GetMapping("search/name/{name}")
+    @GetMapping("/name/{name}")
     public List<Cafe> cafeSearchByName(@PathVariable("name") String name) {
         return cafeService.findByName(name);
     }

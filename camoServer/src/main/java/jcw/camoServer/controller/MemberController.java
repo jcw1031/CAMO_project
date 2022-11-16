@@ -21,7 +21,7 @@ public class MemberController {
      * 회원 가입
      */
     @PostMapping("/signup")
-    public Member signUp(@ModelAttribute Member member) {
+    public Member signUp(@RequestBody Member member) {
         log.info("member = {}", member);
         Member joinMember = memberService.join(member);
         log.info("member = {}", joinMember);
@@ -50,6 +50,7 @@ public class MemberController {
      */
     @GetMapping("/email/{email}")
     public Optional<Member> userSearchByEmail(@PathVariable("email") String email) {
+        log.info("email = {}", email);
         return memberService.findByEmail(email);
     }
 
