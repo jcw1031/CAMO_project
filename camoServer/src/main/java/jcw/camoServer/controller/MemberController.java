@@ -50,6 +50,7 @@ public class MemberController {
      */
     @GetMapping("/email/{email}")
     public Optional<Member> userSearchByEmail(@PathVariable("email") String email) {
+        log.info("email = {}", email);
         return memberService.findByEmail(email);
     }
 
