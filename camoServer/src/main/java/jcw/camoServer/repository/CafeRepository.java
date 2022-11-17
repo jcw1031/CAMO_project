@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CafeRepository extends JpaRepository<Cafe, Long> {
+public interface CafeRepository extends JpaRepository<Cafe, String> {
     List<Cafe> findByCafeNameContainingIgnoreCase(String cafeName);
 }

@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -16,10 +13,13 @@ import javax.persistence.Id;
 public class Coupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "coupon_number")
     private Long couponId;
 
-    private Long memberId;
+    @Column(name = "user_number")
+    private Long userId;
+    @Column(name = "cafe_number")
     private Long cafeId;
+    @Column(name = "coupon_userstamp")
     private int stampsNumber;
-    private String colorCode;
 }

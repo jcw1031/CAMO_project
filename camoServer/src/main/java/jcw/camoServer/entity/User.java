@@ -1,28 +1,27 @@
 package jcw.camoServer.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @ToString
-@Data
-public class Member {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    private Long userId;
 
+    @Column(name = "user_email")
     private String email;
+    @Column(name = "user_password")
     private String password;
+    @Column(name = "user_name")
     private String name;
+    @Column(name = "user_phone")
     private String phone;
+    @Column(name = "user_role")
     private int memberType;
 }
