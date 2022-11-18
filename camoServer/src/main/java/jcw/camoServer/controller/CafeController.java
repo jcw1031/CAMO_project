@@ -1,8 +1,9 @@
 package jcw.camoServer.controller;
 
 import jcw.camoServer.entity.Cafe;
+import jcw.camoServer.entity.User;
 import jcw.camoServer.service.CafeService;
-import jcw.camoServer.service.MemberService;
+import jcw.camoServer.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,23 +19,29 @@ public class CafeController {
     @Autowired
     CafeService cafeService;
     @Autowired
-    MemberService memberService;
+    UserService userService;
 
     /**
      * 카페 등록
      */
-    @PostMapping("register")
-    public void cafeRegister(@ModelAttribute Cafe cafe) {
+    @PostMapping("/register")
+    public void cafeRegister(@RequestBody Cafe cafe) {
         log.info("cafe = {}", cafe);
-        Cafe register = cafeService.register(cafe);
-        log.info("cafe = {}", register);
-        System.out.println(cafe == register);
+        Optional<User> user = userService.findById(cafe.getUserId());
+        if(user.isPresent() && user.get().getRole() == 1) {
+            Cafe register = cafeService.register(cafe);
+            log.info("cafe = {}", register);
+            System.out.println(cafe == register);
+        }
+        else{
+            log.info("사장 권한이 없습니다.");
+        }
     }
 
     /**
      * 카페 리스트
      */
-    @GetMapping("search/all")
+    @GetMapping("/list")
     public List<Cafe> cafeList() {
         return cafeService.findAll();
     }
@@ -43,7 +50,7 @@ public class CafeController {
      * id를 통한 카페 검색
      */
     @GetMapping("/id/{id}")
-    public Optional<Cafe> cafeSearchById(@PathVariable("id") long id) {
+    public Optional<Cafe> cafeSearchById(@PathVariable("id") String id) {
         Optional<Cafe> cafe = cafeService.findById(id);
         if (cafe.isPresent()) {
             return cafe;

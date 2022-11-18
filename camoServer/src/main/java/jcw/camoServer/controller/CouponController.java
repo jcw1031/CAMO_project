@@ -28,7 +28,7 @@ public class CouponController {
      * 회원의 쿠폰 리스트
      */
     @GetMapping("/list/{id}")
-    public List<Coupon> usersCouponList(@PathVariable("id") Long memberId) {
-        return couponService.findByMemberId(memberId);
+    public List<Coupon> usersCouponList(@PathVariable("id") Long userId) {
+        return couponService.findByUserId(userId);
     }
 }

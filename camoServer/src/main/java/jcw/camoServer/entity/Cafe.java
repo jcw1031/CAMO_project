@@ -16,13 +16,12 @@ public class Cafe {
     @Id
     private String cafeId;
 
-    @Column(name = "user_number")
     private Long userId;
     private String cafeName;
     private String cafeAddress;
     private String cafePhone;
-//    @Column(name = "cafe_number")
-//    private int stampsNumber;
-    private String cafeReward;
     private String cafeIntroduce;
+    private String cafeReward;
+    @Column(name = "cafe_rewardstamp")
+    private int stampsNumber;
 }

@@ -1,7 +1,7 @@
 package jcw.camoServer.controller;
 
 import jcw.camoServer.entity.User;
-import jcw.camoServer.service.MemberService;
+import jcw.camoServer.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class MemberController {
 
     @Autowired
-    MemberService memberService;
+    UserService userService;
 
     /**
      * 회원 가입
@@ -23,7 +23,7 @@ public class MemberController {
     @PostMapping("/signup")
     public User signUp(@RequestBody User user) {
         log.info("user = {}", user);
-        User joinUser = memberService.join(user);
+        User joinUser = userService.join(user);
         log.info("user = {}", joinUser);
         System.out.println(user == joinUser);
         return joinUser;
@@ -34,7 +34,7 @@ public class MemberController {
      */
     @GetMapping("/search/all")
     public List<User> userList() {
-        return memberService.findAll();
+        return userService.findAll();
     }
 
     /**
@@ -42,7 +42,7 @@ public class MemberController {
      */
     @GetMapping("/id/{id}")
     public Optional<User> userSearchById(@PathVariable("id") Long id) {
-        return memberService.findById(id);
+        return userService.findById(id);
     }
 
     /**
@@ -51,7 +51,7 @@ public class MemberController {
     @GetMapping("/email/{email}")
     public Optional<User> userSearchByEmail(@PathVariable("email") String email) {
         log.info("email = {}", email);
-        return memberService.findByEmail(email);
+        return userService.findByEmail(email);
     }
 
     /**
@@ -59,7 +59,7 @@ public class MemberController {
      */
     @DeleteMapping("/id/{id}")
     public void deleteMember(@PathVariable("id") Long id) {
-        Optional<User> member = memberService.findById(id);
-        member.ifPresent(value -> memberService.delete(value));
+        Optional<User> member = userService.findById(id);
+        member.ifPresent(value -> userService.delete(value));
     }
 }

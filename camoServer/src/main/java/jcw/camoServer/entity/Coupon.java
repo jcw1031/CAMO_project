@@ -13,12 +13,9 @@ import javax.persistence.*;
 public class Coupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "coupon_number")
     private Long couponId;
 
-    @Column(name = "user_number")
     private Long userId;
-    @Column(name = "cafe_number")
     private Long cafeId;
     @Column(name = "coupon_userstamp")
     private int stampsNumber;

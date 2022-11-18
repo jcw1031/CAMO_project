@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MemberService {
+public class UserService {
 
     @Autowired
     MemberRepository memberRepository;
@@ -21,7 +21,7 @@ public class MemberService {
     }
 
     private void validateDuplicateMember(User user) {
-        memberRepository.findByEmail(user.getUserId()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
+        memberRepository.findByEmail(user.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 사용 중인 이메일입니다.");
                 });
