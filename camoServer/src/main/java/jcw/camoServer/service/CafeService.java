@@ -43,7 +43,7 @@ public class CafeService {
     /**
      * id를 통해 카페 검색
      */
-    public Optional<Cafe> findById(Long id){
+    public Optional<Cafe> findById(String id){
         return cafeRepository.findById(id);
     }
 

@@ -19,9 +19,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
 
-    private Long member_id;
-    private Long cafe_id;
-    private double startRating;
-    private String reviewDescription;
-    private Date date;
+    private Long userId;
+    private Long cafeId;
+    private String userEmail;
+    private int reviewRating;
+    private String reviewContent;
+    private Date reviewDate;
 }

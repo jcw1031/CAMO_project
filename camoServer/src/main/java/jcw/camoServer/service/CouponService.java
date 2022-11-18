@@ -13,7 +13,7 @@ public class CouponService {
     @Autowired
     CouponRepository couponRepository;
 
-    public List<Coupon> findByMemberId(Long memberId) {
-        return couponRepository.findByMemberId(memberId);
+    public List<Coupon> findByUserId(Long userId) {
+        return couponRepository.findByUserId(userId);
     }
 }

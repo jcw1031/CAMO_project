@@ -1,6 +1,6 @@
 package jcw.camoServer.service;
 
-import jcw.camoServer.entity.Member;
+import jcw.camoServer.entity.User;
 import jcw.camoServer.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,30 +9,30 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MemberService {
+public class UserService {
 
     @Autowired
     MemberRepository memberRepository;
 
-    public Member join(Member member){
-        validateDuplicateMember(member);
+    public User join(User user){
+        validateDuplicateMember(user);
 
-        return memberRepository.save(member);
+        return memberRepository.save(user);
     }
 
-    private void validateDuplicateMember(Member member) {
-        memberRepository.findByEmail(member.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
+    private void validateDuplicateMember(User user) {
+        memberRepository.findByEmail(user.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 사용 중인 이메일입니다.");
                 });
     }
 
-    public List<Member> findAll(){
+    public List<User> findAll(){
         return memberRepository.findAll();
     }
 
-    public Optional<Member> findById(long id){
-        Optional<Member> member = memberRepository.findById(id);
+    public Optional<User> findById(long id){
+        Optional<User> member = memberRepository.findById(id);
         if (member.isPresent()) {
             return member;
         }
@@ -40,8 +40,8 @@ public class MemberService {
         return null;
     }
 
-    public Optional<Member> findByEmail(String email){
-        Optional<Member> member = memberRepository.findByEmail(email);
+    public Optional<User> findByEmail(String email){
+        Optional<User> member = memberRepository.findByEmail(email);
         if (member.isPresent()) {
             return member;
         }
@@ -49,7 +49,7 @@ public class MemberService {
         return null;
     }
 
-    public void delete(Member memeber) {
+    public void delete(User memeber) {
         memberRepository.delete(memeber);
     }
 }

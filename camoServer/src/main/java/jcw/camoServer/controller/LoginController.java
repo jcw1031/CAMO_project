@@ -1,7 +1,7 @@
 package jcw.camoServer.controller;
 
 import jcw.camoServer.dto.LoginDto;
-import jcw.camoServer.entity.Member;
+import jcw.camoServer.entity.User;
 import jcw.camoServer.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +28,9 @@ public class LoginController {
             return null;
         }
 
-        Member loginMember = loginService.login(loginDto.getEmail(), loginDto.getPassword());
+        User loginUser = loginService.login(loginDto.getEmail(), loginDto.getPassword());
 
-        if (loginMember == null) {
+        if (loginUser == null) {
             bindingResult.reject("login fail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return "null";
         }
