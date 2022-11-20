@@ -1,7 +1,0 @@
-
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/youtube?serverTimezone=UTC
-    username: root
-    password: Chan!1057
-    driver-class-name: com.mysql.cj.jdbc.Driver
