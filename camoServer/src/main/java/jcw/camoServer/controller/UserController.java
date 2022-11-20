@@ -1,6 +1,7 @@
 package jcw.camoServer.controller;
 
 import jcw.camoServer.dto.LoginDto;
+import jcw.camoServer.dto.UserUpdateDto;
 import jcw.camoServer.entity.User;
 import jcw.camoServer.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -81,6 +82,25 @@ public class UserController {
     public Optional<User> userSearchByEmail(@PathVariable("email") String email) {
         log.info("email = {}", email);
         return userService.findByEmail(email);
+    }
+
+    /**
+     * 회원 정보 수정
+     */
+    @PutMapping("/id/{id}")
+    public User userInfoUpdate(@PathVariable("id") Long id, @RequestBody UserUpdateDto userUpdateDto) {
+        Optional<User> optionalUser = userService.findById(id);
+        User user;
+        if (optionalUser.isPresent()) {
+            user = optionalUser.get();
+            user.setPassword(userUpdateDto.getPassword());
+            user.setName(userUpdateDto.getName());
+            user.setPhone(userUpdateDto.getPhone());
+        } else {
+            System.out.println("오류");
+            return null;
+        }
+        return user;
     }
 
     /**

@@ -20,6 +20,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    /**
+     * 중복 확인
+     */
     private void validateDuplicateMember(User user) {
         userRepository.findByEmail(user.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
                 .ifPresent(m -> {
@@ -47,6 +50,11 @@ public class UserService {
         }
         System.out.println("존재하지 않습니다.");
         return null;
+    }
+
+    public void userRoleChange(User user) {
+        user.setRole(1);
+        userRepository.save(user);
     }
 
     public void delete(User memeber) {

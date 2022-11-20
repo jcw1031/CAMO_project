@@ -25,16 +25,18 @@ public class CafeController {
      * 카페 등록
      */
     @PostMapping("/register")
-    public void cafeRegister(@RequestBody Cafe cafe) {
-        log.info("cafe = {}", cafe);
+    public User cafeRegister(@RequestBody Cafe cafe) {
         Optional<User> user = userService.findById(cafe.getUserId());
-        if(user.isPresent() && user.get().getRole() == 1) {
+        if(user.isPresent()) {
             Cafe register = cafeService.register(cafe);
+            userService.userRoleChange(user.get());
             log.info("cafe = {}", register);
             System.out.println(cafe == register);
+            return user.get();
         }
         else{
-            log.info("사장 권한이 없습니다.");
+            log.info("사업자 번호 없음!");
+            return null;
         }
     }
 
@@ -66,6 +68,8 @@ public class CafeController {
      */
     @GetMapping("/name/{name}")
     public List<Cafe> cafeSearchByName(@PathVariable("name") String name) {
-        return cafeService.findByName(name);
+        List<Cafe> list = cafeService.findByName(name);
+        log.info("list = {}", list);
+        return list;
     }
 }
