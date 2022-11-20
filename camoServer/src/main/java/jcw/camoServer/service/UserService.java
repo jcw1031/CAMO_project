@@ -1,7 +1,7 @@
 package jcw.camoServer.service;
 
 import jcw.camoServer.entity.User;
-import jcw.camoServer.repository.MemberRepository;
+import jcw.camoServer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,27 +12,30 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    MemberRepository memberRepository;
+    UserRepository userRepository;
 
     public User join(User user){
         validateDuplicateMember(user);
 
-        return memberRepository.save(user);
+        return userRepository.save(user);
     }
 
+    /**
+     * 중복 확인
+     */
     private void validateDuplicateMember(User user) {
-        memberRepository.findByEmail(user.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
+        userRepository.findByEmail(user.getEmail()) //null이 아니라 값이 있으면 로직이 동작 (Optional이기 때문에 가능)
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 사용 중인 이메일입니다.");
                 });
     }
 
     public List<User> findAll(){
-        return memberRepository.findAll();
+        return userRepository.findAll();
     }
 
     public Optional<User> findById(long id){
-        Optional<User> member = memberRepository.findById(id);
+        Optional<User> member = userRepository.findById(id);
         if (member.isPresent()) {
             return member;
         }
@@ -41,7 +44,7 @@ public class UserService {
     }
 
     public Optional<User> findByEmail(String email){
-        Optional<User> member = memberRepository.findByEmail(email);
+        Optional<User> member = userRepository.findByEmail(email);
         if (member.isPresent()) {
             return member;
         }
@@ -49,7 +52,12 @@ public class UserService {
         return null;
     }
 
+    public void userRoleChange(User user) {
+        user.setRole(1);
+        userRepository.save(user);
+    }
+
     public void delete(User memeber) {
-        memberRepository.delete(memeber);
+        userRepository.delete(memeber);
     }
 }

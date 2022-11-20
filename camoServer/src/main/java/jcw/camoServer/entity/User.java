@@ -16,10 +16,10 @@ public class User {
 
     @Column(name = "user_email")
     private String email;
-    @Column(name = "user_name")
-    private String name;
     @Column(name = "user_password")
     private String password;
+    @Column(name = "user_name")
+    private String name;
     @Column(name = "user_phone")
     private String phone;
     @Column(name = "user_role")
