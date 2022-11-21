@@ -93,14 +93,11 @@ public class UserController {
         User user;
         if (optionalUser.isPresent()) {
             user = optionalUser.get();
-            user.setPassword(userUpdateDto.getPassword());
-            user.setName(userUpdateDto.getName());
-            user.setPhone(userUpdateDto.getPhone());
+            return userService.userInfoUpdate(user, userUpdateDto);
         } else {
             System.out.println("오류");
             return null;
         }
-        return user;
     }
 
     /**

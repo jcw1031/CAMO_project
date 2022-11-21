@@ -53,4 +53,11 @@ public class CafeService {
     public List<Cafe> findByName(String name){
         return cafeRepository.findByCafeNameContainingIgnoreCase(name);
     }
+
+    /**
+     * userId를 통해 카페 검색
+     */
+    public Optional<Cafe> findByUserId(Long userId) {
+        return cafeRepository.findByUserId(userId);
+    }
 }

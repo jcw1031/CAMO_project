@@ -29,7 +29,7 @@ public class CafeController {
         Optional<User> user = userService.findById(cafe.getUserId());
         if(user.isPresent()) {
             Cafe register = cafeService.register(cafe);
-            userService.userRoleChange(user.get());
+            userService.userRoleUpdate(user.get());
             log.info("cafe = {}", register);
             System.out.println(cafe == register);
             return user.get();
@@ -71,5 +71,29 @@ public class CafeController {
         List<Cafe> list = cafeService.findByName(name);
         log.info("list = {}", list);
         return list;
+    }
+
+    /**
+     * 카페 정보 수정
+     */
+    /*@PutMapping("/update/{userId}")
+    public Cafe cafeInfoUpdate(@PathVariable("userId") Long userId, @RequestBody Cafe cafe) {
+
+    }*/
+
+    /**
+     * 회원 id로 회원의 카페 조회
+     */
+    @GetMapping("/get/{userId}")
+    public Cafe cafeInfo(@PathVariable("userId") Long userId) {
+        Optional<Cafe> optionalCafe = cafeService.findByUserId(userId);
+        Cafe cafe;
+        if (optionalCafe.isPresent()) {
+            cafe = optionalCafe.get();
+            return cafe;
+        } else {
+            System.out.println("해당 회원의 카페 없음");
+            return null;
+        }
     }
 }

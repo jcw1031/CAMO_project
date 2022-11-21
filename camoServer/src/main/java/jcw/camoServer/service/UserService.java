@@ -1,5 +1,6 @@
 package jcw.camoServer.service;
 
+import jcw.camoServer.dto.UserUpdateDto;
 import jcw.camoServer.entity.User;
 import jcw.camoServer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * 회원 생성
+     */
     public User join(User user){
         validateDuplicateMember(user);
 
@@ -30,10 +34,16 @@ public class UserService {
                 });
     }
 
+    /**
+     * 모든 회원 조회
+     */
     public List<User> findAll(){
         return userRepository.findAll();
     }
 
+    /**
+     * id를 통한 회원 검색
+     */
     public Optional<User> findById(long id){
         Optional<User> member = userRepository.findById(id);
         if (member.isPresent()) {
@@ -43,6 +53,9 @@ public class UserService {
         return null;
     }
 
+    /**
+     * email을 통한 회원 검색
+     */
     public Optional<User> findByEmail(String email){
         Optional<User> member = userRepository.findByEmail(email);
         if (member.isPresent()) {
@@ -52,11 +65,27 @@ public class UserService {
         return null;
     }
 
-    public void userRoleChange(User user) {
+    /**
+     * 회원 권한 변경
+     */
+    public void userRoleUpdate(User user) {
         user.setRole(1);
         userRepository.save(user);
     }
 
+    /**
+     * 회원 정보 수정
+     */
+    public User userInfoUpdate(User user, UserUpdateDto userUpdateDto) {
+        user.setPassword(userUpdateDto.getPassword());
+        user.setName(userUpdateDto.getName());
+        user.setPhone(userUpdateDto.getPhone());
+        return userRepository.save(user);
+    }
+
+    /**
+     * 회원 삭제
+     */
     public void delete(User memeber) {
         userRepository.delete(memeber);
     }
