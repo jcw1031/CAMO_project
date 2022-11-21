@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface CafeRepository extends JpaRepository<Cafe, String> {
     List<Cafe> findByCafeNameContainingIgnoreCase(String cafeName);
+
+    Optional<Cafe> findByUserId(Long userId);
 }
