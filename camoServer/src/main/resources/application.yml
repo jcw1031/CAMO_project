@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://34.64.47.242:3306/CAMO_DB?serverTimezone=UTC
+    url: jdbc:mysql://34.133.175.162:3306/CAMO?serverTimezone=UTC
     username: root
-    password: 9490
+    password: 1031
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #server:
