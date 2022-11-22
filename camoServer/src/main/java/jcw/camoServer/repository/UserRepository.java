@@ -11,18 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    /*@Modifying
-    @Query(value = "INSERT INTO user VALUES (':#{#user.userId}', ':#{#user.email}', ':#{#user.password}', ':#{#user.name}'" +
-        ", ':#{#user.phone}', ':#{#user.role}')", nativeQuery = true)
-    void insert(@Param("user") User user);
-
-    @Query(value = "SELECT u FROM User u WHERE u.userId = :userId")
-    Optional<User> findUserById(@Param("userId") Long userId);
-
-    @Query(value = "SELECT u FROM User u WHERE u.name = :name")
-    Optional<User> findUserByName(@Param("name") String name);
-
-    @Query(value = "SELECT u FROM User u")*/
 
     Optional<User> findByEmail(String email);
 }

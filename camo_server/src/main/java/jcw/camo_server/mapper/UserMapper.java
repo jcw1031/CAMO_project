@@ -6,16 +6,29 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
 import java.util.Optional;
 
 @Mapper
 public interface UserMapper {
 
-    @Insert("INSERT INTO user (user_email, user_password, user_name, user_phone, user_role) VALUES" +
-            "(#{user.email}, #{user.password}, #{user.name}, #{user.phone}, #{user.role})")
-    void save(@Param("user") User user);
+    /**
+     * 데이터베이스에 user 저장
+     */
+    void save(User user);
 
-    @Select("SELECT * FROM user WHERE user_email = #{email}")
+    /**
+     * email로 user 검색
+     */
     Optional<User> findByEmail(@Param("email") String email);
 
+    /**
+     * id로 user 검색
+     */
+    Optional<User> findById(@Param("id") Long id);
+
+    /**
+     * user 리스트
+     */
+    List<User> findAll();
 }

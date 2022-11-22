@@ -1,17 +1,15 @@
-package jcw.camo_server.entity;
+package jcw.camo_server.dto;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 
-@Data
+@Getter
 @Builder
 @ToString
-public class User {
-    private Long id;
+public class SignupDto {
     private String email;
     private String password;
     private String name;
     private String phone;
-    private int role;
 }
