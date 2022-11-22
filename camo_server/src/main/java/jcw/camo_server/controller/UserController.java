@@ -85,7 +85,7 @@ public class UserController {
      */
     @PutMapping("/{id}")
     public User updateUserInfo(@PathVariable("id") Long id, @RequestBody UserUpdateDto userUpdateDto) {
-        userUpdateDto.setId(id);
+        userUpdateDto.setUserId(id);
         log.info("userUpdateDto = {}", userUpdateDto);
         return userService.userUpdate(userUpdateDto);
     }

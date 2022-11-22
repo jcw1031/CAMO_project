@@ -23,7 +23,7 @@ public interface UserMapper {
     /**
      * id로 user 검색
      */
-    Optional<User> findById(@Param("id") Long id);
+    Optional<User> findById(@Param("id") Long userId);
 
     /**
      * user 리스트

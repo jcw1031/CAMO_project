@@ -81,7 +81,7 @@ public class UserService {
      * user 정보 수정
      */
     public User userUpdate(UserUpdateDto userUpdateDto) {
-        Optional<User> optionalUser = userMapper.findById(userUpdateDto.getId());
+        Optional<User> optionalUser = userMapper.findById(userUpdateDto.getUserId());
         log.info("optionalUser = {}", optionalUser);
         User user = optionalUser.get();
         user.setPassword(userUpdateDto.getPassword());
@@ -89,6 +89,6 @@ public class UserService {
         user.setPhone(userUpdateDto.getPhone());
         log.info("user ={}", user);
         userMapper.userUpdate(user);
-        return userMapper.findById(userUpdateDto.getId()).get();
+        return userMapper.findById(userUpdateDto.getUserId()).get();
     }
 }
