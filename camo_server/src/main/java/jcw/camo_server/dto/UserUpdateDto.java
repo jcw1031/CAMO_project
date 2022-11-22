@@ -9,7 +9,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class UserUpdateDto{
-    private Long id;
+    private Long userId;
     private String password;
     private String name;
     private String phone;
