@@ -3,7 +3,7 @@
 <mapper namespace="jcw.camo_server.mapper.UserMapper">
 
     <resultMap id="user" type="jcw.camo_server.entity.User">
-        <id column="user_id" property="id"/>
+        <id column="user_id" property="userId"/>
         <result column="user_email" property="email"/>
         <result column="user_password" property="password"/>
         <result column="user_name" property="name"/>
@@ -11,7 +11,7 @@
         <result column="user_role" property="role"/>
     </resultMap>
 
-    <insert id="userSave" useGeneratedKeys="true" keyProperty="id">
+    <insert id="userSave" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO user(user_email, user_password, user_name, user_phone, user_role)
         VALUES (#{email}, #{password}, #{name}, #{phone}, 0)
     </insert>
@@ -21,7 +21,7 @@
     </select>
 
     <select id="findById" resultType="jcw.camo_server.entity.User" resultMap="user">
-        SELECT * FROM user WHERE user_id = #{id}
+        SELECT * FROM user WHERE user_id = #{userId}
     </select>
 
     <select id="findAll" resultType="jcw.camo_server.entity.User" resultMap="user">
@@ -29,7 +29,7 @@
     </select>
 
     <update id="userUpdate" useGeneratedKeys="true" keyProperty="id">
-        UPDATE user SET user_password = #{password}, user_name = #{name}, user_phone = #{phone} WHERE user_id = #{id}
+        UPDATE user SET user_password = #{password}, user_name = #{name}, user_phone = #{phone} WHERE user_id = #{userId}
     </update>
 
     <delete id="delete">
