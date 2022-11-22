@@ -21,7 +21,7 @@
     </select>
 
     <select id="findById" resultType="jcw.camo_server.entity.User" resultMap="user">
-        SELECT * FROM user WHERE user_id = #{userId}
+        SELECT * FROM user WHERE user_id = #{id}
     </select>
 
     <select id="findAll" resultType="jcw.camo_server.entity.User" resultMap="user">
