@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://34.133.175.162:3306/CAMO?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+      username: root
+      password: 1031
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
