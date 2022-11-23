@@ -1,10 +1,11 @@
 package jcw.camo_server.entity;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
-@Data
+@Getter @Setter
 @Builder
 @ToString
 public class User {

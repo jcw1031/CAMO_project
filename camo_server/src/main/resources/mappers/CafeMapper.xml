@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jcw.camo_server.mapper.CafeMapper">
+
+    <insert id="cafeSave" useGeneratedKeys="true" keyProperty="cafeId">
+        INSERT INTO cafe (cafe_name, cafe_address, cafe_phone, cafe_introduce, cafe_reward, cafe_rewardstamp, user_id)
+        VALUES (#{cafeName}, #{cafeAddress}, #{cafePhone}, #{cafeIntroduce}, #{cafeReward}, #{cafeRewardstamp},
+                #{userId});
+    </insert>
+
+    <select id="findAll" resultType="jcw.camo_server.entity.Cafe">
+        SELECT cafe.cafe_id, cafe.cafe_name, cafe.cafe_address, avg(review_rating) as avgRating
+        FROM cafe,
+             review
+        WHERE review.cafe_id = cafe.cafe_id
+        GROUP BY review.cafe_id;
+    </select>
+
+    <select id="findByName" resultType="jcw.camo_server.entity.Cafe">
+        SELECT cafe.cafe_id, cafe.cafe_name, cafe.cafe_address, avg(review_rating) as avgRating
+        FROM cafe,
+             review
+        WHERE review.cafe_id = cafe.cafe_id
+          AND cafe.cafe_name LIKE ('%', #{name}, '%')
+        GROUP BY review.cafe_id;
+    </select>
+
+    <select id="findByUserId" resultType="jcw.camo_server.entity.Cafe">
+        SELECT *
+        FROM cafe
+        WHERE user_id = #{id};
+    </select>
+
+    <update id="userUpdate" useGeneratedKeys="true" keyProperty="id">
+    </update>
+
+    <delete id="delete">
+    </delete>
+
+</mapper>
