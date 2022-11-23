@@ -1,5 +1,6 @@
 package jcw.camo_server.mapper;
 
+import jcw.camo_server.dto.CafeListDto;
 import jcw.camo_server.entity.Cafe;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -20,12 +21,12 @@ public interface CafeMapper {
     /**
      * 카페 리스트
      */
-    List<Cafe> findAll();
+    List<CafeListDto> findAll();
 
     /**
      * 이름으로 cafe 검색
      */
-    List<Cafe> findByName(@Param("name") String cafeName);
+    List<CafeListDto> findByName(@Param("name") String cafeName);
 
     /**
      * userId로 cafe 검색

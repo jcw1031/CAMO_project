@@ -1,5 +1,6 @@
 package jcw.camo_server.service;
 
+import jcw.camo_server.dto.CafeListDto;
 import jcw.camo_server.entity.Cafe;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.CafeMapper;
@@ -33,7 +34,7 @@ public class CafeService {
     /**
      * 카페 리스트 조회
      */
-    public List<Cafe> cafeList() {
+    public List<CafeListDto> cafeList() {
         return cafeMapper.findAll();
     }
 
@@ -41,7 +42,7 @@ public class CafeService {
      * 검색어가 이름에 포함된 카페 리스트
      */
     @Transactional
-    public List<Cafe> findByName(String name) {
+    public List<CafeListDto> findByName(String name) {
         return cafeMapper.findByName(name);
     }
 

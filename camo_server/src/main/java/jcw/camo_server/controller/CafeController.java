@@ -1,7 +1,7 @@
 package jcw.camo_server.controller;
 
+import jcw.camo_server.dto.CafeListDto;
 import jcw.camo_server.entity.Cafe;
-import jcw.camo_server.entity.User;
 import jcw.camo_server.service.CafeService;
 import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -36,17 +36,19 @@ public class CafeController {
      * @return 모든 Cafe 리스트
      */
     @GetMapping("/list")
-    public List<Cafe> cafeList() {
+    public List<CafeListDto> cafeList() {
         return cafeService.cafeList();
     }
 
     /**
      * Cafe 이름으로 검색
+     *
      * @param name 검색어
      * @return 검색어가 이름에 포함된 Cafe 리스트
      */
     @GetMapping("/name/{name}")
-    public List<Cafe> searchCafeByName(@RequestParam("name") String name) {
+    public List<CafeListDto> searchCafeByName(@PathVariable("name") String name) {
+        System.out.println(name);
         return cafeService.findByName(name);
     }
 }

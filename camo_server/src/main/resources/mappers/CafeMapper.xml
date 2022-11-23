@@ -8,7 +8,7 @@
                 #{userId});
     </insert>
 
-    <select id="findAll" resultType="jcw.camo_server.entity.Cafe">
+    <select id="findAll" resultType="jcw.camo_server.dto.CafeListDto">
         SELECT cafe.cafe_id, cafe.cafe_name, cafe.cafe_address, avg(review_rating) as avgRating
         FROM cafe,
              review
@@ -16,8 +16,8 @@
         GROUP BY review.cafe_id;
     </select>
 
-    <select id="findByName" resultType="jcw.camo_server.entity.Cafe">
-        SELECT cafe.cafe_id, cafe.cafe_name, cafe.cafe_address, avg(review_rating) as avgRating
+    <select id="findByName" resultType="jcw.camo_server.dto.CafeListDto">
+        SELECT cafe.cafe_id, cafe.cafe_name, cafe.cafe_address, avg(review_rating) as avg_rating
         FROM cafe,
              review
         WHERE review.cafe_id = cafe.cafe_id
