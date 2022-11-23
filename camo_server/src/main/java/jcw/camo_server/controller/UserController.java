@@ -40,7 +40,7 @@ public class UserController {
      * @return 로그인 성공 시 해당 User 객체
      */
     @GetMapping("/{email}")
-    public User signin(@PathVariable("email") String email, @RequestParam("password") String password) {
+    public User signIn(@PathVariable("email") String email, @RequestParam("password") String password) {
         LoginDto loginDto = LoginDto.builder()
                 .email(email)
                 .password(password)
