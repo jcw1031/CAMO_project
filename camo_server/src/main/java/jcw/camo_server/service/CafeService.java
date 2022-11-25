@@ -1,6 +1,7 @@
 package jcw.camo_server.service;
 
 import jcw.camo_server.dto.CafeListDto;
+import jcw.camo_server.dto.CafeUpdateDto;
 import jcw.camo_server.entity.Cafe;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.CafeMapper;
@@ -41,10 +42,24 @@ public class CafeService {
     /**
      * 검색어가 이름에 포함된 카페 리스트
      */
-    @Transactional
     public List<CafeListDto> findByName(String name) {
         return cafeMapper.findByName(name);
     }
 
-
+    /**
+     * 카페 정보 수정
+     */
+    @Transactional
+    public Cafe cafeUpdate(CafeUpdateDto cafeUpdateDto) {
+        Optional<Cafe> optionalCafe = cafeMapper.findById(cafeUpdateDto.getCafeId());
+        Cafe cafe = optionalCafe.get();
+        cafe.setCafeName(cafeUpdateDto.getCafeName());
+        cafe.setCafeAddress(cafeUpdateDto.getCafeAddress());
+        cafe.setCafeIntroduce(cafeUpdateDto.getCafeIntroduce());
+        cafe.setCafePhone(cafeUpdateDto.getCafePhone());
+        cafe.setCafeReward(cafeUpdateDto.getCafeReward());
+        cafe.setCafeRewardstamp(cafeUpdateDto.getCafeRewardstamp());
+        cafeMapper.cafeUpdate(cafe);
+        return cafeMapper.findById(cafeUpdateDto.getCafeId()).get();
+    }
 }

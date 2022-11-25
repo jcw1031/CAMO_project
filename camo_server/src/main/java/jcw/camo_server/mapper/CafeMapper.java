@@ -13,8 +13,6 @@ public interface CafeMapper {
 
     /**
      * Cafe 저장
-     *
-     * @param cafe
      */
     void cafeSave(Cafe cafe);
 
@@ -32,4 +30,11 @@ public interface CafeMapper {
      * userId로 cafe 검색
      */
     Optional<Cafe> findByUserId(@Param("id") Long userId);
+
+    /**
+     * cafeId로 cafe 검색
+     */
+    Optional<Cafe> findById(@Param("id") String cafeId);
+
+    void cafeUpdate(Cafe cafe);
 }
