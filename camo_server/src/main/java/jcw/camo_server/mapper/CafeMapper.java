@@ -37,4 +37,6 @@ public interface CafeMapper {
     Optional<Cafe> findById(@Param("id") String cafeId);
 
     void cafeUpdate(Cafe cafe);
+
+    void delete(@Param("id") String cafeId);
 }

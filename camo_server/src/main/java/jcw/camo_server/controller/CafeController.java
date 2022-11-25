@@ -23,6 +23,7 @@ public class CafeController {
 
     /**
      * cafe 등록
+     *
      * @param cafe 등록할 Cafe
      * @return 등록된 Cafe
      */
@@ -33,6 +34,7 @@ public class CafeController {
 
     /**
      * Cafe 리스트 조회
+     *
      * @return 모든 Cafe 리스트
      */
     @GetMapping("/list")
@@ -42,6 +44,7 @@ public class CafeController {
 
     /**
      * Cafe 이름으로 검색
+     *
      * @param name 검색어
      * @return 검색어가 이름에 포함된 Cafe 리스트
      */
@@ -52,7 +55,8 @@ public class CafeController {
 
     /**
      * cafe 정보 수정
-     * @param cafeId 수정할 카페의 id
+     *
+     * @param cafeId        수정할 카페의 id
      * @param cafeUpdateDto 수정할 정보
      * @return 정보가 수정된 후 cafe
      */
@@ -60,5 +64,14 @@ public class CafeController {
     public Cafe cafeInfoUpdate(@PathVariable("id") String cafeId, @RequestBody CafeUpdateDto cafeUpdateDto) {
         cafeUpdateDto.setCafeId(cafeId);
         return cafeService.cafeUpdate(cafeUpdateDto);
+    }
+
+    /**
+     * 카페 삭제
+     * @param cafeId 삭제할 카페의 cafeId
+     */
+    @DeleteMapping("/{id}")
+    public void deleteCafe(@PathVariable("id") String cafeId) {
+        cafeService.cafeDelete(cafeId);
     }
 }

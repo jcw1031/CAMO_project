@@ -26,6 +26,11 @@ public class CafeService {
      */
     @Transactional
     public Cafe register(Cafe cafe) {
+        Optional<Cafe> optionalCafe = cafeMapper.findById(cafe.getCafeId());
+        if (optionalCafe.isPresent()) {
+            log.info("이미 등록된 사업자번호입니다.");
+            return null;
+        }
         cafeMapper.cafeSave(cafe);
         Optional<User> optionalUser = userService.findById(cafe.getUserId());
         userService.userRoleUpdate(optionalUser.get());
@@ -61,5 +66,9 @@ public class CafeService {
         cafe.setCafeRewardstamp(cafeUpdateDto.getCafeRewardstamp());
         cafeMapper.cafeUpdate(cafe);
         return cafeMapper.findById(cafeUpdateDto.getCafeId()).get();
+    }
+
+    public void cafeDelete(String cafeId) {
+        cafeMapper.delete(cafeId);
     }
 }
