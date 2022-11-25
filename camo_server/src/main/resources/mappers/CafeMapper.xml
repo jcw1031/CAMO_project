@@ -51,5 +51,4 @@
         WHERE cafe_id = #{id};
     </delete>
 
-
 </mapper>
