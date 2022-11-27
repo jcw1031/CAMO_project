@@ -58,7 +58,6 @@ public class UserController {
      */
     @GetMapping("/email/{email}")
     public User findByEmail(@PathVariable("email") String email)  {
-        System.out.println(email);
         Optional<User> optionalUser = userService.findByEmail(email);
         if (optionalUser.isPresent()) {
             log.info("{}", optionalUser);
