@@ -1,4 +1,4 @@
-package jcw.camo_server.dto;
+package jcw.camo_server.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,9 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class CafeListDto {
+public class Coupon {
+    private Long couponId;
+    private int couponUserstamp;
+    private Long userId;
     private String cafeId;
-    private String cafeName;
-    private String cafeAddress;
-    private Double avgRating;
 }
