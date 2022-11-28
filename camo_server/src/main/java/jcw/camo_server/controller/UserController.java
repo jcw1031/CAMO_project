@@ -14,8 +14,8 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/user")
 @RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;

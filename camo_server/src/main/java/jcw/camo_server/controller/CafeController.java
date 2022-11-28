@@ -14,8 +14,8 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/cafe")
 @RequiredArgsConstructor
+@RequestMapping("/cafe")
 public class CafeController {
 
     private final CafeService cafeService;

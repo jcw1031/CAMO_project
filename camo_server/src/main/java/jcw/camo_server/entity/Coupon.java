@@ -9,9 +9,9 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Menu {
-    private Long menuId;
-    private String menuName;
-    private int menuPrice;
+public class Coupon {
+    private Long couponId;
+    private int couponUserstamp;
+    private Long userId;
     private String cafeId;
 }
