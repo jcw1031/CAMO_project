@@ -1,12 +1,11 @@
 package jcw.camo_server.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
-@Builder
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class SignupDto {
     private String email;
     private String password;
