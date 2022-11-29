@@ -107,6 +107,7 @@ public class UserService {
     /**
      * 회원 권한 변경
      */
+    @Transactional
     public User userRoleUpdate(User user) {
         if (user.getRole() == 0) {
             user.setRole(1);
@@ -115,5 +116,14 @@ public class UserService {
         }
         userMapper.userUpdate(user);
         return userMapper.findById(user.getUserId()).get();
+    }
+
+    /**
+     * 회원 삭제
+     */
+    @Transactional
+    public void deleteUser(Long userId) {
+        userMapper.delete(userId);
+        log.info("회원 탈퇴 성공 {}", userId);
     }
 }

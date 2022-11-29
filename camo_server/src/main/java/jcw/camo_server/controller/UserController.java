@@ -89,4 +89,13 @@ public class UserController {
         return userService.userUpdate(userUpdateDto);
     }
 
+    /**
+     * 회원 탈퇴
+     * @param userId 탈퇴할 회원의 userId
+     */
+    @DeleteMapping("/{id}")
+    public void userWithdrawal(@PathVariable("id") Long userId) {
+        userService.deleteUser(userId);
+    }
+
 }

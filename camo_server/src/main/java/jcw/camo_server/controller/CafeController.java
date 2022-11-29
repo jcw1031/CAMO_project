@@ -19,7 +19,6 @@ import java.util.Optional;
 public class CafeController {
 
     private final CafeService cafeService;
-    private final UserService userService;
 
     /**
      * cafe 등록
