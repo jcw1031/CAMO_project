@@ -22,7 +22,6 @@ public class CafeController {
 
     /**
      * cafe 등록
-     *
      * @param cafe 등록할 Cafe
      * @return 등록된 Cafe
      */
@@ -33,7 +32,6 @@ public class CafeController {
 
     /**
      * Cafe 리스트 조회
-     *
      * @return 모든 Cafe 리스트
      */
     @GetMapping("/list")
@@ -58,7 +56,9 @@ public class CafeController {
      */
     @GetMapping("/{id}")
     public Cafe cafeInfo(@PathVariable("id") String cafeId) {
-        return cafeService.findById(cafeId);
+        Cafe cafe = cafeService.findById(cafeId);
+        log.info("cafe = {}", cafe);
+        return cafe;
     }
 
     /**
