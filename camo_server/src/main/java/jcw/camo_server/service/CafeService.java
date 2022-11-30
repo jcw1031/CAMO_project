@@ -51,6 +51,16 @@ public class CafeService {
         return cafeMapper.findByName(name);
     }
 
+    public Cafe findById(String cafeId) {
+        Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
+        if (optionalCafe.isPresent()) {
+            return optionalCafe.get();
+        } else {
+            log.info("해당 카페가 존재하지 않습니다.");
+            throw new IllegalArgumentException("해당 카페가 존재하지 않습니다.");
+        }
+    }
+
     /**
      * 카페 정보 수정
      */

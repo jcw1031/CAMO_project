@@ -43,13 +43,22 @@ public class CafeController {
 
     /**
      * Cafe 이름으로 검색
-     *
      * @param name 검색어
      * @return 검색어가 이름에 포함된 Cafe 리스트
      */
     @GetMapping("/name/{name}")
     public List<CafeListDto> searchCafeByName(@PathVariable("name") String name) {
         return cafeService.findByName(name);
+    }
+
+    /**
+     * cafeId로 cafe 정보 조회
+     * @param cafeId 정보를 조회할 cafe의 cafeId
+     * @return 해당 cafeId를 가진 Cafe
+     */
+    @GetMapping("/{id}")
+    public Cafe cafeInfo(@PathVariable("id") String cafeId) {
+        return cafeService.findById(cafeId);
     }
 
     /**
