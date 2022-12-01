@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jcw.camo_server.mapper.ReviewMapper">
+    <insert id="reviewSave" useGeneratedKeys="true" keyProperty="reviewId">
+        INSERT INTO review (user_email, review_rating, review_content, review_date, user_id, cafe_id)
+        VALUES (#{userEmail}, #{reviewRating}, #{reviewContent}, #{reviewDate}, #{userId}, #{cafeId});
+    </insert>
 
     <select id="findAll" resultType="jcw.camo_server.entity.Review">
         SELECT * FROM review;
+    </select>
+
+    <select id="findByCafeId" resultType="jcw.camo_server.entity.Review">
+        SELECT *
+        FROM review
+        WHERE cafe_id = #{cafeId};
+    </select>
+
+    <select id="findByUserId" resultType="jcw.camo_server.entity.Review">
+        SELECT *
+        FROM review
+        WHERE user_id = #{userId};
     </select>
 
 </mapper>
