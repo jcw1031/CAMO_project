@@ -51,6 +51,10 @@ public class CafeService {
         return cafeMapper.findByName(name);
     }
 
+    /**
+     * cafeId로 cafe 검색
+     */
+    @Transactional
     public Cafe findById(String cafeId) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
         if (optionalCafe.isPresent()) {
@@ -58,6 +62,18 @@ public class CafeService {
         } else {
             log.info("해당 카페가 존재하지 않습니다.");
             throw new IllegalArgumentException("해당 카페가 존재하지 않습니다.");
+        }
+    }
+
+    @Transactional
+    public Cafe findByUserId(Long userId) {
+        Optional<Cafe> optionalCafe = cafeMapper.findByUserId(userId);
+        if (optionalCafe.isPresent()) {
+            Cafe cafe = optionalCafe.get();
+            return cafe;
+        } else {
+            log.info("해당 회원의 카페가 존재하지 않습니다.");
+            throw new IllegalArgumentException("해당 회원의 카페가 존재하지 않습니다.");
         }
     }
 

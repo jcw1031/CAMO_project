@@ -62,6 +62,18 @@ public class CafeController {
     }
 
     /**
+     * userId로 cafe 정보 조회
+     * @param userId 카페 사장의 userId
+     * @return 해당 userId 회원의 카페
+     */
+    @GetMapping("/user/{userId}")
+    public Cafe usersCafe(@PathVariable("userId") Long userId) {
+        Cafe cafe = cafeService.findByUserId(userId);
+        log.info("cafe = {}", cafe);
+        return cafe;
+    }
+
+    /**
      * cafe 정보 수정
      *
      * @param cafeId        수정할 카페의 id
