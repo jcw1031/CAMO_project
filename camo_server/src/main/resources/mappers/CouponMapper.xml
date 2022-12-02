@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jcw.camo_server.mapper.CouponMapper">
 
+    <insert id="save" useGeneratedKeys="true" keyProperty="couponId">
+        INSERT INTO coupon (coupon_userstamp, user_id, cafe_id)
+        VALUES (#{couponUserstamp}, #{userId}, #{cafeId});
+    </insert>
 
+    <select id="findCoupon" resultType="jcw.camo_server.entity.Coupon">
+        SELECT *
+        FROM coupon
+        WHERE user_id = #{userId}
+          AND cafe_id = #{cafeId};
+    </select>
+
+    <update id="updateCoupon" useGeneratedKeys="true" keyProperty="couponId">
+        UPDATE coupon
+        SET coupon_userstamp = #{couponUserstamp}
+        WHERE coupon_id = #{couponId};
+    </update>
 
 </mapper>

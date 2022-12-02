@@ -1,16 +1,15 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.CafeListDto;
-import jcw.camo_server.dto.CafeUpdateDto;
+import jcw.camo_server.dto.cafe.CafeListDto;
+import jcw.camo_server.dto.cafe.CafeUpdateDto;
 import jcw.camo_server.entity.Cafe;
+import jcw.camo_server.entity.User;
 import jcw.camo_server.service.CafeService;
-import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -19,22 +18,19 @@ import java.util.Optional;
 public class CafeController {
 
     private final CafeService cafeService;
-    private final UserService userService;
 
     /**
      * cafe 등록
-     *
      * @param cafe 등록할 Cafe
      * @return 등록된 Cafe
      */
     @PostMapping("/register")
-    public Cafe cafeRegister(@RequestBody Cafe cafe) {
+    public User cafeRegister(@RequestBody Cafe cafe) {
         return cafeService.register(cafe);
     }
 
     /**
      * Cafe 리스트 조회
-     *
      * @return 모든 Cafe 리스트
      */
     @GetMapping("/list")
@@ -44,13 +40,36 @@ public class CafeController {
 
     /**
      * Cafe 이름으로 검색
-     *
      * @param name 검색어
      * @return 검색어가 이름에 포함된 Cafe 리스트
      */
     @GetMapping("/name/{name}")
     public List<CafeListDto> searchCafeByName(@PathVariable("name") String name) {
         return cafeService.findByName(name);
+    }
+
+    /**
+     * cafeId로 cafe 정보 조회
+     * @param cafeId 정보를 조회할 cafe의 cafeId
+     * @return 해당 cafeId를 가진 Cafe
+     */
+    @GetMapping("/{id}")
+    public Cafe cafeInfo(@PathVariable("id") String cafeId) {
+        Cafe cafe = cafeService.findById(cafeId);
+        log.info("cafe = {}", cafe);
+        return cafe;
+    }
+
+    /**
+     * userId로 cafe 정보 조회
+     * @param userId 카페 사장의 userId
+     * @return 해당 userId 회원의 카페
+     */
+    @GetMapping("/user/{userId}")
+    public Cafe usersCafe(@PathVariable("userId") Long userId) {
+        Cafe cafe = cafeService.findByUserId(userId);
+        log.info("cafe = {}", cafe);
+        return cafe;
     }
 
     /**

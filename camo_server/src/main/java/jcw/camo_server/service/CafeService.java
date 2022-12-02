@@ -1,7 +1,7 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.CafeListDto;
-import jcw.camo_server.dto.CafeUpdateDto;
+import jcw.camo_server.dto.cafe.CafeListDto;
+import jcw.camo_server.dto.cafe.CafeUpdateDto;
 import jcw.camo_server.entity.Cafe;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.CafeMapper;
@@ -25,7 +25,7 @@ public class CafeService {
      * 카페 등록
      */
     @Transactional
-    public Cafe register(Cafe cafe) {
+    public User register(final Cafe cafe) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafe.getCafeId());
         if (optionalCafe.isPresent()) {
             log.info("이미 등록된 사업자번호입니다.");
@@ -33,8 +33,7 @@ public class CafeService {
         }
         cafeMapper.cafeSave(cafe);
         Optional<User> optionalUser = userService.findById(cafe.getUserId());
-        userService.userRoleUpdate(optionalUser.get());
-        return cafe;
+        return userService.userRoleUpdate(optionalUser.get());
     }
 
     /**
@@ -47,28 +46,72 @@ public class CafeService {
     /**
      * 검색어가 이름에 포함된 카페 리스트
      */
-    public List<CafeListDto> findByName(String name) {
+    public List<CafeListDto> findByName(final String name) {
         return cafeMapper.findByName(name);
+    }
+
+    /**
+     * cafeId로 cafe 검색
+     */
+    @Transactional
+    public Cafe findById(final String cafeId) {
+        Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
+        if (optionalCafe.isPresent()) {
+            Cafe cafe = optionalCafe.get();
+            log.info("cafe find by id = {}", cafe);
+            return cafe;
+        } else {
+            throw new IllegalArgumentException("해당 카페가 존재하지 않습니다.");
+        }
+    }
+
+    @Transactional
+    public Cafe findByUserId(final Long userId) {
+        Optional<Cafe> optionalCafe = cafeMapper.findByUserId(userId);
+        if (optionalCafe.isPresent()) {
+            Cafe cafe = optionalCafe.get();
+            log.info("cafe find by user's id = {}", cafe);
+            return cafe;
+        } else {
+            throw new IllegalArgumentException("해당 회원의 카페가 존재하지 않습니다.");
+        }
     }
 
     /**
      * 카페 정보 수정
      */
     @Transactional
-    public Cafe cafeUpdate(CafeUpdateDto cafeUpdateDto) {
+    public Cafe cafeUpdate(final CafeUpdateDto cafeUpdateDto) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafeUpdateDto.getCafeId());
-        Cafe cafe = optionalCafe.get();
-        cafe.setCafeName(cafeUpdateDto.getCafeName());
-        cafe.setCafeAddress(cafeUpdateDto.getCafeAddress());
-        cafe.setCafeIntroduce(cafeUpdateDto.getCafeIntroduce());
-        cafe.setCafePhone(cafeUpdateDto.getCafePhone());
-        cafe.setCafeReward(cafeUpdateDto.getCafeReward());
-        cafe.setCafeRewardstamp(cafeUpdateDto.getCafeRewardstamp());
-        cafeMapper.cafeUpdate(cafe);
+        if (optionalCafe.isPresent()) {
+            Cafe oldCafe = optionalCafe.get();
+            Cafe updatedCafe = Cafe.builder()
+                    .cafeId(cafeUpdateDto.getCafeId())
+                    .cafeName(cafeUpdateDto.getCafeName())
+                    .cafeAddress(cafeUpdateDto.getCafeAddress())
+                    .cafeIntroduce(cafeUpdateDto.getCafeIntroduce())
+                    .cafePhone(cafeUpdateDto.getCafePhone())
+                    .cafeReward(cafeUpdateDto.getCafeReward())
+                    .cafeRewardstamp(cafeUpdateDto.getCafeRewardstamp())
+                    .userId(oldCafe.getUserId()).build();
+            
+            log.info("update cafe = {}", updatedCafe);
+
+            cafeMapper.cafeUpdate(updatedCafe);
+
+
+            /*cafe.setCafeName(cafeUpdateDto.getCafeName());
+            cafe.setCafeAddress(cafeUpdateDto.getCafeAddress());
+            cafe.setCafeIntroduce(cafeUpdateDto.getCafeIntroduce());
+            cafe.setCafePhone(cafeUpdateDto.getCafePhone());
+            cafe.setCafeReward(cafeUpdateDto.getCafeReward());
+            cafe.setCafeRewardstamp(cafeUpdateDto.getCafeRewardstamp());*/
+
+        }
         return cafeMapper.findById(cafeUpdateDto.getCafeId()).get();
     }
 
-    public void cafeDelete(String cafeId) {
+    public void cafeDelete(final String cafeId) {
         cafeMapper.delete(cafeId);
     }
 }

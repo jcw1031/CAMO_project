@@ -1,6 +1,6 @@
 package jcw.camo_server.mapper;
 
-import jcw.camo_server.dto.CafeListDto;
+import jcw.camo_server.dto.cafe.CafeListDto;
 import jcw.camo_server.entity.Cafe;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

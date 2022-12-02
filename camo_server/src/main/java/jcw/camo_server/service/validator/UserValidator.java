@@ -1,6 +1,6 @@
-package jcw.camo_server.validator;
+package jcw.camo_server.service.validator;
 
-import jcw.camo_server.dto.SignupDto;
+import jcw.camo_server.dto.user.SignupDto;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;

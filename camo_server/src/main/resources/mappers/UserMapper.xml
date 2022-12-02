@@ -33,11 +33,17 @@
         FROM user;
     </select>
 
-    <update id="userUpdate" useGeneratedKeys="true" keyProperty="id">
+    <update id="userUpdate">
         UPDATE user
         SET user_password = #{password},
             user_name     = #{name},
             user_phone    = #{phone}
+        WHERE user_id = #{userId};
+    </update>
+
+    <update id="userRoleUpdate">
+        UPDATE user
+        SET user_role = #{role}
         WHERE user_id = #{userId};
     </update>
 

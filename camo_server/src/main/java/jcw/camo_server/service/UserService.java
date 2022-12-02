@@ -1,8 +1,8 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.LoginDto;
-import jcw.camo_server.dto.SignupDto;
-import jcw.camo_server.dto.UserUpdateDto;
+import jcw.camo_server.dto.user.LoginDto;
+import jcw.camo_server.dto.user.SignupDto;
+import jcw.camo_server.dto.user.UserUpdateDto;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -33,21 +33,6 @@ public class UserService {
     }
 
     /**
-     * 로그인
-     */
-    @Transactional
-    public User login(LoginDto loginDto) {
-        Optional<User> optionalUser = userMapper.findByEmail(loginDto.getEmail());
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            if (user.getPassword().equals(loginDto.getPassword())) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    /**
      * email 중복 검증
      */
     @Transactional
@@ -66,6 +51,22 @@ public class UserService {
                     .build();
         }
     }
+
+    /**
+     * 로그인
+     */
+    @Transactional
+    public User login(LoginDto loginDto) {
+        Optional<User> optionalUser = userMapper.findByEmail(loginDto.getEmail());
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            if (user.getPassword().equals(loginDto.getPassword())) {
+                return user;
+            }
+        }
+        return null;
+    }
+
 
     /**
      * email로 user 검색
@@ -92,28 +93,47 @@ public class UserService {
      * user 정보 수정
      */
     @Transactional
-    public User userUpdate(UserUpdateDto userUpdateDto) {
+    public User userUpdate(final UserUpdateDto userUpdateDto) {
         Optional<User> optionalUser = userMapper.findById(userUpdateDto.getUserId());
         log.info("optionalUser = {}", optionalUser);
-        User user = optionalUser.get();
-        user.setPassword(userUpdateDto.getPassword());
-        user.setName(userUpdateDto.getName());
-        user.setPhone(userUpdateDto.getPhone());
-        log.info("user ={}", user);
-        userMapper.userUpdate(user);
+        if (optionalUser.isPresent()) {
+            User user = User.builder()
+                    .userId(userUpdateDto.getUserId())
+                    .password(userUpdateDto.getPassword())
+                    .name(userUpdateDto.getName())
+                    .phone(userUpdateDto.getPhone())
+                    .build();
+            log.info("update user = {}", user);
+            userMapper.userUpdate(user);
+        }
         return userMapper.findById(userUpdateDto.getUserId()).get();
     }
 
     /**
      * 회원 권한 변경
      */
-    public User userRoleUpdate(User user) {
+    @Transactional
+    public User userRoleUpdate(final User user) {
+        User updatedUser;
         if (user.getRole() == 0) {
-            user.setRole(1);
+            updatedUser = User.builder()
+                    .userId(user.getUserId())
+                    .role(1).build();
         } else {
-            user.setRole(0);
+            updatedUser = User.builder()
+                    .userId(user.getUserId())
+                    .role(0).build();
         }
-        userMapper.userUpdate(user);
+        userMapper.userRoleUpdate(updatedUser);
         return userMapper.findById(user.getUserId()).get();
+    }
+
+    /**
+     * 회원 삭제
+     */
+    @Transactional
+    public void deleteUser(final Long userId) {
+        userMapper.delete(userId);
+        log.info("회원 탈퇴 성공 {}", userId);
     }
 }

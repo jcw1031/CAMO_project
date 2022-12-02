@@ -1,8 +1,8 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.LoginDto;
-import jcw.camo_server.dto.SignupDto;
-import jcw.camo_server.dto.UserUpdateDto;
+import jcw.camo_server.dto.user.LoginDto;
+import jcw.camo_server.dto.user.SignupDto;
+import jcw.camo_server.dto.user.UserUpdateDto;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -83,10 +83,19 @@ public class UserController {
      * @return 수정 된 User 객체
      */
     @PutMapping("/{id}")
-    public User updateUserInfo(@PathVariable("id") Long id, @RequestBody UserUpdateDto userUpdateDto) {
+    public User updateUserInfo(@PathVariable("id") final Long id, @RequestBody final UserUpdateDto userUpdateDto) {
         userUpdateDto.setUserId(id);
         log.info("userUpdateDto = {}", userUpdateDto);
         return userService.userUpdate(userUpdateDto);
+    }
+
+    /**
+     * 회원 탈퇴
+     * @param userId 탈퇴할 회원의 userId
+     */
+    @DeleteMapping("/{id}")
+    public void userWithdrawal(@PathVariable("id") final Long userId) {
+        userService.deleteUser(userId);
     }
 
 }

@@ -1,4 +1,4 @@
-package jcw.camo_server.dto;
+package jcw.camo_server.dto.user;
 
 import lombok.Builder;
 import lombok.Getter;

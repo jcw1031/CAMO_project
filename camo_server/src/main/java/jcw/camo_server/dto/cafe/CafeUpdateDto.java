@@ -1,4 +1,4 @@
-package jcw.camo_server.dto;
+package jcw.camo_server.dto.cafe;
 
 import lombok.*;
 

@@ -1,6 +1,6 @@
 package jcw.camo_server.mapper;
 
-import jcw.camo_server.dto.MenuListDto;
+import jcw.camo_server.dto.menu.MenuListDto;
 import jcw.camo_server.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
