@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jcw.camo_server.mapper.CafeMapper">
 
-    <insert id="cafeSave" >
+    <insert id="cafeSave">
         INSERT INTO cafe
         VALUES (#{cafeId}, #{cafeName}, #{cafeAddress}, #{cafePhone}, #{cafeIntroduce}, #{cafeReward}, 0, #{userId});
     </insert>

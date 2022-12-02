@@ -33,21 +33,6 @@ public class UserService {
     }
 
     /**
-     * 로그인
-     */
-    @Transactional
-    public User login(LoginDto loginDto) {
-        Optional<User> optionalUser = userMapper.findByEmail(loginDto.getEmail());
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            if (user.getPassword().equals(loginDto.getPassword())) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    /**
      * email 중복 검증
      */
     @Transactional
@@ -66,6 +51,22 @@ public class UserService {
                     .build();
         }
     }
+
+    /**
+     * 로그인
+     */
+    @Transactional
+    public User login(LoginDto loginDto) {
+        Optional<User> optionalUser = userMapper.findByEmail(loginDto.getEmail());
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            if (user.getPassword().equals(loginDto.getPassword())) {
+                return user;
+            }
+        }
+        return null;
+    }
+
 
     /**
      * email로 user 검색
@@ -95,12 +96,16 @@ public class UserService {
     public User userUpdate(final UserUpdateDto userUpdateDto) {
         Optional<User> optionalUser = userMapper.findById(userUpdateDto.getUserId());
         log.info("optionalUser = {}", optionalUser);
-        User user = optionalUser.get();
-        user.setPassword(userUpdateDto.getPassword());
-        user.setName(userUpdateDto.getName());
-        user.setPhone(userUpdateDto.getPhone());
-        log.info("user ={}", user);
-        userMapper.userUpdate(user);
+        if (optionalUser.isPresent()) {
+            User user = User.builder()
+                    .userId(userUpdateDto.getUserId())
+                    .password(userUpdateDto.getPassword())
+                    .name(userUpdateDto.getName())
+                    .phone(userUpdateDto.getPhone())
+                    .build();
+            log.info("update user = {}", user);
+            userMapper.userUpdate(user);
+        }
         return userMapper.findById(userUpdateDto.getUserId()).get();
     }
 
@@ -109,12 +114,17 @@ public class UserService {
      */
     @Transactional
     public User userRoleUpdate(final User user) {
+        User updatedUser;
         if (user.getRole() == 0) {
-            user.setRole(1);
+            updatedUser = User.builder()
+                    .userId(user.getUserId())
+                    .role(1).build();
         } else {
-            user.setRole(0);
+            updatedUser = User.builder()
+                    .userId(user.getUserId())
+                    .role(0).build();
         }
-        userMapper.userUpdate(user);
+        userMapper.userRoleUpdate(updatedUser);
         return userMapper.findById(user.getUserId()).get();
     }
 

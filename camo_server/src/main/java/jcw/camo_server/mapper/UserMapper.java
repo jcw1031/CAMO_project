@@ -36,6 +36,11 @@ public interface UserMapper {
     void userUpdate(User user);
 
     /**
+     * user 권한 변경
+     */
+    void userRoleUpdate(User user);
+
+    /**
      * user 삭제
      */
     void delete(@Param("id") Long userId);

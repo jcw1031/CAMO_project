@@ -94,7 +94,7 @@ public class CafeService {
                     .cafeReward(cafeUpdateDto.getCafeReward())
                     .cafeRewardstamp(cafeUpdateDto.getCafeRewardstamp())
                     .userId(oldCafe.getUserId()).build();
-
+            
             log.info("update cafe = {}", updatedCafe);
 
             cafeMapper.cafeUpdate(updatedCafe);
