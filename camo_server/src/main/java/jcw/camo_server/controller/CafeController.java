@@ -1,16 +1,15 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.CafeListDto;
-import jcw.camo_server.dto.CafeUpdateDto;
+import jcw.camo_server.dto.cafe.CafeListDto;
+import jcw.camo_server.dto.cafe.CafeUpdateDto;
 import jcw.camo_server.entity.Cafe;
+import jcw.camo_server.entity.User;
 import jcw.camo_server.service.CafeService;
-import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -26,7 +25,7 @@ public class CafeController {
      * @return 등록된 Cafe
      */
     @PostMapping("/register")
-    public Cafe cafeRegister(@RequestBody Cafe cafe) {
+    public User cafeRegister(@RequestBody Cafe cafe) {
         return cafeService.register(cafe);
     }
 

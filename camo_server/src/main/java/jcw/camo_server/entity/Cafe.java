@@ -2,9 +2,8 @@ package jcw.camo_server.entity;
 
 import lombok.*;
 
-@Getter @Setter
+@Getter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 public class Cafe {
     private String cafeId;
@@ -16,4 +15,16 @@ public class Cafe {
     private int cafeRewardstamp;
     private Long userId;
 
+    @Builder
+    public Cafe(String cafeId, String cafeName, String cafeAddress, String cafePhone, String cafeIntroduce
+            , String cafeReward, int cafeRewardstamp, Long userId) {
+        this.cafeId = cafeId;
+        this.cafeName = cafeName;
+        this.cafeAddress = cafeAddress;
+        this.cafePhone = cafePhone;
+        this.cafeIntroduce = cafeIntroduce;
+        this.cafeReward = cafeReward;
+        this.cafeRewardstamp = cafeRewardstamp;
+        this.userId = userId;
+    }
 }

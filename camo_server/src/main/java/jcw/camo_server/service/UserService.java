@@ -1,8 +1,8 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.LoginDto;
-import jcw.camo_server.dto.SignupDto;
-import jcw.camo_server.dto.UserUpdateDto;
+import jcw.camo_server.dto.user.LoginDto;
+import jcw.camo_server.dto.user.SignupDto;
+import jcw.camo_server.dto.user.UserUpdateDto;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -92,7 +92,7 @@ public class UserService {
      * user 정보 수정
      */
     @Transactional
-    public User userUpdate(UserUpdateDto userUpdateDto) {
+    public User userUpdate(final UserUpdateDto userUpdateDto) {
         Optional<User> optionalUser = userMapper.findById(userUpdateDto.getUserId());
         log.info("optionalUser = {}", optionalUser);
         User user = optionalUser.get();
@@ -108,7 +108,7 @@ public class UserService {
      * 회원 권한 변경
      */
     @Transactional
-    public User userRoleUpdate(User user) {
+    public User userRoleUpdate(final User user) {
         if (user.getRole() == 0) {
             user.setRole(1);
         } else {
@@ -122,7 +122,7 @@ public class UserService {
      * 회원 삭제
      */
     @Transactional
-    public void deleteUser(Long userId) {
+    public void deleteUser(final Long userId) {
         userMapper.delete(userId);
         log.info("회원 탈퇴 성공 {}", userId);
     }

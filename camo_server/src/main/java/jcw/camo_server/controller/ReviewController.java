@@ -21,7 +21,7 @@ public class ReviewController {
      * @param review 작성할 review
      */
     @PostMapping("")
-    public void writeReview(@RequestBody Review review) {
+    public void writeReview(@RequestBody final Review review) {
         Review writtenReview = reviewService.write(review);
         log.info("review = {}", writtenReview);
     }
@@ -32,7 +32,7 @@ public class ReviewController {
      * @return cafeId를 가진 cafe의 review 리스트
      */
     @GetMapping("/cafe/{id}")
-    public List<Review> reviewListByCafe(@PathVariable("id") String cafeId) {
+    public List<Review> reviewListByCafe(@PathVariable("id") final String cafeId) {
         return reviewService.findByCafeId(cafeId);
     }
 
@@ -42,7 +42,7 @@ public class ReviewController {
      * @return userId를 가진 user의 review 리스트
      */
     @GetMapping("/user/{id}")
-    public List<Review> reviewListByUser(@PathVariable("id") Long userId) {
+    public List<Review> reviewListByUser(@PathVariable("id") final Long userId) {
         return reviewService.findByUserId(userId);
     }
 

@@ -1,6 +1,6 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.MenuListDto;
+import jcw.camo_server.dto.menu.MenuListDto;
 import jcw.camo_server.entity.Menu;
 import jcw.camo_server.mapper.MenuMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,19 +14,19 @@ public class MenuService {
 
     private final MenuMapper menuMapper;
 
-    public void register(Menu menu) {
+    public void register(final Menu menu) {
         menuMapper.menuSave(menu);
     }
 
-    public List<MenuListDto> findByCafeId(String cafeId) {
+    public List<MenuListDto> findByCafeId(final String cafeId) {
         return menuMapper.findByCafeId(cafeId);
     }
 
-    public void menuUpdate(Menu menu) {
+    public void menuUpdate(final Menu menu) {
         menuUpdate(menu);
     }
 
-    public void menuDelete(Long menuId) {
+    public void menuDelete(final Long menuId) {
         menuMapper.menuDelete(menuId);
     }
 }

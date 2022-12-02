@@ -13,15 +13,15 @@ public class ReviewService {
 
     private final ReviewMapper reviewMapper;
 
-    public Review write(Review review) {
+    public Review write(final Review review) {
         return reviewMapper.reviewSave(review);
     }
 
-    public List<Review> findByCafeId(String cafeId) {
+    public List<Review> findByCafeId(final String cafeId) {
         return reviewMapper.findByCafeId(cafeId);
     }
 
-    public List<Review> findByUserId(Long userId) {
+    public List<Review> findByUserId(final Long userId) {
         return reviewMapper.findByUserId(userId);
     }
 

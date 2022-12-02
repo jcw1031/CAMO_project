@@ -1,4 +1,4 @@
-package jcw.camo_server.dto;
+package jcw.camo_server.dto.menu;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
