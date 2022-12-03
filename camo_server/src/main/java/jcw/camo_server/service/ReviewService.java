@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +28,15 @@ public class ReviewService {
 
     public List<Review> findAll() {
         return reviewMapper.findAll();
+    }
+
+    public void deleteReview(Long reviewId) {
+        Optional<Review> optionalReview = reviewMapper.findByReviewId(reviewId);
+        if (optionalReview.isPresent()) {
+            Review review = optionalReview.get();
+            reviewMapper.reviewDelete(review);
+        } else {
+            throw new IllegalArgumentException("이미 삭제된 리뷰");
+        }
     }
 }
