@@ -3,6 +3,7 @@ package jcw.camo_server.entity;
 import lombok.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Getter
 @ToString
@@ -14,7 +15,7 @@ public class Review {
     private String userEmail;
     private int reviewRating;
     private String reviewContent;
-    private Date reviewDate;
+    private String reviewDate;
     private Long userId;
     private String cafeId;
 }

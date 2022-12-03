@@ -54,4 +54,13 @@ public class ReviewController {
     public List<Review> reviewList() {
         return reviewService.findAll();
     }
+
+    /**
+     * review 삭제
+     * @param reviewId 삭제할 review의 reviewId
+     */
+    @DeleteMapping("/{id}")
+    public void deleteReview(@PathVariable("id") Long reviewId) {
+        reviewService.deleteReview(reviewId);
+    }
 }
