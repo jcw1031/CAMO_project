@@ -15,6 +15,7 @@ public class ReviewService {
     private final ReviewMapper reviewMapper;
 
     public Review write(final Review review) {
+        review.setReviewDate();
         return reviewMapper.reviewSave(review);
     }
 
