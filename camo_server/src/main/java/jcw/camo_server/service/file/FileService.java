@@ -48,8 +48,7 @@ public class FileService {
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
             String path = this.fileLocation.toString();
-            String fullFileName = path + "/" + fileName;
-            File renameFile = new File(fullFileName);
+            File renameFile = new File(path + "/" + fileName);
 
             String extension = fileName.substring(fileName.lastIndexOf("."));
             String newName = null;
