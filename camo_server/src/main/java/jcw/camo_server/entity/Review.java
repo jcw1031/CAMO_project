@@ -18,4 +18,8 @@ public class Review {
     private String reviewDate;
     private Long userId;
     private String cafeId;
+
+    public void setReviewDate() {
+        this.reviewDate = LocalDate.now().toString();
+    }
 }
