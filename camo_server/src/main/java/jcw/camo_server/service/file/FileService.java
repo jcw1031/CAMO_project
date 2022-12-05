@@ -1,6 +1,7 @@
 package jcw.camo_server.service.file;
 
 import jcw.camo_server.config.FileProperties;
+import jcw.camo_server.entity.Cafe;
 import jcw.camo_server.exception.fileException.FileStorageException;
 import jcw.camo_server.exception.fileException.MyFileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -34,7 +36,7 @@ public class FileService {
         }
     }
 
-    public String storeFile(MultipartFile file) {
+    public String storeFile(MultipartFile file, String cafeId) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         try {
@@ -45,7 +47,20 @@ public class FileService {
             Path targetLocation = this.fileLocation.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-            return fileName;
+            String path = this.fileLocation.toString();
+            String fullFileName = path + "/" + fileName;
+            File renameFile = new File(fullFileName);
+
+            String extension = fileName.substring(fileName.lastIndexOf("."));
+            String newName = null;
+
+            if (renameFile.exists()) {
+                File newFile = new File(path + "/" + cafeId + extension);
+                newName = newFile.getName();
+                renameFile.renameTo(newFile);
+            }
+
+            return newName;
         } catch (IOException e) {
             throw new FileStorageException("파일을 저장할 수 업습니다! : " + fileName);
         }

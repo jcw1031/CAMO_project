@@ -25,9 +25,9 @@ public class FileController {
 
     private final FileService fileService;
 
-    @PostMapping("/upload")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        String fileName = fileService.storeFile(file);
+    @PostMapping("/upload/{id}")
+    public UploadFileResponse uploadFile(@PathVariable("id") String cafeId, @RequestParam("file") MultipartFile file) {
+        String fileName = fileService.storeFile(file, cafeId);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/file/download/")
@@ -40,6 +40,9 @@ public class FileController {
     @GetMapping("/download/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable("fileName") String fileName
             , HttpServletRequest request) {
+
+        System.out.println(fileName);
+
         Resource resource = fileService.loadFileAsResource(fileName);
         String contentType = null;
 
