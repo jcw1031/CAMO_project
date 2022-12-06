@@ -15,7 +15,7 @@
     </select>
 
     <select id="findByUser" resultType="jcw.camo_server.dto.coupon.CouponListDTO">
-        SELECT cafe.cafe_name, cafe.cafe_address, cafe.cafe_reward, cafe.cafe_rewardstamp, coupon.coupon_userstamp
+        SELECT cafe.cafe_id, cafe.cafe_name, cafe.cafe_address, cafe.cafe_reward, cafe.cafe_rewardstamp, coupon.coupon_userstamp
         FROM cafe, coupon
         WHERE cafe.cafe_id=coupon.cafe_id AND coupon.user_id = #{userId}
         ORDER BY coupon.coupon_userstamp DESC;
