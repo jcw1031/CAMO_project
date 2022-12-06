@@ -14,9 +14,9 @@ public class ReviewService {
 
     private final ReviewMapper reviewMapper;
 
-    public Review write(final Review review) {
+    public void write(final Review review) {
         review.setReviewDate();
-        return reviewMapper.reviewSave(review);
+        reviewMapper.reviewSave(review);
     }
 
     public List<Review> findByCafeId(final String cafeId) {

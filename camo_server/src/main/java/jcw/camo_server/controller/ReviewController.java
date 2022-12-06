@@ -22,8 +22,7 @@ public class ReviewController {
      */
     @PostMapping("")
     public void writeReview(@RequestBody final Review review) {
-        Review writtenReview = reviewService.write(review);
-        log.info("review = {}", writtenReview);
+        reviewService.write(review);
     }
 
     /**
