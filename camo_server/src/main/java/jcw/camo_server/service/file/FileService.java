@@ -1,3 +1,4 @@
+/*
 package jcw.camo_server.service.file;
 
 import jcw.camo_server.config.FileProperties;
@@ -79,3 +80,4 @@ public class FileService {
         }
     }
 }
+*/

@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class CouponListDTO {
+    private String cafeId;
     private String cafeName;
     private String cafeAddress;
     private String cafeReward;
@@ -16,7 +17,8 @@ public class CouponListDTO {
     private int couponUserstamp;
 
     @Builder
-    public CouponListDTO(String cafeName, String cafeAddress, String cafeReward, int cafeRewardstamp, int couponUserstamp) {
+    public CouponListDTO(String cafeId, String cafeName, String cafeAddress, String cafeReward, int cafeRewardstamp, int couponUserstamp) {
+        this.cafeId = cafeId;
         this.cafeName = cafeName;
         this.cafeAddress = cafeAddress;
         this.cafeReward = cafeReward;

@@ -42,4 +42,8 @@ public class CouponService {
     public List<CouponListDTO> userCouponList(Long userId) {
         return couponMapper.findByUser(userId);
     }
+
+    public List<Coupon> couponList() {
+        return couponMapper.findAll();
+    }
 }

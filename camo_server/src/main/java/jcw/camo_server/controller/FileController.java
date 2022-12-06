@@ -1,3 +1,4 @@
+/*
 package jcw.camo_server.controller;
 
 import jcw.camo_server.dto.file.UploadFileResponse;
@@ -64,3 +65,4 @@ public class FileController {
     }
 
 }
+*/
