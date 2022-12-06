@@ -21,6 +21,11 @@
         ORDER BY coupon.coupon_userstamp DESC;
     </select>
 
+    <select id="findAll" resultType="jcw.camo_server.entity.Coupon">
+        SELECT *
+        FROM coupon;
+    </select>
+
     <update id="updateCoupon" useGeneratedKeys="true" keyProperty="couponId">
         UPDATE coupon
         SET coupon_userstamp = #{couponUserstamp}

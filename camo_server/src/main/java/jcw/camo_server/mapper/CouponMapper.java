@@ -18,4 +18,6 @@ public interface CouponMapper {
     Optional<Coupon> findCoupon(@Param("userId") Long userId, @Param("cafeId") String cafeId);
 
     List<CouponListDTO> findByUser(@Param("userId") Long userId);
+
+    List<Coupon> findAll();
 }
