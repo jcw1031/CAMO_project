@@ -4,7 +4,7 @@
 
     <insert id="cafeSave">
         INSERT INTO cafe
-        VALUES (#{cafeId}, #{cafeName}, #{cafeAddress}, #{cafePhone}, #{cafeIntroduce}, #{cafeReward}, 0, #{userId});
+        VALUES (#{cafeId}, #{cafeName}, #{cafeAddress}, #{cafePhone}, #{cafeIntroduce}, #{cafeReward}, 0, #{userId}, 'null');
     </insert>
 
     <select id="findAll" resultType="jcw.camo_server.dto.cafe.CafeListDTO">

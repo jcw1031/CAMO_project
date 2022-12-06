@@ -33,6 +33,11 @@ public class CouponController {
         return couponService.userCouponList(userId);
     }
 
+    @PutMapping("/use")
+    public void couponUse() {
+
+    }
+
     @GetMapping("/list")
     public List<Coupon> couponList() {
         return couponService.couponList();
