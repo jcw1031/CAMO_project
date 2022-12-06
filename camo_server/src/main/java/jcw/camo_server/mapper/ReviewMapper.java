@@ -10,7 +10,7 @@ import java.util.Optional;
 @Mapper
 public interface ReviewMapper {
 
-    Review reviewSave(Review review);
+    void reviewSave(Review review);
 
     List<Review> findAll();
 

@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class CafeListDto {
+public class CafeListDTO {
     private String cafeId;
     private String cafeName;
     private String cafeAddress;

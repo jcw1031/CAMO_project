@@ -1,7 +1,7 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.cafe.CafeListDto;
-import jcw.camo_server.dto.cafe.CafeUpdateDto;
+import jcw.camo_server.dto.cafe.CafeListDTO;
+import jcw.camo_server.dto.cafe.CafeUpdateDTO;
 import jcw.camo_server.entity.Cafe;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.service.CafeService;
@@ -34,7 +34,7 @@ public class CafeController {
      * @return 모든 Cafe 리스트
      */
     @GetMapping("/list")
-    public List<CafeListDto> cafeList() {
+    public List<CafeListDTO> cafeList() {
         return cafeService.cafeList();
     }
 
@@ -44,7 +44,7 @@ public class CafeController {
      * @return 검색어가 이름에 포함된 Cafe 리스트
      */
     @GetMapping("/name/{name}")
-    public List<CafeListDto> searchCafeByName(@PathVariable("name") String name) {
+    public List<CafeListDTO> searchCafeByName(@PathVariable("name") String name) {
         return cafeService.findByName(name);
     }
 
@@ -80,7 +80,7 @@ public class CafeController {
      * @return 정보가 수정된 후 cafe
      */
     @PutMapping("/{id}")
-    public Cafe cafeInfoUpdate(@PathVariable("id") String cafeId, @RequestBody CafeUpdateDto cafeUpdateDto) {
+    public Cafe cafeInfoUpdate(@PathVariable("id") String cafeId, @RequestBody CafeUpdateDTO cafeUpdateDto) {
         cafeUpdateDto.setCafeId(cafeId);
         return cafeService.cafeUpdate(cafeUpdateDto);
     }

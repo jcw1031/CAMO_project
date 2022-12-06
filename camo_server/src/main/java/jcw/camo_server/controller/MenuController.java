@@ -1,6 +1,6 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.menu.MenuListDto;
+import jcw.camo_server.dto.menu.MenuListDTO;
 import jcw.camo_server.entity.Menu;
 import jcw.camo_server.service.MenuService;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class MenuController {
      * cafe별 menu 리스트 조회
      */
     @GetMapping("/{cafeId}")
-    public List<MenuListDto> menuListByCafe(@PathVariable("cafeId") final String cafeId) {
+    public List<MenuListDTO> menuListByCafe(@PathVariable("cafeId") final String cafeId) {
         return menuService.findByCafeId(cafeId);
     }
 
