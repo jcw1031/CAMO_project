@@ -1,6 +1,7 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.coupon.CouponDto;
+import jcw.camo_server.dto.coupon.CouponDTO;
+import jcw.camo_server.dto.coupon.CouponListDTO;
 import jcw.camo_server.entity.Coupon;
 import jcw.camo_server.mapper.CouponMapper;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,7 +20,7 @@ public class CouponService {
     private final CouponMapper couponMapper;
 
     @Transactional
-    public void giveCoupon(CouponDto couponDto) {
+    public void giveCoupon(CouponDTO couponDto) {
         Optional<Coupon> optionalCoupon = couponMapper.findCoupon(couponDto.getUserId(), couponDto.getCafeId());
         if (optionalCoupon.isPresent()) {
             Coupon coupon = optionalCoupon.get();
@@ -34,5 +36,10 @@ public class CouponService {
                     .cafeId(couponDto.getCafeId()).build());
             log.info("첫 방문! 쿠폰 지급");
         }
+    }
+
+    @Transactional
+    public List<CouponListDTO> userCouponList(Long userId) {
+        return couponMapper.findByUser(userId);
     }
 }

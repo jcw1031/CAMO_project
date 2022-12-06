@@ -1,8 +1,8 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.user.LoginDto;
-import jcw.camo_server.dto.user.SignupDto;
-import jcw.camo_server.dto.user.UserUpdateDto;
+import jcw.camo_server.dto.user.LoginDTO;
+import jcw.camo_server.dto.user.SignupDTO;
+import jcw.camo_server.dto.user.UserUpdateDTO;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class UserService {
      * 회원가입
      */
     @Transactional
-    public Optional<User> save(SignupDto signupDto) {
+    public Optional<User> save(SignupDTO signupDto) {
         User user = validateDuplicatedUser(signupDto);
         log.info("user in service = {}", user);
         //이메일 중복 검증
@@ -36,7 +36,7 @@ public class UserService {
      * email 중복 검증
      */
     @Transactional
-    User validateDuplicatedUser(SignupDto signupDto) {
+    User validateDuplicatedUser(SignupDTO signupDto) {
         log.info("signupDto in validate = {}", signupDto);
         Optional<User> optionalUser = userMapper.findByEmail(signupDto.getEmail());
         if (optionalUser.isPresent()) {
@@ -56,7 +56,7 @@ public class UserService {
      * 로그인
      */
     @Transactional
-    public User login(LoginDto loginDto) {
+    public User login(LoginDTO loginDto) {
         Optional<User> optionalUser = userMapper.findByEmail(loginDto.getEmail());
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
@@ -93,7 +93,7 @@ public class UserService {
      * user 정보 수정
      */
     @Transactional
-    public User userUpdate(final UserUpdateDto userUpdateDto) {
+    public User userUpdate(final UserUpdateDTO userUpdateDto) {
         Optional<User> optionalUser = userMapper.findById(userUpdateDto.getUserId());
         log.info("optionalUser = {}", optionalUser);
         if (optionalUser.isPresent()) {

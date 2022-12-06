@@ -6,7 +6,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class CafeUpdateDto {
+public class CafeUpdateDTO {
     private String cafeId;
     private String cafeName;
     private String cafeAddress;

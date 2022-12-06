@@ -2,12 +2,13 @@ package jcw.camo_server.dto.user;
 
 import lombok.*;
 
-@Getter
+@Getter @Setter
+@Builder
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class SignupDto {
-    private String email;
+public class UserUpdateDTO {
+    private Long userId;
     private String password;
     private String name;
     private String phone;

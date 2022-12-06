@@ -8,13 +8,13 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor
-public class CouponDto {
+public class CouponDTO {
     private int stampQuantity;
     private Long userId;
     private String cafeId;
 
     @Builder
-    public CouponDto(int stampQuantity, Long userId, String cafeId) {
+    public CouponDTO(int stampQuantity, Long userId, String cafeId) {
         this.stampQuantity = stampQuantity;
         this.userId = userId;
         this.cafeId = cafeId;

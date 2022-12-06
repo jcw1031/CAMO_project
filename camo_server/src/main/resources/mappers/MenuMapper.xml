@@ -7,7 +7,7 @@
         VALUES (#{cafeId}, #{menuName}, #{menuPrice});
     </insert>
 
-    <select id="findByCafeId" resultType="jcw.camo_server.dto.menu.MenuListDto">
+    <select id="findByCafeId" resultType="jcw.camo_server.dto.menu.MenuListDTO">
         SELECT menu_name, menu_price
         FROM menu
         WHERE cafe_id = #{cafeId};

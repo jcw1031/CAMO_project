@@ -1,6 +1,6 @@
 package jcw.camo_server.mapper;
 
-import jcw.camo_server.dto.menu.MenuListDto;
+import jcw.camo_server.dto.menu.MenuListDTO;
 import jcw.camo_server.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,7 +17,7 @@ public interface MenuMapper {
     /**
      * 카페별 메뉴 리스트
      */
-    List<MenuListDto> findByCafeId(String cafeId);
+    List<MenuListDTO> findByCafeId(String cafeId);
 
     void menuUpdate(Menu menu);
 

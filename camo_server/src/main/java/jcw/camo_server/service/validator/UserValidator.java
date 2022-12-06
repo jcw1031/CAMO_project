@@ -1,6 +1,6 @@
 package jcw.camo_server.service.validator;
 
-import jcw.camo_server.dto.user.SignupDto;
+import jcw.camo_server.dto.user.SignupDTO;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class UserValidator {
      * @param signupDto
      * @return
      */
-    public User checkEmailDuplicate(SignupDto signupDto) {
+    public User checkEmailDuplicate(SignupDTO signupDto) {
         if (userMapper.findByEmail(signupDto.getEmail()).isPresent()) {
             System.out.println("예외 : 이미 존재하는 이메일입니다!");
             return null;

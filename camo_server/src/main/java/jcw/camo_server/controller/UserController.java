@@ -1,8 +1,8 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.user.LoginDto;
-import jcw.camo_server.dto.user.SignupDto;
-import jcw.camo_server.dto.user.UserUpdateDto;
+import jcw.camo_server.dto.user.LoginDTO;
+import jcw.camo_server.dto.user.SignupDTO;
+import jcw.camo_server.dto.user.UserUpdateDTO;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class UserController {
      * @return 회원가입 완료 된 User 객체
      */
     @PostMapping("/signup")
-    public User signup(@RequestBody SignupDto signupDto) {
+    public User signup(@RequestBody SignupDTO signupDto) {
         log.info("signupDto = {}", signupDto);
         Optional<User> joinUser = userService.save(signupDto);
         log.info("user = {}", joinUser);
@@ -41,7 +41,7 @@ public class UserController {
      */
     @GetMapping("/{email}")
     public User signIn(@PathVariable("email") String email, @RequestParam("password") String password) {
-        LoginDto loginDto = LoginDto.builder()
+        LoginDTO loginDto = LoginDTO.builder()
                 .email(email)
                 .password(password)
                 .build();
@@ -83,7 +83,7 @@ public class UserController {
      * @return 수정 된 User 객체
      */
     @PutMapping("/{id}")
-    public User updateUserInfo(@PathVariable("id") final Long id, @RequestBody final UserUpdateDto userUpdateDto) {
+    public User updateUserInfo(@PathVariable("id") final Long id, @RequestBody final UserUpdateDTO userUpdateDto) {
         userUpdateDto.setUserId(id);
         log.info("userUpdateDto = {}", userUpdateDto);
         return userService.userUpdate(userUpdateDto);
