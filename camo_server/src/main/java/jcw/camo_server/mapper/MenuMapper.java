@@ -3,6 +3,7 @@ package jcw.camo_server.mapper;
 import jcw.camo_server.dto.menu.MenuListDTO;
 import jcw.camo_server.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +21,7 @@ public interface MenuMapper {
      */
     List<MenuListDTO> findByCafeId(String cafeId);
 
-    Optional<Menu> findMenu(String cafeId, String menuName);
+    Optional<Menu> findMenu(@Param("cafeId") String cafeId, @Param("menuName") String menuName);
 
     void menuUpdate(Menu menu);
 
