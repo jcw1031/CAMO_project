@@ -5,6 +5,7 @@ import jcw.camo_server.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface MenuMapper {
@@ -18,6 +19,8 @@ public interface MenuMapper {
      * 카페별 메뉴 리스트
      */
     List<MenuListDTO> findByCafeId(String cafeId);
+
+    Optional<Menu> findMenu(String cafeId, String menuName);
 
     void menuUpdate(Menu menu);
 

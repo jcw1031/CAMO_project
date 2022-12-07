@@ -1,17 +1,21 @@
 package jcw.camo_server.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 public class Menu {
     private Long menuId;
     private String menuName;
     private int menuPrice;
     private String cafeId;
+
+    @Builder
+    public Menu(Long menuId, String menuName, int menuPrice, String cafeId) {
+        this.menuId = menuId;
+        this.menuName = menuName;
+        this.menuPrice = menuPrice;
+        this.cafeId = cafeId;
+    }
 }
