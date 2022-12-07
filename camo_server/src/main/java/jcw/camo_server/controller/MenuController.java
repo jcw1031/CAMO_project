@@ -37,10 +37,10 @@ public class MenuController {
     /**
      * menu 정보 수정
      */
-    @PutMapping("/update")
+    /*@PutMapping("/update")
     public void updateMenu(@RequestBody final Menu menu) {
         menuService.menuUpdate(menu);
-    }
+    }*/
 
     /**
      * menu 삭제

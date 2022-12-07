@@ -13,6 +13,14 @@
         WHERE cafe_id = #{cafeId};
     </select>
 
+    <select id="findMenu" resultType="jcw.camo_server.entity.Menu">
+        SELECT *
+        FROM menu
+        WHERE cafe_id = #{cafeId}
+          AND menu_name = #{menuName};
+    </select>
+
+
     <update id="menuUpdate" useGeneratedKeys="true" keyProperty="id">
         UPDATE menu
         SET menu_name  = #{menuName},
