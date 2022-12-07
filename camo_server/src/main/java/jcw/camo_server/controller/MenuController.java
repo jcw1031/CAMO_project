@@ -20,7 +20,7 @@ public class MenuController {
     /**
      * menu 등록
      */
-    @PostMapping("/register")
+    @PostMapping("")
     public void menuRegister(@RequestBody final Menu menu) {
         log.info("menu = {}", menu);
         menuService.register(menu);

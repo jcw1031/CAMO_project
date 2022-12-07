@@ -10,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MenuListDTO {
+    private Long menuId;
     private String menuName;
     private int menuPrice;
 }
