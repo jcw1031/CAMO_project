@@ -20,7 +20,7 @@ spring:
 
 file:
   upload:
-    location: /Users/jcw/file
+    location: C:\Users\jcw00\file
 
 mybatis:
   mapper-locations: classpath:/mappers/*.xml

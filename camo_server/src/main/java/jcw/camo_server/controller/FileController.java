@@ -1,4 +1,3 @@
-/*
 package jcw.camo_server.controller;
 
 import jcw.camo_server.dto.file.UploadFileResponse;
@@ -35,7 +34,12 @@ public class FileController {
                 .path(fileName)
                 .toUriString();
 
-        return new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
+        return UploadFileResponse.builder()
+                .fileName(fileName)
+                .fileDownloadUri(fileDownloadUri)
+                .fileType(file.getContentType())
+                .size(file.getSize())
+                .build();
     }
 
     @GetMapping("/download/{fileName:.+}")
@@ -65,4 +69,3 @@ public class FileController {
     }
 
 }
-*/
