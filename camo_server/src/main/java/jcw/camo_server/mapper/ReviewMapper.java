@@ -20,7 +20,7 @@ public interface ReviewMapper {
 
     List<Review> findByUserId(@Param("userId") Long userId);
 
-    Double cafeAvgRating(@Param("cafeId") String cafeId);
+    Optional<Double> cafeAvgRating(@Param("cafeId") String cafeId);
 
     void reviewDelete(Review review);
 
