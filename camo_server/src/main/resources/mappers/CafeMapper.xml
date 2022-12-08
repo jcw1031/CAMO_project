@@ -45,6 +45,12 @@
         WHERE cafe_id = #{cafeId};
     </update>
 
+    <update id="cafeImageUpdate" useGeneratedKeys="true" keyProperty="id">
+        UPDATE cafe
+        SET cafe_image = #{cafeImage}
+        WHERE cafe_id = #{cafeId};
+    </update>
+
     <delete id="delete">
         DELETE
         FROM cafe
