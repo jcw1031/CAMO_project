@@ -1,5 +1,6 @@
 package jcw.camo_server.controller;
 
+import jcw.camo_server.dto.cafe.CafeInfoDTO;
 import jcw.camo_server.dto.cafe.CafeListDTO;
 import jcw.camo_server.dto.cafe.CafeUpdateDTO;
 import jcw.camo_server.entity.Cafe;
@@ -53,12 +54,12 @@ public class CafeController {
      * @param cafeId 정보를 조회할 cafe의 cafeId
      * @return 해당 cafeId를 가진 Cafe
      */
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public Cafe cafeInfo(@PathVariable("id") String cafeId) {
         Cafe cafe = cafeService.findById(cafeId);
         log.info("cafe = {}", cafe);
         return cafe;
-    }
+    }*/
 
     /**
      * userId로 cafe 정보 조회
@@ -70,6 +71,11 @@ public class CafeController {
         Cafe cafe = cafeService.findByUserId(userId);
         log.info("cafe = {}", cafe);
         return cafe;
+    }
+
+    @GetMapping("/{id}")
+    public CafeInfoDTO cafeInfo(@PathVariable("id") String cafeId, @RequestParam("userId") Long userId) {
+        return cafeService.cafeInfoDetail(cafeId, userId);
     }
 
     /**
