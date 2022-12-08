@@ -35,16 +35,11 @@ public class UserController {
 
     /**
      * 로그인
-     * @param email 로그인 email
-     * @param password 로그인 password
+     * @param loginDto 회원의 id와 password
      * @return 로그인 성공 시 해당 User 객체
      */
-    @GetMapping("/{email}")
-    public User signIn(@PathVariable("email") String email, @RequestParam("password") String password) {
-        LoginDTO loginDto = LoginDTO.builder()
-                .email(email)
-                .password(password)
-                .build();
+    @PostMapping("/login")
+    public User signIn(@RequestBody LoginDTO loginDto) {
         log.info("loginDto = {}", loginDto);
         User loginUser = userService.login(loginDto);
         log.info("login user = {}", loginUser);
