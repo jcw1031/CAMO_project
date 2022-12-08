@@ -88,6 +88,7 @@ public class CafeController {
     @PutMapping("/{id}")
     public Cafe cafeInfoUpdate(@PathVariable("id") String cafeId, @RequestBody CafeUpdateDTO cafeUpdateDto) {
         cafeUpdateDto.setCafeId(cafeId);
+        log.info("cafeUpdate = {}", cafeUpdateDto);
         return cafeService.cafeUpdate(cafeUpdateDto);
     }
 

@@ -142,15 +142,6 @@ public class CafeService {
             log.info("update cafe = {}", updatedCafe);
 
             cafeMapper.cafeUpdate(updatedCafe);
-
-
-            /*cafe.setCafeName(cafeUpdateDto.getCafeName());
-            cafe.setCafeAddress(cafeUpdateDto.getCafeAddress());
-            cafe.setCafeIntroduce(cafeUpdateDto.getCafeIntroduce());
-            cafe.setCafePhone(cafeUpdateDto.getCafePhone());
-            cafe.setCafeReward(cafeUpdateDto.getCafeReward());
-            cafe.setCafeRewardstamp(cafeUpdateDto.getCafeRewardstamp());*/
-
         }
         return cafeMapper.findById(cafeUpdateDto.getCafeId()).get();
     }
