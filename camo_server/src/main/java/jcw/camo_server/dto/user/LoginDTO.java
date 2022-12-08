@@ -6,9 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
-@Builder
 @ToString
+@NoArgsConstructor
 public class LoginDTO {
     private String email;
     private String password;
+
+    @Builder
+    public LoginDTO(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }
