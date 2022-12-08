@@ -93,8 +93,7 @@ public class CafeService {
                     .cafePhone(cafeUpdateDto.getCafePhone())
                     .cafeReward(cafeUpdateDto.getCafeReward())
                     .cafeRewardstamp(cafeUpdateDto.getCafeRewardstamp())
-                    .userId(oldCafe.getUserId()).build();
-            
+                    .build();
             log.info("update cafe = {}", updatedCafe);
 
             cafeMapper.cafeUpdate(updatedCafe);
