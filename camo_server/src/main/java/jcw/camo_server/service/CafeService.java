@@ -75,11 +75,20 @@ public class CafeService {
     public CafeInfoDTO cafeInfoDetail(String cafeId, Long userId) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
         Optional<Coupon> optionalCoupon = couponMapper.findCoupon(userId, cafeId);
-        double avgRating = reviewMapper.cafeAvgRating(cafeId);
+        Optional<Double> optionalDouble = reviewMapper.cafeAvgRating(cafeId);
         int userStamp = 0;
+        double avgRating;
+
+        if (optionalDouble.isPresent()) {
+            avgRating = optionalDouble.get();
+        } else{
+            avgRating = 0;
+        }
+
         if (optionalCoupon.isPresent()) {
             userStamp = optionalCoupon.get().getCouponUserstamp();
         }
+
         if (optionalCafe.isPresent()) {
             Cafe cafe = optionalCafe.get();
 
