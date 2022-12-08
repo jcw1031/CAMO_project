@@ -1,10 +1,14 @@
 package jcw.camo_server.service;
 
+import jcw.camo_server.dto.cafe.CafeInfoDTO;
 import jcw.camo_server.dto.cafe.CafeListDTO;
 import jcw.camo_server.dto.cafe.CafeUpdateDTO;
 import jcw.camo_server.entity.Cafe;
+import jcw.camo_server.entity.Coupon;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.CafeMapper;
+import jcw.camo_server.mapper.CouponMapper;
+import jcw.camo_server.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,6 +24,8 @@ public class CafeService {
 
     private final CafeMapper cafeMapper;
     private final UserService userService;
+    private final CouponMapper couponMapper;
+    private final ReviewMapper reviewMapper;
 
     /**
      * 카페 등록
@@ -53,13 +59,45 @@ public class CafeService {
     /**
      * cafeId로 cafe 검색
      */
-    @Transactional
+    /*@Transactional
     public Cafe findById(final String cafeId) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
         if (optionalCafe.isPresent()) {
             Cafe cafe = optionalCafe.get();
             log.info("cafe find by id = {}", cafe);
             return cafe;
+        } else {
+            throw new IllegalArgumentException("해당 카페가 존재하지 않습니다.");
+        }
+    }*/
+
+    @Transactional
+    public CafeInfoDTO cafeInfoDetail(String cafeId, Long userId) {
+        Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
+        Optional<Coupon> optionalCoupon = couponMapper.findCoupon(userId, cafeId);
+        double avgRating = reviewMapper.cafeAvgRating(cafeId);
+        int userStamp = 0;
+        if (optionalCoupon.isPresent()) {
+            userStamp = optionalCoupon.get().getCouponUserstamp();
+        }
+        if (optionalCafe.isPresent()) {
+            Cafe cafe = optionalCafe.get();
+            Coupon coupon = optionalCoupon.get();
+            userStamp = coupon.getCouponUserstamp();
+
+            return CafeInfoDTO.builder()
+                    .cafeId(cafe.getCafeId())
+                    .cafeName(cafe.getCafeName())
+                    .cafeAddress(cafe.getCafeAddress())
+                    .cafePhone(cafe.getCafePhone())
+                    .cafeIntroduce(cafe.getCafeIntroduce())
+                    .cafeImage(cafe.getCafeImage())
+                    .cafeReward(cafe.getCafeReward())
+                    .cafeRewardstamp(cafe.getCafeRewardstamp())
+                    .couponUserstamp(userStamp)
+                    .avgRating(avgRating)
+                    .build();
+
         } else {
             throw new IllegalArgumentException("해당 카페가 존재하지 않습니다.");
         }
