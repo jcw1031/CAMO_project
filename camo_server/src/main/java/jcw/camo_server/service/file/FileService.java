@@ -4,6 +4,9 @@ import jcw.camo_server.config.FileProperties;
 import jcw.camo_server.entity.Cafe;
 import jcw.camo_server.exception.fileException.FileStorageException;
 import jcw.camo_server.exception.fileException.MyFileNotFoundException;
+import jcw.camo_server.mapper.CafeMapper;
+import jcw.camo_server.service.CafeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -18,16 +21,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class FileService {
 
     private final Path fileLocation;
+    private final CafeMapper cafeMapper;
 
     @Autowired
-    public FileService(FileProperties fileProperties) {
+    public FileService(FileProperties fileProperties, CafeMapper cafeMapper) {
         this.fileLocation = Paths.get(fileProperties.getLocation())
                 .toAbsolutePath().normalize();
+        this.cafeMapper = cafeMapper;
 
         try {
             Files.createDirectories(this.fileLocation);
@@ -57,6 +64,14 @@ public class FileService {
                 File newFile = new File(path + "/" + cafeId + extension);
                 newName = newFile.getName();
                 renameFile.renameTo(newFile);
+            }
+
+            Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
+            if (optionalCafe.isPresent()) {
+                Cafe updateCafe = Cafe.builder()
+                        .cafeId(cafeId)
+                        .cafeImage(newName).build();
+                cafeMapper.cafeImageUpdate(updateCafe);
             }
 
             return newName;

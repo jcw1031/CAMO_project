@@ -38,5 +38,7 @@ public interface CafeMapper {
 
     void cafeUpdate(Cafe cafe);
 
+    void cafeImageUpdate(Cafe cafe);
+
     void delete(@Param("id") String cafeId);
 }
