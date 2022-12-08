@@ -82,8 +82,6 @@ public class CafeService {
         }
         if (optionalCafe.isPresent()) {
             Cafe cafe = optionalCafe.get();
-            Coupon coupon = optionalCoupon.get();
-            userStamp = coupon.getCouponUserstamp();
 
             return CafeInfoDTO.builder()
                     .cafeId(cafe.getCafeId())
