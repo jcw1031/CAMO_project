@@ -114,15 +114,11 @@ public class UserService {
      */
     @Transactional
     public User userRoleUpdate(final User user) {
-        User updatedUser;
+        User updatedUser = null;
         if (user.getRole() == 0) {
             updatedUser = User.builder()
                     .userId(user.getUserId())
                     .role(1).build();
-        } else {
-            updatedUser = User.builder()
-                    .userId(user.getUserId())
-                    .role(0).build();
         }
         userMapper.userRoleUpdate(updatedUser);
         return userMapper.findById(user.getUserId()).get();
