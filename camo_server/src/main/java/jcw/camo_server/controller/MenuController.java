@@ -34,6 +34,11 @@ public class MenuController {
         return menuService.findByCafeId(cafeId);
     }
 
+    @GetMapping("/new/{cafeId}")
+    public List<MenuListDTO> newMenuList(@PathVariable("cafeId") String cafeId) {
+        return menuService.findNewMenu(cafeId);
+    }
+
     /**
      * menu 정보 수정
      */

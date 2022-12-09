@@ -20,6 +20,14 @@
           AND menu_name = #{menuName};
     </select>
 
+    <select id="findNewMenu" resultType="jcw.camo_server.dto.menu.MenuListDTO">
+        SELECT menu_id, menu_name, menu_price
+        FROM menu
+        WHERE cafe_id = #{cafeId}
+        ORDER BY menu_id DESC
+        LIMIT 2;
+    </select>
+
 
     <update id="menuUpdate" useGeneratedKeys="true" keyProperty="id">
         UPDATE menu

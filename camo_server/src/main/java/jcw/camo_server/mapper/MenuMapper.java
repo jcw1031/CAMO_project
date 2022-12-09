@@ -19,7 +19,9 @@ public interface MenuMapper {
     /**
      * 카페별 메뉴 리스트
      */
-    List<MenuListDTO> findByCafeId(String cafeId);
+    List<MenuListDTO> findByCafeId(@Param("cafeId") String cafeId);
+
+    List<MenuListDTO> findNewMenu(@Param("cafeId") String cafeId);
 
     Optional<Menu> findMenu(@Param("cafeId") String cafeId, @Param("menuName") String menuName);
 

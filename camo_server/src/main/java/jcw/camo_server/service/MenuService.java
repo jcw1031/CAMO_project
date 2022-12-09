@@ -40,6 +40,10 @@ public class MenuService {
         return menuMapper.findByCafeId(cafeId);
     }
 
+    public List<MenuListDTO> findNewMenu(final String cafeId) {
+        return menuMapper.findNewMenu(cafeId);
+    }
+
     /*public void menuUpdate(final Menu menu) {
         menuUpdate(menu);
     }*/
