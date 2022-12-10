@@ -1,5 +1,6 @@
 package jcw.camo_server.controller;
 
+import jcw.camo_server.dto.review.ReviewListDTO;
 import jcw.camo_server.entity.Review;
 import jcw.camo_server.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class ReviewController {
      * @return cafeId를 가진 cafe의 review 리스트
      */
     @GetMapping("/cafe/{id}")
-    public List<Review> reviewListByCafe(@PathVariable("id") final String cafeId) {
+    public List<ReviewListDTO> reviewListByCafe(@PathVariable("id") final String cafeId) {
         return reviewService.findByCafeId(cafeId);
     }
 
