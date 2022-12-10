@@ -10,7 +10,7 @@
         SELECT * FROM review;
     </select>
 
-    <select id="findByCafeId" resultType="jcw.camo_server.entity.Review">
+    <select id="findByCafeId" resultType="jcw.camo_server.dto.review.ReviewListDTO">
         SELECT *
         FROM review
         WHERE cafe_id = #{cafeId};
