@@ -44,6 +44,8 @@ public class FileService {
     }
 
     public String storeFile(MultipartFile file, String cafeId) {
+        removeFile(cafeId);
+
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         try {
@@ -91,6 +93,23 @@ public class FileService {
             }
         } catch (MalformedURLException e) {
             throw new MyFileNotFoundException("파일을 찾을 수 없습니다!");
+        }
+    }
+
+    public void removeFile(String cafeId) {
+        Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
+        Cafe cafe = null;
+        if (optionalCafe.isPresent()) {
+            cafe = optionalCafe.get();
+        } else {
+            throw new IllegalArgumentException("존재하지 않는 카페입니다.");
+        }
+
+        try {
+            File file = new File(fileLocation + "/" + cafe.getCafeImage());
+            file.delete();
+        } catch (NullPointerException e) {
+            throw new NullPointerException("존재하지 않는 파일입니다.");
         }
     }
 }
