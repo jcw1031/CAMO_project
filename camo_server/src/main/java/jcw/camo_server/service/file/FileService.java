@@ -105,11 +105,12 @@ public class FileService {
             throw new IllegalArgumentException("존재하지 않는 카페입니다.");
         }
 
-        try {
-            File file = new File(fileLocation + "/" + cafe.getCafeImage());
+        File file = new File(fileLocation + "/" + cafe.getCafeImage());
+        if (file.exists()) {
+            System.out.println(file.getName());
             file.delete();
-        } catch (NullPointerException e) {
-            throw new NullPointerException("존재하지 않는 파일입니다.");
+        } else {
+            System.out.println("파일 없음");
         }
     }
 }
