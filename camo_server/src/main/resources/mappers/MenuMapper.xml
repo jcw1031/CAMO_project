@@ -25,7 +25,7 @@
         FROM menu
         WHERE cafe_id = #{cafeId}
         ORDER BY menu_id DESC
-        LIMIT 2;
+        LIMIT 3;
     </select>
 
 
