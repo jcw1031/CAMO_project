@@ -5,12 +5,14 @@ import jcw.camo_server.dto.review.UserReviewListDTO;
 import jcw.camo_server.entity.Review;
 import jcw.camo_server.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class ReviewService {
 
@@ -18,6 +20,7 @@ public class ReviewService {
 
     public void write(final Review review) {
         review.setReviewDate();
+        log.info("review write = {}", review);
         reviewMapper.reviewSave(review);
     }
 

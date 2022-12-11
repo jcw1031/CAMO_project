@@ -58,21 +58,6 @@ public class CafeService {
         return cafeMapper.findByName(name);
     }
 
-    /**
-     * cafeId로 cafe 검색
-     */
-    /*@Transactional
-    public Cafe findById(final String cafeId) {
-        Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
-        if (optionalCafe.isPresent()) {
-            Cafe cafe = optionalCafe.get();
-            log.info("cafe find by id = {}", cafe);
-            return cafe;
-        } else {
-            throw new IllegalArgumentException("해당 카페가 존재하지 않습니다.");
-        }
-    }*/
-
     @Transactional
     public CafeInfoDTO cafeInfoDetail(String cafeId, Long userId) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
