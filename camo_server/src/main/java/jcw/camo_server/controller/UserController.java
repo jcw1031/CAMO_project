@@ -3,6 +3,7 @@ package jcw.camo_server.controller;
 import jcw.camo_server.dto.user.LoginDTO;
 import jcw.camo_server.dto.user.SignupDTO;
 import jcw.camo_server.dto.user.UserUpdateDTO;
+import jcw.camo_server.dto.user.WithdrawalDTO;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -88,9 +89,9 @@ public class UserController {
      * 회원 탈퇴
      * @param userId 탈퇴할 회원의 userId
      */
-    @DeleteMapping("/{id}")
-    public void userWithdrawal(@PathVariable("id") final Long userId) {
-        userService.deleteUser(userId);
+    @DeleteMapping("")
+    public void userWithdrawal(@RequestBody WithdrawalDTO withdrawalDto) {
+        userService.deleteUser(withdrawalDto);
     }
 
 }
