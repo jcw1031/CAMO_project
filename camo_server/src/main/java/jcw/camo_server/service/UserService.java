@@ -119,6 +119,10 @@ public class UserService {
             updatedUser = User.builder()
                     .userId(user.getUserId())
                     .role(1).build();
+        } else {
+            updatedUser = User.builder()
+                    .userId(user.getUserId())
+                    .role(0).build();
         }
         userMapper.userRoleUpdate(updatedUser);
         return userMapper.findById(user.getUserId()).get();

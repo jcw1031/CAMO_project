@@ -1,5 +1,6 @@
 package jcw.camo_server.service;
 
+import jcw.camo_server.dto.cafe.CafeDeleteDTO;
 import jcw.camo_server.dto.cafe.CafeInfoDTO;
 import jcw.camo_server.dto.cafe.CafeListDTO;
 import jcw.camo_server.dto.cafe.CafeUpdateDTO;
@@ -146,7 +147,34 @@ public class CafeService {
         return cafeMapper.findById(cafeUpdateDto.getCafeId()).get();
     }
 
-    public void cafeDelete(final String cafeId) {
-        cafeMapper.delete(cafeId);
+    /**
+     * 카페 삭제
+     * @param deleteDto 삭제할 카페의 cafeId와 사장의 password
+     * @return role 업데이트 된 user 정보
+     */
+    public User cafeDelete(final CafeDeleteDTO deleteDto) {
+        Optional<Cafe> optionalCafe = cafeMapper.findById(deleteDto.getCafeId());
+        Cafe cafe;
+        if (optionalCafe.isPresent()) {
+            cafe = optionalCafe.get();
+        } else {
+            throw new IllegalArgumentException("카페 삭제 오류!(사업자번호 오류)");
+        }
+        Optional<User> optionalUser = userService.findById(cafe.getUserId());
+        User user;
+        if (optionalUser.isPresent()) {
+            user = optionalUser.get();
+        } else {
+            throw new IllegalArgumentException("카페 사장 정보 불러오기 실패");
+        }
+
+        if (deleteDto.getUserPassword().equals(user.getPassword())) {
+            log.info("카페 삭제 = {}", cafe);
+            cafeMapper.delete(cafe.getCafeId());
+        } else {
+            throw new IllegalArgumentException("비밀번호 불일치! 삭제 실패");
+        }
+
+        return userService.userRoleUpdate(user);
     }
 }
