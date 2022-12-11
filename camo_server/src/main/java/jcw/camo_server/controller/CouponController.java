@@ -41,11 +41,11 @@ public class CouponController {
     /**
      * 쿠폰 사용
      * @param cafeId 카페의 cafeId
-     * @param userId 사용자의 userId
+     * @param userEmail 사용자의 userEmail
      */
     @PutMapping("/use")
-    public void couponUse(@RequestParam("cafeId") String cafeId, @RequestParam("userId") Long userId) {
-        couponService.useCoupon(cafeId, userId);
+    public void couponUse(@RequestParam("cafeId") String cafeId, @RequestParam("userEmail") String userEmail) {
+        couponService.useCoupon(cafeId, userEmail);
     }
 
     @GetMapping("/list")
