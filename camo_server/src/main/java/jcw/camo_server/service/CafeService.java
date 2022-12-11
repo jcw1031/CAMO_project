@@ -54,6 +54,7 @@ public class CafeService {
      * 검색어가 이름에 포함된 카페 리스트
      */
     public List<CafeListDTO> findByName(final String name) {
+        log.info("cafe search = {}", name);
         return cafeMapper.findByName(name);
     }
 
