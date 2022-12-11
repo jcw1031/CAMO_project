@@ -10,13 +10,13 @@ import lombok.ToString;
 @NoArgsConstructor
 public class CouponDTO {
     private int stampQuantity;
-    private Long userId;
+    private String userEmail;
     private String cafeId;
 
     @Builder
-    public CouponDTO(int stampQuantity, Long userId, String cafeId) {
+    public CouponDTO(int stampQuantity, String userEmail, String cafeId) {
         this.stampQuantity = stampQuantity;
-        this.userId = userId;
+        this.userEmail = userEmail;
         this.cafeId = cafeId;
     }
 }
