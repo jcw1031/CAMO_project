@@ -1,6 +1,7 @@
 package jcw.camo_server.mapper;
 
-import jcw.camo_server.dto.review.ReviewListDTO;
+import jcw.camo_server.dto.review.CafeReviewListDTO;
+import jcw.camo_server.dto.review.UserReviewListDTO;
 import jcw.camo_server.entity.Review;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -17,9 +18,9 @@ public interface ReviewMapper {
 
     Optional<Review> findByReviewId(@Param("reviewId") Long reviewId);
 
-    List<ReviewListDTO> findByCafeId(@Param("cafeId") String cafeId);
+    List<CafeReviewListDTO> findByCafeId(@Param("cafeId") String cafeId);
 
-    List<Review> findByUserId(@Param("userId") Long userId);
+    List<UserReviewListDTO> findByUserId(@Param("userId") Long userId);
 
     Optional<Double> cafeAvgRating(@Param("cafeId") String cafeId);
 
