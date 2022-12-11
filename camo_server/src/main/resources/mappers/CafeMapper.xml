@@ -54,7 +54,7 @@
     <delete id="delete">
         DELETE
         FROM cafe
-        WHERE cafe_id = #{id};
+        WHERE cafe_id = #{cafeId};
     </delete>
 
 </mapper>

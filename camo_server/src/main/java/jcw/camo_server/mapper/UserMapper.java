@@ -43,5 +43,5 @@ public interface UserMapper {
     /**
      * user 삭제
      */
-    void delete(@Param("id") Long userId);
+    void delete(User user);
 }

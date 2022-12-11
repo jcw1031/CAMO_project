@@ -170,7 +170,7 @@ public class CafeService {
 
         if (deleteDto.getUserPassword().equals(user.getPassword())) {
             log.info("카페 삭제 = {}", cafe);
-            cafeMapper.delete(cafe.getCafeId());
+            cafeMapper.delete(cafe);
         } else {
             throw new IllegalArgumentException("비밀번호 불일치! 삭제 실패");
         }

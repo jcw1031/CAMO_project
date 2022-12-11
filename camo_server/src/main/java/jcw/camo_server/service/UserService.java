@@ -3,6 +3,7 @@ package jcw.camo_server.service;
 import jcw.camo_server.dto.user.LoginDTO;
 import jcw.camo_server.dto.user.SignupDTO;
 import jcw.camo_server.dto.user.UserUpdateDTO;
+import jcw.camo_server.dto.user.WithdrawalDTO;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -114,7 +115,7 @@ public class UserService {
      */
     @Transactional
     public User userRoleUpdate(final User user) {
-        User updatedUser = null;
+        User updatedUser;
         if (user.getRole() == 0) {
             updatedUser = User.builder()
                     .userId(user.getUserId())
@@ -132,8 +133,19 @@ public class UserService {
      * 회원 삭제
      */
     @Transactional
-    public void deleteUser(final Long userId) {
-        userMapper.delete(userId);
-        log.info("회원 탈퇴 성공 {}", userId);
+    public void deleteUser(final WithdrawalDTO withdrawalDto) {
+        Optional<User> optionalUser = userMapper.findById(withdrawalDto.getUserId());
+        User user;
+        if (optionalUser.isPresent()) {
+            user = optionalUser.get();
+        } else {
+            throw new IllegalArgumentException("해당 회원이 존재하지 않습니다");
+        }
+        if (user.getPassword().equals(withdrawalDto.getPassword())) {
+            log.info("회원 탈퇴 = {}", user);
+            userMapper.delete(user);
+        } else {
+            throw new IllegalArgumentException("비밀번호 오류. 회원 탈퇴 실패");
+        }
     }
 }
