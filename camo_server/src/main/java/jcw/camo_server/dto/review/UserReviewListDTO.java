@@ -8,21 +8,20 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor
-public class ReviewListDTO {
+public class UserReviewListDTO {
     private Long reviewId;
-    private String userEmail;
     private int reviewRating;
     private String reviewContent;
     private String reviewDate;
-    private String cafeId;
+    private String cafeName;
 
     @Builder
-    public ReviewListDTO(Long reviewId, String userEmail, int reviewRating, String reviewContent, String reviewDate, String cafeId) {
+    public UserReviewListDTO(Long reviewId, int reviewRating, String reviewContent, String reviewDate
+            , String cafeName) {
         this.reviewId = reviewId;
-        this.userEmail = userEmail;
         this.reviewRating = reviewRating;
         this.reviewContent = reviewContent;
         this.reviewDate = reviewDate;
-        this.cafeId = cafeId;
+        this.cafeName = cafeName;
     }
 }

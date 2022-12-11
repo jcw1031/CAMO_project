@@ -1,6 +1,7 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.review.ReviewListDTO;
+import jcw.camo_server.dto.review.CafeReviewListDTO;
+import jcw.camo_server.dto.review.UserReviewListDTO;
 import jcw.camo_server.entity.Review;
 import jcw.camo_server.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +21,11 @@ public class ReviewService {
         reviewMapper.reviewSave(review);
     }
 
-    public List<ReviewListDTO> findByCafeId(final String cafeId) {
+    public List<CafeReviewListDTO> findByCafeId(final String cafeId) {
         return reviewMapper.findByCafeId(cafeId);
     }
 
-    public List<Review> findByUserId(final Long userId) {
+    public List<UserReviewListDTO> findByUserId(final Long userId) {
         return reviewMapper.findByUserId(userId);
     }
 

@@ -10,16 +10,18 @@
         SELECT * FROM review;
     </select>
 
-    <select id="findByCafeId" resultType="jcw.camo_server.dto.review.ReviewListDTO">
+    <select id="findByCafeId" resultType="jcw.camo_server.dto.review.CafeReviewListDTO">
         SELECT *
         FROM review
         WHERE cafe_id = #{cafeId};
     </select>
 
-    <select id="findByUserId" resultType="jcw.camo_server.entity.Review">
-        SELECT *
-        FROM review
-        WHERE user_id = #{userId};
+    <select id="findByUserId" resultType="jcw.camo_server.dto.review.UserReviewListDTO">
+        SELECT review.review_id, review.review_rating, review.review_content, review.review_date, cafe.cafe_name
+        FROM review,
+             cafe
+        WHERE review.cafe_id = cafe.cafe_id
+          AND review.user_id = #{userId};
     </select>
 
     <select id="findByReviewId" resultType="jcw.camo_server.entity.Review">
