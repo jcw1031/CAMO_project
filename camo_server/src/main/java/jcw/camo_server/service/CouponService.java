@@ -85,6 +85,7 @@ public class CouponService {
                         .couponId(coupon.getCouponId())
                         .couponUserstamp(coupon.getCouponUserstamp() - cafe.getCafeRewardstamp())
                         .build());
+                log.info("쿠폰 사용!! = {}", coupon);
             } else {
                 throw new IllegalArgumentException("쿠폰이 부족합니다!");
             }
