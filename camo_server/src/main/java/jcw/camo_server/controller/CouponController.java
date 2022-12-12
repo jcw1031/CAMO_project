@@ -1,5 +1,6 @@
 package jcw.camo_server.controller;
 
+import jcw.camo_server.controller.dto.ResponseDTO;
 import jcw.camo_server.dto.coupon.CouponDTO;
 import jcw.camo_server.dto.coupon.CouponListDTO;
 import jcw.camo_server.entity.Coupon;
@@ -43,8 +44,8 @@ public class CouponController {
      * @param userEmail 사용자의 userEmail
      */
     @PutMapping("/use")
-    public void couponUse(@RequestParam("cafeId") String cafeId, @RequestParam("userEmail") String userEmail) {
-        couponService.useCoupon(cafeId, userEmail);
+    public ResponseDTO couponUse(@RequestParam("cafeId") String cafeId, @RequestParam("userEmail") String userEmail) {
+        return couponService.useCoupon(cafeId, userEmail);
     }
 
     @GetMapping("/list")

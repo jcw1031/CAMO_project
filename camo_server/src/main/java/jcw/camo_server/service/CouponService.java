@@ -1,5 +1,6 @@
 package jcw.camo_server.service;
 
+import jcw.camo_server.controller.dto.ResponseDTO;
 import jcw.camo_server.dto.coupon.CouponDTO;
 import jcw.camo_server.dto.coupon.CouponListDTO;
 import jcw.camo_server.entity.Cafe;
@@ -66,7 +67,7 @@ public class CouponService {
      * @param userEmail
      */
     @Transactional
-    public void useCoupon(String cafeId, String userEmail) {
+    public ResponseDTO useCoupon(String cafeId, String userEmail) {
         Optional<User> optionalUser = userMapper.findByEmail(userEmail);
         User user = null;
         if (optionalUser.isPresent()) {
@@ -86,11 +87,22 @@ public class CouponService {
                         .couponUserstamp(coupon.getCouponUserstamp() - cafe.getCafeRewardstamp())
                         .build());
                 log.info("쿠폰 사용!! = {}", coupon);
+                return ResponseDTO.builder()
+                        .status(200)
+                        .message("쿠폰 사용 완료!").build();
             } else {
-                throw new IllegalArgumentException("쿠폰이 부족합니다!");
+                log.info("쿠폰이 부족합니다!");
+                return ResponseDTO.builder()
+                        .status(403)
+                        .message("쿠폰이 부족합니다!")
+                        .build();
             }
         } else {
-            throw new IllegalArgumentException("잘못된 요청입니다!");
+            log.info("잘못된 요청입니다.(쿠폰 사용)");
+            return ResponseDTO.builder()
+                    .status(404)
+                    .message("잘못된 요청입니다.")
+                    .build();
         }
     }
 
