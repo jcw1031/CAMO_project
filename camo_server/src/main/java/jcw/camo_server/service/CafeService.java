@@ -58,6 +58,12 @@ public class CafeService {
         return cafeMapper.findByName(name);
     }
 
+    /**
+     * 카페 상세 정보 조회
+     * @param cafeId
+     * @param userId
+     * @return
+     */
     @Transactional
     public CafeInfoDTO cafeInfoDetail(String cafeId, Long userId) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafeId);
@@ -116,7 +122,6 @@ public class CafeService {
     public Cafe cafeUpdate(final CafeUpdateDTO cafeUpdateDto) {
         Optional<Cafe> optionalCafe = cafeMapper.findById(cafeUpdateDto.getCafeId());
         if (optionalCafe.isPresent()) {
-            Cafe oldCafe = optionalCafe.get();
             Cafe updatedCafe = Cafe.builder()
                     .cafeId(cafeUpdateDto.getCafeId())
                     .cafeName(cafeUpdateDto.getCafeName())

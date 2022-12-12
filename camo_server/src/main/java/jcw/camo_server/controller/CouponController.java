@@ -1,6 +1,5 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.cafe.CafeListDTO;
 import jcw.camo_server.dto.coupon.CouponDTO;
 import jcw.camo_server.dto.coupon.CouponListDTO;
 import jcw.camo_server.entity.Coupon;
