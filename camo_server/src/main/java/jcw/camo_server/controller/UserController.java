@@ -1,5 +1,6 @@
 package jcw.camo_server.controller;
 
+import jcw.camo_server.controller.dto.ResponseDTO;
 import jcw.camo_server.dto.user.LoginDTO;
 import jcw.camo_server.dto.user.SignupDTO;
 import jcw.camo_server.dto.user.UserUpdateDTO;
@@ -8,6 +9,7 @@ import jcw.camo_server.entity.User;
 import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +36,11 @@ public class UserController {
         return joinUser.get();
     }
 
+    @GetMapping("/duplicate/{email}")
+    public ResponseDTO checkDuplicate(@PathVariable("email") String userEmail) {
+        return userService.validateDuplicatedUser(userEmail);
+    }
+
     /**
      * 로그인
      * @param loginDto 회원의 id와 password
@@ -41,7 +48,6 @@ public class UserController {
      */
     @PostMapping("/login")
     public User signIn(@RequestBody LoginDTO loginDto) {
-        log.info("loginDto = {}", loginDto);
         User loginUser = userService.login(loginDto);
         log.info("login user = {}", loginUser);
         return loginUser;

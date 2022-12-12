@@ -71,7 +71,9 @@ public class CafeController {
      */
     @GetMapping("/{id}")
     public CafeInfoDTO cafeInfo(@PathVariable("id") String cafeId, @RequestParam("userId") Long userId) {
-        return cafeService.cafeInfoDetail(cafeId, userId);
+        CafeInfoDTO cafe = cafeService.cafeInfoDetail(cafeId, userId);
+        log.info("cafeInfo = {}", cafe);
+        return cafe;
     }
 
     /**

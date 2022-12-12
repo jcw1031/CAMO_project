@@ -1,5 +1,6 @@
 package jcw.camo_server.service;
 
+import jcw.camo_server.controller.dto.ResponseDTO;
 import jcw.camo_server.dto.user.LoginDTO;
 import jcw.camo_server.dto.user.SignupDTO;
 import jcw.camo_server.dto.user.UserUpdateDTO;
@@ -8,6 +9,7 @@ import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,9 +28,18 @@ public class UserService {
      */
     @Transactional
     public Optional<User> save(SignupDTO signupDto) {
-        User user = validateDuplicatedUser(signupDto);
+        ResponseDTO response = validateDuplicatedUser(signupDto.getEmail());
+        if (response.getStatus() != 200) {
+            throw new IllegalArgumentException(response.getMessage());
+        }
+        User user = User.builder()
+                .email(signupDto.getEmail())
+                .password(signupDto.getPassword())
+                .name(signupDto.getName())
+                .phone(signupDto.getPhone())
+                .role(0)
+                .build();
         log.info("user in service = {}", user);
-        //이메일 중복 검증
         userMapper.userSave(user);
         return userMapper.findByEmail(user.getEmail());
     }
@@ -37,18 +48,17 @@ public class UserService {
      * email 중복 검증
      */
     @Transactional
-    User validateDuplicatedUser(SignupDTO signupDto) {
-        log.info("signupDto in validate = {}", signupDto);
-        Optional<User> optionalUser = userMapper.findByEmail(signupDto.getEmail());
+    public ResponseDTO validateDuplicatedUser(String userEmail) {
+        log.info("check validate = {}", userEmail);
+        Optional<User> optionalUser = userMapper.findByEmail(userEmail);
         if (optionalUser.isPresent()) {
-            throw new IllegalStateException("이미 존재하는 이메일입니다.");
+            return ResponseDTO.builder()
+                    .status(409)
+                    .message("이미 존재하는 이메일입니다.")
+                    .build();
         } else {
-            return User.builder()
-                    .email(signupDto.getEmail())
-                    .password(signupDto.getPassword())
-                    .name(signupDto.getName())
-                    .phone(signupDto.getPhone())
-                    .role(0)
+            return ResponseDTO.builder()
+                    .status(200)
                     .build();
         }
     }
