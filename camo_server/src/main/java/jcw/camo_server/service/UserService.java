@@ -59,6 +59,7 @@ public class UserService {
         } else {
             return ResponseDTO.builder()
                     .status(200)
+                    .message("사용 가능한 이메일입니다.")
                     .build();
         }
     }
