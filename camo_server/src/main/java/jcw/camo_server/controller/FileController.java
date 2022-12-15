@@ -1,4 +1,4 @@
-package jcw.camo_server.controller.file;
+package jcw.camo_server.controller;
 
 import jcw.camo_server.dto.file.UploadFileResponse;
 import jcw.camo_server.service.file.FileService;
