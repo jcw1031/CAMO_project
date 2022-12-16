@@ -19,6 +19,7 @@ DB
 <a href="https://www.mysql.com" target="_blank"><img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white"/></a>
         
 Additional(Crawler)   
+<a href="https://jupyter.org" target="_blank"><img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=Jupyter&logoColor=white"/></a>
 <a href="https://www.python.org" target="_blank"><img src="https://img.shields.io/badge/Python-357cb2?style=flat&logo=Python&logoColor=white"/></a>
 
 ### ⚙️ Tools
