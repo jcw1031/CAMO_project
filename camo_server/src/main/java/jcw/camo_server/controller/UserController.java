@@ -1,12 +1,15 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.user.LoginDto;
-import jcw.camo_server.dto.user.SignupDto;
-import jcw.camo_server.dto.user.UserUpdateDto;
+import jcw.camo_server.controller.dto.ResponseDTO;
+import jcw.camo_server.dto.user.LoginDTO;
+import jcw.camo_server.dto.user.SignupDTO;
+import jcw.camo_server.dto.user.UserUpdateDTO;
+import jcw.camo_server.dto.user.WithdrawalDTO;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,26 +29,25 @@ public class UserController {
      * @return 회원가입 완료 된 User 객체
      */
     @PostMapping("/signup")
-    public User signup(@RequestBody SignupDto signupDto) {
+    public User signup(@RequestBody SignupDTO signupDto) {
         log.info("signupDto = {}", signupDto);
         Optional<User> joinUser = userService.save(signupDto);
         log.info("user = {}", joinUser);
         return joinUser.get();
     }
 
+    @GetMapping("/duplicate/{email}")
+    public ResponseDTO checkDuplicate(@PathVariable("email") String userEmail) {
+        return userService.validateDuplicatedUser(userEmail);
+    }
+
     /**
      * 로그인
-     * @param email 로그인 email
-     * @param password 로그인 password
+     * @param loginDto 회원의 id와 password
      * @return 로그인 성공 시 해당 User 객체
      */
-    @GetMapping("/{email}")
-    public User signIn(@PathVariable("email") String email, @RequestParam("password") String password) {
-        LoginDto loginDto = LoginDto.builder()
-                .email(email)
-                .password(password)
-                .build();
-        log.info("loginDto = {}", loginDto);
+    @PostMapping("/login")
+    public User signIn(@RequestBody LoginDTO loginDto) {
         User loginUser = userService.login(loginDto);
         log.info("login user = {}", loginUser);
         return loginUser;
@@ -83,7 +85,7 @@ public class UserController {
      * @return 수정 된 User 객체
      */
     @PutMapping("/{id}")
-    public User updateUserInfo(@PathVariable("id") final Long id, @RequestBody final UserUpdateDto userUpdateDto) {
+    public User updateUserInfo(@PathVariable("id") final Long id, @RequestBody final UserUpdateDTO userUpdateDto) {
         userUpdateDto.setUserId(id);
         log.info("userUpdateDto = {}", userUpdateDto);
         return userService.userUpdate(userUpdateDto);
@@ -93,9 +95,9 @@ public class UserController {
      * 회원 탈퇴
      * @param userId 탈퇴할 회원의 userId
      */
-    @DeleteMapping("/{id}")
-    public void userWithdrawal(@PathVariable("id") final Long userId) {
-        userService.deleteUser(userId);
+    @DeleteMapping("")
+    public void userWithdrawal(@RequestBody WithdrawalDTO withdrawalDto) {
+        userService.deleteUser(withdrawalDto);
     }
 
 }

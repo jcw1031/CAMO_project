@@ -1,7 +1,10 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.cafe.CafeListDto;
-import jcw.camo_server.dto.cafe.CafeUpdateDto;
+import jcw.camo_server.dto.cafe.CafeDeleteDTO;
+import jcw.camo_server.dto.cafe.CafeInfoDTO;
+import jcw.camo_server.dto.cafe.CafeListDTO;
+import jcw.camo_server.dto.cafe.CafeUpdateDTO;
+import jcw.camo_server.dto.user.LoginDTO;
 import jcw.camo_server.entity.Cafe;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.service.CafeService;
@@ -34,7 +37,7 @@ public class CafeController {
      * @return 모든 Cafe 리스트
      */
     @GetMapping("/list")
-    public List<CafeListDto> cafeList() {
+    public List<CafeListDTO> cafeList() {
         return cafeService.cafeList();
     }
 
@@ -44,20 +47,8 @@ public class CafeController {
      * @return 검색어가 이름에 포함된 Cafe 리스트
      */
     @GetMapping("/name/{name}")
-    public List<CafeListDto> searchCafeByName(@PathVariable("name") String name) {
+    public List<CafeListDTO> searchCafeByName(@PathVariable("name") String name) {
         return cafeService.findByName(name);
-    }
-
-    /**
-     * cafeId로 cafe 정보 조회
-     * @param cafeId 정보를 조회할 cafe의 cafeId
-     * @return 해당 cafeId를 가진 Cafe
-     */
-    @GetMapping("/{id}")
-    public Cafe cafeInfo(@PathVariable("id") String cafeId) {
-        Cafe cafe = cafeService.findById(cafeId);
-        log.info("cafe = {}", cafe);
-        return cafe;
     }
 
     /**
@@ -73,24 +64,38 @@ public class CafeController {
     }
 
     /**
+     * 카페 정보
+     * @param cafeId 카페 정보를 조회할 cafeId
+     * @param userId 현재 로그인 된 회원의 userId
+     * @return 카페 정보
+     */
+    @GetMapping("/{id}")
+    public CafeInfoDTO cafeInfo(@PathVariable("id") String cafeId, @RequestParam("userId") Long userId) {
+        CafeInfoDTO cafe = cafeService.cafeInfoDetail(cafeId, userId);
+        log.info("cafeInfo = {}", cafe);
+        return cafe;
+    }
+
+    /**
      * cafe 정보 수정
-     *
      * @param cafeId        수정할 카페의 id
      * @param cafeUpdateDto 수정할 정보
      * @return 정보가 수정된 후 cafe
      */
     @PutMapping("/{id}")
-    public Cafe cafeInfoUpdate(@PathVariable("id") String cafeId, @RequestBody CafeUpdateDto cafeUpdateDto) {
+    public Cafe cafeInfoUpdate(@PathVariable("id") String cafeId, @RequestBody CafeUpdateDTO cafeUpdateDto) {
         cafeUpdateDto.setCafeId(cafeId);
+        log.info("cafeUpdate = {}", cafeUpdateDto);
         return cafeService.cafeUpdate(cafeUpdateDto);
     }
 
     /**
      * 카페 삭제
-     * @param cafeId 삭제할 카페의 cafeId
+     * @param deleteDto 삭제할 카페의 cafeId와 사장의 password
+     * @return role 업데이트 된 user 정보
      */
-    @DeleteMapping("/{id}")
-    public void deleteCafe(@PathVariable("id") String cafeId) {
-        cafeService.cafeDelete(cafeId);
+    @DeleteMapping("")
+    public User deleteCafe(@RequestBody CafeDeleteDTO deleteDto) {
+        return cafeService.cafeDelete(deleteDto);
     }
 }

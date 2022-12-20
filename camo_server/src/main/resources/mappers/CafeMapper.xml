@@ -4,17 +4,18 @@
 
     <insert id="cafeSave">
         INSERT INTO cafe
-        VALUES (#{cafeId}, #{cafeName}, #{cafeAddress}, #{cafePhone}, #{cafeIntroduce}, #{cafeReward}, 0, #{userId});
+        VALUES (#{cafeId}, #{cafeName}, #{cafeAddress}, #{cafePhone}, #{cafeIntroduce}, #{cafeReward}, 0, #{userId}, 'null');
     </insert>
 
-    <select id="findAll" resultType="jcw.camo_server.dto.cafe.CafeListDto">
+    <select id="findAll" resultType="jcw.camo_server.dto.cafe.CafeListDTO">
         SELECT cafe.cafe_id, cafe_name, cafe_address, IFNULL(AVG(review_rating), 0) AS avg_rating
         FROM cafe
                  LEFT OUTER JOIN review ON cafe.cafe_id = review.cafe_id
-        GROUP BY cafe.cafe_id;
+        GROUP BY cafe.cafe_id
+        ORDER BY RAND();
     </select>
 
-    <select id="findByName" resultType="jcw.camo_server.dto.cafe.CafeListDto">
+    <select id="findByName" resultType="jcw.camo_server.dto.cafe.CafeListDTO">
         SELECT cafe.cafe_id, cafe.cafe_name, cafe.cafe_address, avg(review_rating) as avg_rating
         FROM cafe, review
         WHERE review.cafe_id = cafe.cafe_id
@@ -45,10 +46,16 @@
         WHERE cafe_id = #{cafeId};
     </update>
 
+    <update id="cafeImageUpdate" useGeneratedKeys="true" keyProperty="id">
+        UPDATE cafe
+        SET cafe_image = #{cafeImage}
+        WHERE cafe_id = #{cafeId};
+    </update>
+
     <delete id="delete">
         DELETE
         FROM cafe
-        WHERE cafe_id = #{id};
+        WHERE cafe_id = #{cafeId};
     </delete>
 
 </mapper>

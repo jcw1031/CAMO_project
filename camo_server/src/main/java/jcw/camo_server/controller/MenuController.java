@@ -1,6 +1,6 @@
 package jcw.camo_server.controller;
 
-import jcw.camo_server.dto.menu.MenuListDto;
+import jcw.camo_server.dto.menu.MenuListDTO;
 import jcw.camo_server.entity.Menu;
 import jcw.camo_server.service.MenuService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class MenuController {
     /**
      * menu 등록
      */
-    @PostMapping("/register")
+    @PostMapping("")
     public void menuRegister(@RequestBody final Menu menu) {
         log.info("menu = {}", menu);
         menuService.register(menu);
@@ -30,17 +30,22 @@ public class MenuController {
      * cafe별 menu 리스트 조회
      */
     @GetMapping("/{cafeId}")
-    public List<MenuListDto> menuListByCafe(@PathVariable("cafeId") final String cafeId) {
+    public List<MenuListDTO> menuListByCafe(@PathVariable("cafeId") final String cafeId) {
         return menuService.findByCafeId(cafeId);
+    }
+
+    @GetMapping("/new/{cafeId}")
+    public List<MenuListDTO> newMenuList(@PathVariable("cafeId") String cafeId) {
+        return menuService.findNewMenu(cafeId);
     }
 
     /**
      * menu 정보 수정
      */
-    @PutMapping("/update")
+    /*@PutMapping("/update")
     public void updateMenu(@RequestBody final Menu menu) {
         menuService.menuUpdate(menu);
-    }
+    }*/
 
     /**
      * menu 삭제

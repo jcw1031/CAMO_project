@@ -1,5 +1,7 @@
 package jcw.camo_server.controller;
 
+import jcw.camo_server.dto.review.CafeReviewListDTO;
+import jcw.camo_server.dto.review.UserReviewListDTO;
 import jcw.camo_server.entity.Review;
 import jcw.camo_server.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +24,7 @@ public class ReviewController {
      */
     @PostMapping("")
     public void writeReview(@RequestBody final Review review) {
-        Review writtenReview = reviewService.write(review);
-        log.info("review = {}", writtenReview);
+        reviewService.write(review);
     }
 
     /**
@@ -32,7 +33,7 @@ public class ReviewController {
      * @return cafeId를 가진 cafe의 review 리스트
      */
     @GetMapping("/cafe/{id}")
-    public List<Review> reviewListByCafe(@PathVariable("id") final String cafeId) {
+    public List<CafeReviewListDTO> reviewListByCafe(@PathVariable("id") final String cafeId) {
         return reviewService.findByCafeId(cafeId);
     }
 
@@ -42,7 +43,7 @@ public class ReviewController {
      * @return userId를 가진 user의 review 리스트
      */
     @GetMapping("/user/{id}")
-    public List<Review> reviewListByUser(@PathVariable("id") final Long userId) {
+    public List<UserReviewListDTO> reviewListByUser(@PathVariable("id") final Long userId) {
         return reviewService.findByUserId(userId);
     }
 
@@ -53,5 +54,14 @@ public class ReviewController {
     @GetMapping("/list")
     public List<Review> reviewList() {
         return reviewService.findAll();
+    }
+
+    /**
+     * review 삭제
+     * @param reviewId 삭제할 review의 reviewId
+     */
+    @DeleteMapping("/{id}")
+    public void deleteReview(@PathVariable("id") Long reviewId) {
+        reviewService.deleteReview(reviewId);
     }
 }

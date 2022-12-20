@@ -1,12 +1,15 @@
 package jcw.camo_server.service;
 
-import jcw.camo_server.dto.user.LoginDto;
-import jcw.camo_server.dto.user.SignupDto;
-import jcw.camo_server.dto.user.UserUpdateDto;
+import jcw.camo_server.controller.dto.ResponseDTO;
+import jcw.camo_server.dto.user.LoginDTO;
+import jcw.camo_server.dto.user.SignupDTO;
+import jcw.camo_server.dto.user.UserUpdateDTO;
+import jcw.camo_server.dto.user.WithdrawalDTO;
 import jcw.camo_server.entity.User;
 import jcw.camo_server.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,10 +27,19 @@ public class UserService {
      * 회원가입
      */
     @Transactional
-    public Optional<User> save(SignupDto signupDto) {
-        User user = validateDuplicatedUser(signupDto);
+    public Optional<User> save(SignupDTO signupDto) {
+        ResponseDTO response = validateDuplicatedUser(signupDto.getEmail());
+        if (response.getStatus() != 200) {
+            throw new IllegalArgumentException(response.getMessage());
+        }
+        User user = User.builder()
+                .email(signupDto.getEmail())
+                .password(signupDto.getPassword())
+                .name(signupDto.getName())
+                .phone(signupDto.getPhone())
+                .role(0)
+                .build();
         log.info("user in service = {}", user);
-        //이메일 중복 검증
         userMapper.userSave(user);
         return userMapper.findByEmail(user.getEmail());
     }
@@ -36,18 +48,18 @@ public class UserService {
      * email 중복 검증
      */
     @Transactional
-    User validateDuplicatedUser(SignupDto signupDto) {
-        log.info("signupDto in validate = {}", signupDto);
-        Optional<User> optionalUser = userMapper.findByEmail(signupDto.getEmail());
+    public ResponseDTO validateDuplicatedUser(String userEmail) {
+        log.info("check validate = {}", userEmail);
+        Optional<User> optionalUser = userMapper.findByEmail(userEmail);
         if (optionalUser.isPresent()) {
-            throw new IllegalStateException("이미 존재하는 이메일입니다.");
+            return ResponseDTO.builder()
+                    .status(409)
+                    .message("이미 존재하는 이메일입니다.")
+                    .build();
         } else {
-            return User.builder()
-                    .email(signupDto.getEmail())
-                    .password(signupDto.getPassword())
-                    .name(signupDto.getName())
-                    .phone(signupDto.getPhone())
-                    .role(0)
+            return ResponseDTO.builder()
+                    .status(200)
+                    .message("사용 가능한 이메일입니다.")
                     .build();
         }
     }
@@ -56,7 +68,7 @@ public class UserService {
      * 로그인
      */
     @Transactional
-    public User login(LoginDto loginDto) {
+    public User login(LoginDTO loginDto) {
         Optional<User> optionalUser = userMapper.findByEmail(loginDto.getEmail());
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
@@ -93,7 +105,7 @@ public class UserService {
      * user 정보 수정
      */
     @Transactional
-    public User userUpdate(final UserUpdateDto userUpdateDto) {
+    public User userUpdate(final UserUpdateDTO userUpdateDto) {
         Optional<User> optionalUser = userMapper.findById(userUpdateDto.getUserId());
         log.info("optionalUser = {}", optionalUser);
         if (optionalUser.isPresent()) {
@@ -132,8 +144,19 @@ public class UserService {
      * 회원 삭제
      */
     @Transactional
-    public void deleteUser(final Long userId) {
-        userMapper.delete(userId);
-        log.info("회원 탈퇴 성공 {}", userId);
+    public void deleteUser(final WithdrawalDTO withdrawalDto) {
+        Optional<User> optionalUser = userMapper.findById(withdrawalDto.getUserId());
+        User user;
+        if (optionalUser.isPresent()) {
+            user = optionalUser.get();
+        } else {
+            throw new IllegalArgumentException("해당 회원이 존재하지 않습니다");
+        }
+        if (user.getPassword().equals(withdrawalDto.getPassword())) {
+            log.info("회원 탈퇴 = {}", user);
+            userMapper.delete(user);
+        } else {
+            throw new IllegalArgumentException("비밀번호 오류. 회원 탈퇴 실패");
+        }
     }
 }

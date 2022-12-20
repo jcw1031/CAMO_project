@@ -1,9 +1,9 @@
 spring:
   datasource:
     hikari:
-      jdbc-url: jdbc:mysql://34.133.175.162:3306/CAMO?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+      jdbc-url: jdbc:mysql://localhost:3306/camo?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
       username: root
-      password: 1031
+      password:
       driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     properties:
@@ -11,6 +11,16 @@ spring:
         show_sql: true
         format_sql: true
         use_sql_comments: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 10MB
+      max-request-size: 25MB
+
+file:
+  upload:
+    location: C:\Users\jcw00\file
 
 mybatis:
   mapper-locations: classpath:/mappers/*.xml
